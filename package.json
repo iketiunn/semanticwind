@@ -5,12 +5,14 @@
   "license": "MIT",
   "type": "module",
   "files": [
-    "src/semanticwind.css"
+    "src/semanticwind.css",
+    "src/basecoat.css"
   ],
   "style": "src/semanticwind.css",
   "exports": {
     ".": "./src/semanticwind.css",
-    "./css": "./src/semanticwind.css"
+    "./css": "./src/semanticwind.css",
+    "./basecoat": "./src/basecoat.css"
   },
   "scripts": {
     "dev": "tailwindcss -i ./docs/app.css -o ./docs/assets/site.css --watch",
