@@ -1,0 +1,40 @@
+{
+  "name": "semanticwind",
+  "version": "0.0.0-dev.0",
+  "description": "Semantic HTML defaults for Tailwind CSS that scale into Basecoat, utilities, and custom components.",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "src/semanticwind.css"
+  ],
+  "style": "src/semanticwind.css",
+  "exports": {
+    ".": "./src/semanticwind.css",
+    "./css": "./src/semanticwind.css"
+  },
+  "scripts": {
+    "dev": "tailwindcss -i ./docs/app.css -o ./docs/assets/site.css --watch",
+    "build": "tailwindcss -i ./docs/app.css -o ./docs/assets/site.css --minify"
+  },
+  "keywords": [
+    "semantic-html",
+    "tailwindcss",
+    "css",
+    "classless",
+    "basecoat",
+    "shadcn"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iketiunn/semanticwind.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iketiunn/semanticwind/issues"
+  },
+  "homepage": "https://iketiunn.github.io/semanticwind/",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "basecoat-css": "^1.0.2",
+    "tailwindcss": "^4.3.3"
+  }
+}
