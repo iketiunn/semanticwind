@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Semanticwind: semantic HTML defaults for Tailwind CSS that scale into Basecoat, utilities, and your own components.">
+    <meta name="color-scheme" content="light dark">
+    <title>Semanticwind</title>
+    <link rel="stylesheet" href="./assets/site.css">
+  </head>
+  <body>
+    <main class="demo-shell">
+      <header>
+        <div class="demo-label">Semanticwind</div>
+        <h1 class="mt-0 max-w-3xl">Semantic HTML when it’s enough. Tailwind when it isn’t.</h1>
+        <p class="max-w-2xl text-lg text-muted-foreground">
+          A small semantic baseline for Tailwind CSS. Start with useful native HTML, then scale into Basecoat, Tailwind utilities, and product-specific components only when the interface asks for them.
+        </p>
+
+        <nav aria-label="Project links" class="mt-6 flex flex-wrap gap-3">
+          <a class="btn" href="https://github.com/iketiunn/semanticwind">GitHub</a>
+          <a class="btn" data-variant="outline" href="#examples">See the progression</a>
+        </nav>
+      </header>
+
+      <section id="examples" class="demo-section">
+        <div class="demo-label">1 · Semantic HTML</div>
+        <h2 class="mt-0">Start with the tags that already mean what you need.</h2>
+        <p class="max-w-2xl text-muted-foreground">
+          The first example intentionally uses no component classes. Semanticwind supplies the baseline; the HTML keeps its actual meaning.
+        </p>
+
+        <div class="demo-grid mt-6">
+          <div class="demo-panel">
+            <h3 class="mt-0">Account settings</h3>
+            <p>Update the contact details associated with your account.</p>
+
+            <form>
+              <label>
+                Display name
+                <input name="name" value="Ike">
+              </label>
+
+              <label>
+                Email
+                <input name="email" type="email" placeholder="you@example.com">
+              </label>
+
+              <button type="button">Save changes</button>
+            </form>
+          </div>
+
+          <div class="demo-panel">
+            <h3 class="mt-0">More native elements</h3>
+            <p>Semantic defaults also cover content and native interactive elements without pretending they are application components.</p>
+
+            <details>
+              <summary>Why no card style on article?</summary>
+              <p>An article is a document structure. A card is a visual component. They sometimes overlap, but they are not the same thing.</p>
+            </details>
+
+            <table>
+              <caption>Recent builds</caption>
+              <thead>
+                <tr><th>Build</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>#184</code></td><td>Passed</td></tr>
+                <tr><td><code>#183</code></td><td>Passed</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section">
+        <div class="demo-label">2 · Basecoat component</div>
+        <h2 class="mt-0">Add component meaning when HTML semantics stop being enough.</h2>
+        <p class="max-w-2xl text-muted-foreground">
+          A destructive button or a richer field is UI meaning. Basecoat owns that layer instead of smuggling variants into unrelated HTML attributes.
+        </p>
+
+        <div class="demo-panel mt-6 max-w-xl">
+          <div class="field">
+            <label for="project-name">Project name</label>
+            <input id="project-name" value="Semanticwind">
+            <p>Shown publicly on the project page.</p>
+          </div>
+
+          <div class="mt-5 flex flex-wrap gap-2">
+            <button class="btn">Save</button>
+            <button class="btn" data-variant="outline">Cancel</button>
+            <button class="btn" data-variant="destructive">Delete project</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section">
+        <div class="demo-label">3 · Tailwind utilities</div>
+        <h2 class="mt-0">Use utilities for context, layout, and exceptions.</h2>
+        <p class="max-w-2xl text-muted-foreground">
+          Component semantics stay in Basecoat. Page-specific choices stay obvious in the markup instead of leaking into global selectors.
+        </p>
+
+        <div class="mt-6 flex flex-col gap-3 rounded-xl border border-border bg-card p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h3 class="mt-0">Ready to publish?</h3>
+            <p class="mb-0 text-sm text-muted-foreground">The same component can adapt to its local layout.</p>
+          </div>
+          <button class="btn w-full rounded-full sm:w-auto" data-variant="outline">Publish</button>
+        </div>
+      </section>
+
+      <section class="demo-section">
+        <div class="demo-label">4 · Your component</div>
+        <h2 class="mt-0">Promote repeated product concepts into product components.</h2>
+        <p class="max-w-2xl text-muted-foreground">
+          Semanticwind should never learn what a device card is. Your application should.
+        </p>
+
+        <article class="device-card mt-6 max-w-md">
+          <header>
+            <div>
+              <h3>Living room</h3>
+              <span class="badge">Online</span>
+            </div>
+            <button class="btn" data-size="icon-sm" data-variant="ghost" aria-label="Device settings">•••</button>
+          </header>
+          <p class="device-reading">23.4 °C</p>
+          <small>Updated 12 seconds ago</small>
+        </article>
+      </section>
+
+      <section class="demo-section">
+        <div class="demo-label">The rule</div>
+        <h2 class="mt-0">Use the smallest layer that accurately expresses the UI.</h2>
+
+        <pre><code>semantic HTML
+      ↓ not enough
+Basecoat component
+      ↓ needs local customization
+Tailwind utilities
+      ↓ repeated product-specific pattern
+your own component</code></pre>
+
+        <blockquote>
+          <p>Would this style still make sense for almost every correct semantic use of this element?</p>
+          <p>If not, it probably belongs in a component or utility instead of Semanticwind.</p>
+        </blockquote>
+      </section>
+
+      <footer class="demo-section text-sm text-muted-foreground">
+        <p>Semanticwind is deliberately small. The escape hatch is the architecture, not another pile of selectors.</p>
+      </footer>
+    </main>
+  </body>
+</html>
