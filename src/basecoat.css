@@ -1,0 +1,57 @@
+/*
+ * Semanticwind × Basecoat
+ *
+ * Basecoat components are authored against Tailwind Preflight. Semanticwind restores
+ * useful native rhythm and boxes in the base layer, so a few component internals
+ * need that semantic baseline neutralized before Basecoat's component layer takes over.
+ *
+ * Keep this file narrow: reset known collisions, do not restyle Basecoat.
+ */
+
+@layer base {
+  /* Accordion owns the disclosure box; Semanticwind only owns standalone <details>. */
+  :where(.accordion > details) {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  :where(.accordion > details[open] > summary) {
+    margin-block-end: 0;
+  }
+
+  /* Basecoat dialog visuals live on its component structure. */
+  :where(dialog.dialog, dialog.alert-dialog) {
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  /* Basecoat fields manage helper/error text rhythm themselves. */
+  :where(.field) :where(p, ul, ol) {
+    margin-block: 0;
+  }
+
+  /* Card headers/footers have their own grid/flex rhythm; card body content stays semantic. */
+  :where(.card > header, .card > footer) :where(h1, h2, h3, h4, h5, h6, p, ul, ol) {
+    margin-block: 0;
+  }
+
+  /* Dialog chrome owns spacing; arbitrary dialog section content may stay semantic. */
+  :where(.dialog, .alert-dialog) > * > :where(header, footer) :where(h1, h2, h3, h4, h5, h6, p, ul, ol) {
+    margin-block: 0;
+  }
+
+  /* Navigation-like component lists should keep Basecoat/Tailwind's component contract. */
+  :where(.breadcrumb, .command, .dropdown-menu, .sidebar) :where(ul, ol) {
+    margin-block: 0;
+    padding-inline-start: 0;
+    list-style: none;
+  }
+
+  /* Alerts manage title/body spacing in their component styles. */
+  :where(.alert) :where(h1, h2, h3, h4, h5, h6, p) {
+    margin-block: 0;
+  }
+}
