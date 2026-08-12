@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @import "basecoat-css/nova";
 @import "../src/semanticwind.css";
+@import "../src/basecoat.css";
 
 @source "./index.html";
 
