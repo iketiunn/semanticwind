@@ -1,7 +1,5 @@
 @import "tailwindcss" source(none);
-@import "basecoat-css/nova";
 @import "../src/semanticwind.css";
-@import "../src/basecoat.css";
 
 @source "./index.html";
 
@@ -11,11 +9,11 @@
   }
 
   .demo-section {
-    @apply mt-14 border-t border-border pt-10;
+    @apply mt-14 border-t border-zinc-200 pt-10 dark:border-zinc-800;
   }
 
   .demo-label {
-    @apply mb-3 inline-flex rounded-full border border-border bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground;
+    @apply mb-3 inline-flex rounded-full border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400;
   }
 
   .demo-grid {
@@ -23,11 +21,27 @@
   }
 
   .demo-panel {
-    @apply rounded-xl border border-border bg-card p-5 shadow-sm;
+    @apply rounded-xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950;
+  }
+
+  .button {
+    @apply inline-flex min-h-9 items-center justify-center rounded-lg bg-zinc-950 px-3.5 py-2 text-sm font-medium text-white no-underline hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200;
+  }
+
+  .button[data-variant='outline'] {
+    @apply border border-zinc-300 bg-transparent text-zinc-950 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-50 dark:hover:bg-zinc-900;
+  }
+
+  .button[data-variant='destructive'] {
+    @apply bg-red-600 text-white hover:bg-red-500 dark:bg-red-600 dark:text-white dark:hover:bg-red-500;
+  }
+
+  .status-badge {
+    @apply inline-flex rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300;
   }
 
   .device-card {
-    @apply rounded-xl border border-border bg-card p-5 shadow-sm;
+    @apply rounded-xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950;
   }
 
   .device-card > header {
