@@ -1,158 +1,100 @@
 /*
  * Semanticwind
- * Semantic HTML defaults for Tailwind CSS.
+ * Semantic HTML defaults authored for Tailwind CSS v4.
  *
  * Principles:
  * - Semantic elements get useful, low-specificity defaults.
  * - HTML semantics never stand in for component variants.
  * - Structural tags do not silently become layout/component primitives.
- * - Component layers and Tailwind utilities should override this layer cleanly.
+ * - Tailwind utilities and component styles should override this base layer cleanly.
  */
 
 @layer base {
-  :root {
-    --semanticwind-background: var(--background, oklch(1 0 0));
-    --semanticwind-foreground: var(--foreground, oklch(0.145 0 0));
-    --semanticwind-muted: var(--muted, oklch(0.97 0 0));
-    --semanticwind-muted-foreground: var(--muted-foreground, oklch(0.556 0 0));
-    --semanticwind-border: var(--border, oklch(0.922 0 0));
-    --semanticwind-input: var(--input, oklch(0.922 0 0));
-    --semanticwind-primary: var(--primary, oklch(0.205 0 0));
-    --semanticwind-primary-foreground: var(--primary-foreground, oklch(0.985 0 0));
-    --semanticwind-ring: var(--ring, oklch(0.708 0 0));
-    --semanticwind-radius: var(--radius, 0.625rem);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --semanticwind-background: var(--background, oklch(0.145 0 0));
-      --semanticwind-foreground: var(--foreground, oklch(0.985 0 0));
-      --semanticwind-muted: var(--muted, oklch(0.269 0 0));
-      --semanticwind-muted-foreground: var(--muted-foreground, oklch(0.708 0 0));
-      --semanticwind-border: var(--border, oklch(1 0 0 / 10%));
-      --semanticwind-input: var(--input, oklch(1 0 0 / 15%));
-      --semanticwind-primary: var(--primary, oklch(0.922 0 0));
-      --semanticwind-primary-foreground: var(--primary-foreground, oklch(0.205 0 0));
-      --semanticwind-ring: var(--ring, oklch(0.556 0 0));
-    }
-  }
-
-  :where(html) {
-    color-scheme: light dark;
-  }
-
   :where(body) {
-    margin: 0;
-    background: var(--semanticwind-background);
-    color: var(--semanticwind-foreground);
+    @apply m-0 bg-white text-zinc-950 antialiased dark:bg-zinc-950 dark:text-zinc-50;
     font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
     line-height: 1.5;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
   }
 
   /* Typography */
 
   :where(h1, h2, h3, h4, h5, h6) {
-    margin-block: 1.5em 0.5em;
-    color: inherit;
-    font-weight: 600;
-    line-height: 1.2;
-    text-wrap: balance;
+    @apply mt-6 mb-2 font-semibold leading-tight text-balance;
   }
 
   :where(h1) {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    font-weight: 700;
-    letter-spacing: -0.025em;
+    @apply text-4xl font-bold tracking-tight;
   }
 
   :where(h2) {
-    font-size: clamp(1.5rem, 3vw, 1.875rem);
-    letter-spacing: -0.02em;
+    @apply text-3xl tracking-tight;
   }
 
   :where(h3) {
-    font-size: 1.25rem;
-    letter-spacing: -0.015em;
+    @apply text-xl tracking-tight;
   }
 
   :where(h4) {
-    font-size: 1.125rem;
+    @apply text-lg;
   }
 
   :where(h5, h6) {
-    font-size: 1rem;
+    @apply text-base;
   }
 
   :where(p) {
-    margin-block: 0 1em;
-    text-wrap: pretty;
+    @apply mb-4 text-pretty;
   }
 
   :where(a) {
-    color: var(--semanticwind-primary);
-    text-decoration-line: underline;
-    text-decoration-color: color-mix(in oklch, currentColor 45%, transparent);
-    text-underline-offset: 0.2em;
-  }
-
-  :where(a:hover) {
-    text-decoration-color: currentColor;
+    @apply text-blue-600 underline decoration-blue-600/40 underline-offset-3 hover:decoration-current dark:text-blue-400 dark:decoration-blue-400/40;
   }
 
   :where(strong, b) {
-    font-weight: 600;
+    @apply font-semibold;
   }
 
   :where(small) {
-    color: var(--semanticwind-muted-foreground);
-    font-size: 0.875em;
+    @apply text-sm text-zinc-500 dark:text-zinc-400;
   }
 
   :where(mark) {
-    border-radius: 0.2em;
-    background: color-mix(in oklch, var(--semanticwind-primary) 20%, transparent);
-    color: inherit;
-    padding-inline: 0.15em;
+    @apply rounded-sm bg-yellow-200 px-0.5 text-inherit dark:bg-yellow-900/60;
   }
 
   :where(abbr[title]) {
-    cursor: help;
-    text-decoration: underline dotted;
-    text-underline-offset: 0.2em;
+    @apply cursor-help underline decoration-dotted underline-offset-3;
   }
 
   /* Lists */
 
   :where(ul, ol) {
-    margin-block: 0 1em;
-    padding-inline-start: 1.5rem;
+    @apply mb-4 ps-6;
   }
 
   :where(ul) {
-    list-style: disc;
+    @apply list-disc;
   }
 
   :where(ol) {
-    list-style: decimal;
+    @apply list-decimal;
   }
 
   :where(li + li) {
-    margin-block-start: 0.25em;
+    @apply mt-1;
   }
 
   :where(dl) {
-    margin-block: 0 1em;
+    @apply mb-4;
   }
 
   :where(dt) {
-    font-weight: 600;
+    @apply font-semibold;
   }
 
   :where(dd) {
-    margin-inline-start: 1.5rem;
-    margin-block-end: 0.75em;
+    @apply mb-3 ms-6;
   }
 
   /* Code and quotations */
@@ -162,119 +104,81 @@
   }
 
   :where(code, kbd) {
-    border: 1px solid var(--semanticwind-border);
-    border-radius: calc(var(--semanticwind-radius) * 0.6);
-    background: var(--semanticwind-muted);
-    padding: 0.1em 0.35em;
-    font-size: 0.875em;
+    @apply rounded-md border border-zinc-200 bg-zinc-100 px-1.5 py-0.5 text-[0.875em] dark:border-zinc-800 dark:bg-zinc-900;
   }
 
   :where(kbd) {
-    box-shadow: 0 1px 0 var(--semanticwind-border);
-    font-weight: 500;
+    @apply font-medium shadow-xs;
   }
 
   :where(pre) {
-    margin-block: 0 1.5rem;
-    overflow-x: auto;
-    border: 1px solid var(--semanticwind-border);
-    border-radius: var(--semanticwind-radius);
-    background: var(--semanticwind-muted);
-    padding: 1rem;
-    font-size: 0.875rem;
-    line-height: 1.7;
+    @apply mb-6 overflow-x-auto rounded-lg border border-zinc-200 bg-zinc-100 p-4 text-sm leading-7 dark:border-zinc-800 dark:bg-zinc-900;
   }
 
   :where(pre code) {
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    padding: 0;
-    font-size: inherit;
+    @apply border-0 bg-transparent p-0 text-inherit shadow-none;
   }
 
   :where(blockquote) {
-    margin: 0 0 1.5rem;
-    border-inline-start: 0.25rem solid var(--semanticwind-border);
-    padding-inline-start: 1rem;
-    color: var(--semanticwind-muted-foreground);
+    @apply mb-6 border-s-4 border-zinc-200 ps-4 text-zinc-600 dark:border-zinc-800 dark:text-zinc-400;
   }
 
   :where(blockquote > :last-child) {
-    margin-block-end: 0;
+    @apply mb-0;
   }
 
   :where(hr) {
-    margin-block: 2rem;
-    border: 0;
-    border-block-start: 1px solid var(--semanticwind-border);
+    @apply my-8 border-0 border-t border-zinc-200 dark:border-zinc-800;
   }
 
   /* Media */
 
   :where(img, picture, video, canvas, svg) {
-    max-width: 100%;
+    @apply max-w-full;
   }
 
   :where(img, video) {
-    height: auto;
+    @apply h-auto;
   }
 
   :where(figure) {
-    margin: 0 0 1.5rem;
+    @apply mb-6;
   }
 
   :where(figcaption) {
-    margin-block-start: 0.5rem;
-    color: var(--semanticwind-muted-foreground);
-    font-size: 0.875rem;
+    @apply mt-2 text-sm text-zinc-500 dark:text-zinc-400;
   }
 
   /* Tables */
 
   :where(table) {
-    width: 100%;
-    margin-block: 0 1.5rem;
-    border-collapse: collapse;
-    font-variant-numeric: tabular-nums;
+    @apply mb-6 w-full border-collapse text-sm tabular-nums;
   }
 
   :where(caption) {
-    margin-block-end: 0.5rem;
-    color: var(--semanticwind-muted-foreground);
-    font-size: 0.875rem;
-    text-align: start;
+    @apply mb-2 text-start text-sm text-zinc-500 dark:text-zinc-400;
   }
 
   :where(th, td) {
-    border-block-end: 1px solid var(--semanticwind-border);
-    padding: 0.65rem 0.75rem;
-    text-align: start;
-    vertical-align: top;
+    @apply border-b border-zinc-200 px-3 py-2.5 text-start align-top dark:border-zinc-800;
   }
 
   :where(th) {
-    font-weight: 600;
+    @apply font-semibold;
   }
 
   /* Forms: neutral controls only. Variants belong to components. */
 
   :where(label) {
-    display: inline-block;
-    font-size: 0.875rem;
-    font-weight: 500;
+    @apply inline-block text-sm font-medium;
   }
 
   :where(fieldset) {
-    margin: 0 0 1rem;
-    border: 1px solid var(--semanticwind-border);
-    border-radius: var(--semanticwind-radius);
-    padding: 1rem;
+    @apply mb-4 rounded-lg border border-zinc-200 p-4 dark:border-zinc-800;
   }
 
   :where(legend) {
-    padding-inline: 0.35rem;
-    font-weight: 600;
+    @apply px-1.5 font-semibold;
   }
 
   :where(
@@ -282,120 +186,73 @@
       textarea,
       select
     ) {
-    min-height: 2.25rem;
-    max-width: 100%;
-    border: 1px solid var(--semanticwind-input);
-    border-radius: var(--semanticwind-radius);
-    background: var(--semanticwind-background);
-    color: var(--semanticwind-foreground);
-    padding: 0.5rem 0.75rem;
+    @apply min-h-9 max-w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-950 outline-none transition-colors placeholder:text-zinc-400 focus-visible:border-blue-500 focus-visible:ring-3 focus-visible:ring-blue-500/20 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500;
     font: inherit;
     font-size: 0.875rem;
   }
 
   :where(textarea) {
-    min-height: 6rem;
-    resize: vertical;
+    @apply min-h-24 resize-y;
   }
 
   :where(button, input[type='button'], input[type='submit'], input[type='reset']) {
-    display: inline-flex;
-    min-height: 2.25rem;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--semanticwind-border);
-    border-radius: var(--semanticwind-radius);
-    background: var(--semanticwind-muted);
-    color: var(--semanticwind-foreground);
-    padding: 0.5rem 0.875rem;
+    @apply inline-flex min-h-9 cursor-pointer items-center justify-center rounded-lg border border-zinc-200 bg-zinc-100 px-3.5 py-2 text-sm font-medium text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-50 dark:hover:bg-zinc-800;
     font: inherit;
     font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-  }
-
-  :where(button, input[type='button'], input[type='submit'], input[type='reset']):hover {
-    background: color-mix(in oklch, var(--semanticwind-muted), var(--semanticwind-foreground) 6%);
   }
 
   :where(input[type='checkbox'], input[type='radio'], input[type='range']) {
-    accent-color: var(--semanticwind-primary);
-  }
-
-  :where(input, textarea, select, button, summary, a):focus-visible {
-    outline: 2px solid var(--semanticwind-ring);
-    outline-offset: 2px;
-  }
-
-  :where(:disabled, [disabled]) {
-    cursor: not-allowed;
-    opacity: 0.5;
+    @apply accent-blue-600 dark:accent-blue-400;
   }
 
   :where(output) {
-    font-variant-numeric: tabular-nums;
-    font-weight: 500;
+    @apply font-medium tabular-nums;
   }
 
   /* A classless form gets useful prototype flow. Add any form class to own the layout. */
 
   :where(form:not([class])) {
-    display: grid;
-    gap: 1rem;
+    @apply grid gap-4;
   }
 
   :where(form:not([class]) > label:has(> input, > textarea, > select)) {
-    display: grid;
-    gap: 0.375rem;
+    @apply grid gap-1.5;
   }
 
   :where(form:not([class]) input:not([type='checkbox'], [type='radio'], [type='range'], [type='button'], [type='submit'], [type='reset'])),
   :where(form:not([class]) textarea),
   :where(form:not([class]) select) {
-    width: 100%;
+    @apply w-full;
   }
 
-  /* Native interactive elements. */
+  /* Native interactive elements */
 
   :where(details) {
-    margin-block: 0 1rem;
-    border: 1px solid var(--semanticwind-border);
-    border-radius: var(--semanticwind-radius);
-    padding: 0.75rem 1rem;
+    @apply mb-4 rounded-lg border border-zinc-200 px-4 py-3 dark:border-zinc-800;
   }
 
   :where(summary) {
-    cursor: pointer;
-    font-weight: 600;
+    @apply cursor-pointer font-semibold;
   }
 
   :where(details[open] > summary) {
-    margin-block-end: 0.75rem;
+    @apply mb-3;
   }
 
   :where(dialog) {
-    max-width: min(32rem, calc(100vw - 2rem));
-    border: 1px solid var(--semanticwind-border);
-    border-radius: var(--semanticwind-radius);
-    background: var(--semanticwind-background);
-    color: var(--semanticwind-foreground);
-    padding: 1.25rem;
+    @apply m-auto max-w-[min(32rem,calc(100vw-2rem))] rounded-lg border border-zinc-200 bg-white p-5 text-zinc-950 shadow-xl dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50;
   }
 
-  dialog::backdrop {
-    background: oklch(0 0 0 / 55%);
-    backdrop-filter: blur(2px);
+  :where(dialog::backdrop) {
+    @apply bg-black/55 backdrop-blur-[2px];
   }
 
   :where(progress, meter) {
-    max-width: 100%;
-    accent-color: var(--semanticwind-primary);
+    @apply max-w-full accent-blue-600 dark:accent-blue-400;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    :where(*, *::before, *::after) {
       scroll-behavior: auto !important;
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
