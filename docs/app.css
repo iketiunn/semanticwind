@@ -1,8 +1,8 @@
 @import "tailwindcss" source(none);
-@source "./index.html";
-
 @import "basecoat-css/nova";
 @import "../src/semanticwind.css";
+
+@source "./index.html";
 
 @layer components {
   .demo-shell {
