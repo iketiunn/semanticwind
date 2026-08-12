@@ -3,149 +3,228 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Semanticwind: useful semantic HTML defaults authored for Tailwind CSS v4.">
+    <meta
+      name="description"
+      content="Semanticwind gives semantic HTML useful defaults inside Tailwind CSS v4, with utilities and components as clean escape hatches."
+    >
     <meta name="color-scheme" content="light dark">
-    <title>Semanticwind</title>
-    <link rel="stylesheet" href="./assets/site.css">
+    <title>Semanticwind — Semantic defaults for Tailwind CSS</title>
+    <link rel="icon" href="./assets/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192.png">
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="./assets/site.css?v=refined">
   </head>
-  <body>
-    <main class="demo-shell">
-      <header>
-        <div class="demo-label">Semanticwind</div>
-        <h1 class="mt-0 max-w-3xl">Semantic HTML when it’s enough. Tailwind when it isn’t.</h1>
-        <p class="max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-          A small semantic baseline authored with Tailwind CSS. Start with useful native HTML. Add utilities, a component layer, or your own components only when the interface actually needs them.
-        </p>
+  <body class="site overflow-x-hidden">
+    <div
+      class="site-atmosphere pointer-events-none absolute inset-x-0 top-0 -z-10 h-[52rem]"
+      aria-hidden="true"
+    ></div>
 
-        <nav aria-label="Project links" class="mt-6 flex flex-wrap gap-3">
-          <a class="button" href="https://github.com/iketiunn/semanticwind">GitHub</a>
-          <a class="button" data-variant="outline" href="#examples">See the progression</a>
-        </nav>
-      </header>
+    <header class="site-header">
+      <nav class="flex items-center justify-between gap-6" aria-label="Primary navigation">
+        <a class="site-wordmark flex items-center gap-2.5 font-semibold text-inherit no-underline" href="#top">
+          <img class="site-mark size-8" src="./assets/icon-192.png" width="32" height="32" alt="">
+          Semanticwind
+        </a>
+        <ul class="m-0 flex list-none items-center gap-5 p-0 text-sm">
+          <li class="m-0 hidden sm:list-item"><a class="text-inherit" href="#why">Why</a></li>
+          <li class="m-0 hidden sm:list-item"><a class="text-inherit" href="#elements">Elements</a></li>
+          <li class="m-0"><a class="text-inherit" href="./gallery.html">Gallery</a></li>
+          <li class="m-0"><a class="text-inherit" href="https://github.com/iketiunn/semanticwind">GitHub ↗</a></li>
+        </ul>
+      </nav>
+    </header>
 
-      <section id="examples" class="demo-section">
-        <div class="demo-label">1 · Semantic HTML</div>
-        <h2 class="mt-0">Start with the tags that already mean what you need.</h2>
-        <p class="max-w-2xl text-zinc-600 dark:text-zinc-400">
-          These examples intentionally use no component classes. Semanticwind supplies the baseline; the HTML keeps its actual meaning.
-        </p>
-
-        <div class="demo-grid mt-6">
-          <div class="demo-panel">
-            <h3 class="mt-0">Account settings</h3>
-            <p>Update the contact details associated with your account.</p>
-
-            <form>
-              <label>
-                Display name
-                <input name="name" value="Ike">
-              </label>
-
-              <label>
-                Email
-                <input name="email" type="email" placeholder="you@example.com">
-              </label>
-
-              <button type="button">Save changes</button>
-            </form>
+    <main id="top">
+      <section class="hero grid items-center gap-12 pt-10 pb-16 sm:pt-16 sm:pb-24 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
+        <div class="hero-copy">
+          <p class="eyebrow mb-5 inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold tracking-wider text-blue-700 uppercase dark:border-blue-900 dark:bg-blue-950/60 dark:text-blue-300">
+            Semantic defaults for Tailwind CSS v4
+          </p>
+          <h1 class="hero-title mt-0">
+            <span>Start with</span>
+            <em>HTML.</em>
+            <span>Add classes when they</span>
+            <strong>earn their place.</strong>
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-zinc-600 sm:text-xl dark:text-zinc-400">
+            Semanticwind fills the gap between Tailwind Preflight and a component library: useful defaults for the native elements you already write, with no component API to learn.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a class="inline-flex min-h-11 items-center justify-center rounded-lg bg-blue-600 px-5 py-2.5 font-semibold text-white no-underline shadow-sm hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400" href="#comparison">
+              See it live
+            </a>
+            <a class="inline-flex min-h-11 items-center justify-center rounded-lg border border-zinc-300 bg-white/70 px-5 py-2.5 font-semibold text-zinc-950 no-underline backdrop-blur hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-950/70 dark:text-zinc-50 dark:hover:bg-zinc-900" href="https://github.com/iketiunn/semanticwind">
+              View source ↗
+            </a>
           </div>
-
-          <div class="demo-panel">
-            <h3 class="mt-0">More native elements</h3>
-            <p>Semantic defaults cover content and native interactive elements without pretending structural tags are application components.</p>
-
-            <details>
-              <summary>Why no card style on article?</summary>
-              <p>An article is document structure. A card is visual UI. They can overlap, but they are not the same thing.</p>
-            </details>
-
-            <table>
-              <caption>Recent builds</caption>
-              <thead>
-                <tr><th>Build</th><th>Status</th></tr>
-              </thead>
-              <tbody>
-                <tr><td><code>#184</code></td><td>Passed</td></tr>
-                <tr><td><code>#183</code></td><td>Passed</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <ul class="mt-8 flex list-none flex-wrap gap-x-5 gap-y-2 p-0 text-sm text-zinc-500 dark:text-zinc-400" aria-label="Project traits">
+            <li class="m-0">Base layer</li>
+            <li class="m-0 before:mr-5 before:text-blue-500 before:content-['•']">Low specificity</li>
+            <li class="m-0 before:mr-5 before:text-blue-500 before:content-['•']">Zero runtime</li>
+          </ul>
         </div>
-      </section>
 
-      <section class="demo-section">
-        <div class="demo-label">2 · Tailwind utilities</div>
-        <h2 class="mt-0">Use utilities when the change is local or contextual.</h2>
-        <p class="max-w-2xl text-zinc-600 dark:text-zinc-400">
-          Layout, responsive behavior, and one-off emphasis belong in the markup. They do not need another semantic rule or a component abstraction.
-        </p>
-
-        <div class="mt-6 flex flex-col gap-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 sm:flex-row sm:items-center sm:justify-between dark:border-zinc-800 dark:bg-zinc-900/50">
-          <div>
-            <h3 class="mt-0">Ready to publish?</h3>
-            <p class="mb-0 text-sm text-zinc-500 dark:text-zinc-400">This is still ordinary HTML. Tailwind only expresses this page’s context.</p>
-          </div>
-          <button class="w-full rounded-full sm:w-auto">Publish</button>
-        </div>
-      </section>
-
-      <section class="demo-section">
-        <div class="demo-label">3 · Component layer</div>
-        <h2 class="mt-0">Add component meaning when a pattern becomes reusable.</h2>
-        <p class="max-w-2xl text-zinc-600 dark:text-zinc-400">
-          Variants such as destructive or outline are UI meaning, not HTML meaning. Use your own component classes or any component library you prefer.
-        </p>
-
-        <div class="demo-panel mt-6 max-w-xl">
-          <div class="flex flex-wrap gap-2">
-            <button class="button">Save</button>
-            <button class="button" data-variant="outline">Cancel</button>
-            <button class="button" data-variant="destructive">Delete project</button>
-          </div>
-        </div>
-      </section>
-
-      <section class="demo-section">
-        <div class="demo-label">4 · Product component</div>
-        <h2 class="mt-0">Promote repeated domain concepts into your own components.</h2>
-        <p class="max-w-2xl text-zinc-600 dark:text-zinc-400">
-          Semanticwind should never learn what a device card is. Your application should.
-        </p>
-
-        <article class="device-card mt-6 max-w-md">
-          <header>
-            <div>
-              <h3>Living room</h3>
-              <span class="status-badge">Online</span>
+        <div class="demo-stack relative mx-auto w-full max-w-lg">
+          <div class="demo-glow absolute -inset-5 -z-10 rounded-[2rem] bg-blue-500/10 blur-2xl dark:bg-blue-400/10" aria-hidden="true"></div>
+          <div class="demo-window overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl shadow-blue-950/10 dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-black/30">
+            <div class="flex items-center justify-between border-b border-zinc-200 bg-zinc-50 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900/70">
+              <div class="flex gap-1.5" aria-hidden="true">
+                <span class="size-2.5 rounded-full bg-red-400"></span>
+                <span class="size-2.5 rounded-full bg-amber-400"></span>
+                <span class="size-2.5 rounded-full bg-emerald-400"></span>
+              </div>
+              <code class="border-0 bg-transparent p-0 text-xs text-zinc-500">0 classes</code>
             </div>
-            <button class="button size-9 p-0" data-variant="outline" aria-label="Device settings">•••</button>
-          </header>
-          <p class="device-reading">23.4 °C</p>
-          <small>Updated 12 seconds ago</small>
-        </article>
+            <div class="p-6 sm:p-8">
+              <hgroup>
+                <h2>Project settings</h2>
+                <p>A useful form before the first utility class.</p>
+              </hgroup>
+              <form>
+                <label>
+                  Project name
+                  <input type="text" value="Semanticwind">
+                </label>
+                <label><input type="checkbox" checked> Make repository public</label>
+                <button type="button">Save changes</button>
+              </form>
+              <details class="mt-5">
+                <summary>No classes—really?</summary>
+                <p>The form uses ordinary semantic HTML. Semanticwind supplies the baseline.</p>
+              </details>
+            </div>
+          </div>
+          <p class="import-note absolute -right-3 -bottom-5 m-0 rotate-2 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 font-mono text-xs font-semibold text-blue-700 shadow-sm dark:border-blue-900 dark:bg-blue-950 dark:text-blue-300">
+            @import "./semanticwind.css";
+          </p>
+        </div>
       </section>
 
-      <section class="demo-section">
-        <div class="demo-label">The model</div>
-        <h2 class="mt-0">Escalate only for the reason HTML stopped being enough.</h2>
+      <section id="comparison" class="landing-section" aria-labelledby="comparison-title">
+        <div class="grid items-end gap-6 sm:grid-cols-[1fr_auto]">
+          <hgroup>
+            <p class="section-kicker text-sm font-semibold tracking-wider text-blue-600 uppercase dark:text-blue-400">Live proof</p>
+            <h2 id="comparison-title" class="text-4xl sm:text-5xl">Same HTML. Better starting point.</h2>
+            <p>Switch the stylesheet on and off. The classless markup never changes.</p>
+          </hgroup>
+          <nav class="mb-6 flex w-fit rounded-lg border border-zinc-200 bg-zinc-100 p-1 text-sm dark:border-zinc-800 dark:bg-zinc-900" aria-label="Comparison view">
+            <a class="rounded-md px-3 py-1.5 font-medium text-inherit no-underline hover:bg-white dark:hover:bg-zinc-800" href="./plain.html?v=refined" target="comparison-preview">Plain</a>
+            <a class="rounded-md px-3 py-1.5 font-medium text-blue-600 no-underline hover:bg-white dark:text-blue-400 dark:hover:bg-zinc-800" href="./plain.html?v=refined#semanticwind" target="comparison-preview">Semanticwind</a>
+            <a class="rounded-md px-3 py-1.5 font-medium text-inherit no-underline hover:bg-white dark:hover:bg-zinc-800" href="./plain.html?v=refined#source" target="comparison-preview">HTML</a>
+          </nav>
+        </div>
+        <div class="comparison-frame overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 p-2 shadow-sm sm:p-3 dark:border-zinc-800 dark:bg-zinc-900">
+          <iframe
+            class="h-[34rem] w-full rounded-xl border-0 bg-white dark:bg-zinc-950"
+            src="./plain.html?v=refined#semanticwind"
+            name="comparison-preview"
+            title="Classless HTML preview"
+          ></iframe>
+        </div>
+      </section>
 
-        <pre><code>semantic HTML
-      │
-      ├─ local layout / visual exception ──→ Tailwind utilities
-      │
-      ├─ reusable generic UI ──────────────→ component layer / library
-      │
-      └─ repeated product concept ─────────→ your own component</code></pre>
+      <section id="why" class="landing-section" aria-labelledby="why-title">
+        <hgroup class="max-w-3xl">
+          <p class="section-kicker text-sm font-semibold tracking-wider text-blue-600 uppercase dark:text-blue-400">A deliberate boundary</p>
+          <h2 id="why-title" class="text-4xl sm:text-5xl">One baseline. Three honest layers.</h2>
+          <p>Use the smallest layer that can express the design choice without hiding what it means.</p>
+        </hgroup>
 
-        <blockquote>
-          <p>Would this style still make sense for almost every correct semantic use of this element?</p>
-          <p>If not, it probably belongs in a utility or component instead of Semanticwind.</p>
+        <ol class="layer-grid grid list-none gap-4 p-0 md:grid-cols-3">
+          <li class="layer-card is-active m-0 rounded-2xl border border-blue-200 bg-blue-50/70 p-6 dark:border-blue-900 dark:bg-blue-950/40">
+            <span class="font-mono text-sm font-bold text-blue-600 dark:text-blue-400">01</span>
+            <h3 class="mt-4">Semanticwind</h3>
+            <p class="mb-0 text-zinc-600 dark:text-zinc-400">Typography, forms, tables, media, and native interaction get a useful default.</p>
+          </li>
+          <li class="layer-card m-0 rounded-2xl border border-zinc-200 p-6 dark:border-zinc-800">
+            <span class="font-mono text-sm font-bold text-zinc-500">02</span>
+            <h3 class="mt-4">Tailwind utilities</h3>
+            <p class="mb-0 text-zinc-600 dark:text-zinc-400">Add layout, responsive behavior, or a local visual exception where it happens.</p>
+          </li>
+          <li class="layer-card m-0 rounded-2xl border border-zinc-200 p-6 dark:border-zinc-800">
+            <span class="font-mono text-sm font-bold text-zinc-500">03</span>
+            <h3 class="mt-4">Your components</h3>
+            <p class="mb-0 text-zinc-600 dark:text-zinc-400">Give repeated UI and product concepts their own explicit component meaning.</p>
+          </li>
+        </ol>
+
+        <blockquote class="boundary-quote mt-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 text-zinc-700 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-300">
+          <p class="text-xl font-semibold sm:text-2xl">Would this style make sense for almost every correct use of this element?</p>
+          <p>If yes, it may belong in Semanticwind. If not, reach for a utility or component.</p>
         </blockquote>
       </section>
 
-      <footer class="demo-section text-sm text-zinc-500 dark:text-zinc-400">
-        <p>Semanticwind is deliberately small. The escape hatch is Tailwind and normal component architecture, not another pile of global selectors.</p>
-      </footer>
+      <section id="elements" class="landing-section" aria-labelledby="elements-title">
+        <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          <div>
+            <hgroup>
+              <p class="section-kicker text-sm font-semibold tracking-wider text-blue-600 uppercase dark:text-blue-400">Broad native coverage</p>
+              <h2 id="elements-title" class="text-4xl sm:text-5xl">The HTML you already know.</h2>
+              <p>Semanticwind stays close to the platform instead of replacing it.</p>
+            </hgroup>
+            <ul class="grid grid-cols-2 gap-x-6 gap-y-3 p-0 text-sm font-medium sm:grid-cols-3 lg:grid-cols-2">
+              <li class="m-0 list-none">✓ Heading hierarchy</li>
+              <li class="m-0 list-none">✓ Inline semantics</li>
+              <li class="m-0 list-none">✓ Document structure</li>
+              <li class="m-0 list-none">✓ Forms & validation</li>
+              <li class="m-0 list-none">✓ Tables</li>
+              <li class="m-0 list-none">✓ Lists & code</li>
+              <li class="m-0 list-none">✓ Media & captions</li>
+              <li class="m-0 list-none">✓ Details & dialog</li>
+              <li class="m-0 list-none">✓ Progress & meter</li>
+              <li class="m-0 list-none">✓ Light & dark</li>
+              <li class="m-0 list-none">✓ Focus states</li>
+              <li class="m-0 list-none">✓ Reduced motion</li>
+            </ul>
+            <p><a href="./gallery.html">Browse the complete native gallery →</a></p>
+          </div>
+
+          <div class="native-card rounded-2xl border border-zinc-200 bg-zinc-50 p-6 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900/40">
+            <h3 class="mt-0">Native elements stay native</h3>
+            <p>Structure gets rhythm, not invented component behavior.</p>
+            <table>
+              <caption>Recent builds</caption>
+              <thead>
+                <tr><th>Build</th><th>Status</th><th>Time</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>#184</code></td><td>Passed</td><td><time datetime="2026-08-12T10:24:00+08:00">10:24</time></td></tr>
+                <tr><td><code>#183</code></td><td>Passed</td><td><time datetime="2026-08-12T09:58:00+08:00">09:58</time></td></tr>
+              </tbody>
+            </table>
+            <details open>
+              <summary>Why isn’t article a card?</summary>
+              <p>An article is document structure. A card is visual UI. They can overlap, but they are not the same concept.</p>
+            </details>
+            <label for="build-progress">Build progress</label>
+            <progress id="build-progress" value="72" max="100">72%</progress>
+          </div>
+        </div>
+      </section>
+
+      <section id="start" class="install-card landing-section rounded-3xl bg-zinc-950 p-7 text-white sm:p-12 dark:bg-zinc-100 dark:text-zinc-950" aria-labelledby="start-title">
+        <div class="grid items-center gap-8 lg:grid-cols-[1fr_0.9fr]">
+          <div>
+            <p class="mb-3 text-sm font-semibold tracking-wider text-blue-400 uppercase dark:text-blue-600">One import</p>
+            <h2 id="start-title" class="mt-0 text-4xl sm:text-5xl">Add one CSS layer.</h2>
+            <p class="mb-0 max-w-xl text-lg text-zinc-300 dark:text-zinc-600">
+              Until the package is published, import the source after Tailwind and write the interface the browser already understands.
+            </p>
+          </div>
+          <pre class="m-0 border-zinc-700 bg-zinc-900 text-zinc-100 dark:border-zinc-300 dark:bg-white dark:text-zinc-950"><code>@import "tailwindcss";
+@import "./src/semanticwind.css";</code></pre>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a class="font-semibold text-white dark:text-zinc-950" href="https://github.com/iketiunn/semanticwind">View on GitHub ↗</a>
+          <a class="font-semibold text-zinc-300 dark:text-zinc-600" href="https://basecoatui.com/">Need richer components? Try Basecoat ↗</a>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer flex flex-col justify-between gap-3 border-t border-zinc-200 sm:flex-row dark:border-zinc-800">
+      <p class="m-0">Semanticwind — semantic HTML when it’s enough, Tailwind when it isn’t.</p>
+      <p class="m-0"><a href="https://github.com/iketiunn/semanticwind">GitHub</a> · MIT</p>
+    </footer>
   </body>
 </html>

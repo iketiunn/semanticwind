@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A classless gallery of the native HTML elements styled by Semanticwind."
+    >
+    <meta name="color-scheme" content="light dark">
+    <title>Native element gallery — Semanticwind</title>
+    <link rel="icon" href="./assets/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192.png">
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="./assets/site.css?v=gallery">
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Documentation">
+        <p>
+          <a href="./index.html"><strong>Semanticwind</strong></a> ·
+          <a href="./gallery.html" aria-current="page">Native gallery</a> ·
+          <a href="https://github.com/iketiunn/semanticwind">GitHub ↗</a>
+        </p>
+      </nav>
+    </header>
+
+    <main>
+      <hgroup>
+        <h1>Native element gallery</h1>
+        <p>Real semantic HTML with no utility or component classes.</p>
+      </hgroup>
+
+      <aside>
+        <p>
+          This page exercises Semanticwind’s native baseline. Layout, variants, and product components intentionally stay out of the examples.
+        </p>
+      </aside>
+
+      <nav aria-label="Gallery sections">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#document">Document structure</a></li>
+          <li><a href="#type">Typography and inline text</a></li>
+          <li><a href="#lists">Lists</a></li>
+          <li><a href="#code">Code and quotations</a></li>
+          <li><a href="#media">Media</a></li>
+          <li><a href="#tables">Tables</a></li>
+          <li><a href="#forms">Forms</a></li>
+          <li><a href="#interactive">Native interaction</a></li>
+        </ol>
+      </nav>
+
+      <hr>
+
+      <section id="document">
+        <hgroup>
+          <h2>Document structure</h2>
+          <p>Structural elements receive readable rhythm without becoming visual components.</p>
+        </hgroup>
+
+        <article>
+          <header>
+            <h3>A small article</h3>
+            <p><small>Published <time datetime="2026-08-12">August 12, 2026</time></small></p>
+          </header>
+          <p>An article remains document structure. It does not silently become a card.</p>
+          <footer><small>Filed under semantic HTML.</small></footer>
+        </article>
+
+        <aside>
+          <h3>Related note</h3>
+          <p>An aside stays visually quiet because its relationship depends on the surrounding document.</p>
+        </aside>
+
+        <address>
+          Maintained by <a href="https://github.com/iketiunn">Ike Tiunn</a><br>
+          Taipei, Taiwan
+        </address>
+      </section>
+
+      <section id="type">
+        <hgroup>
+          <h2>Typography and inline text</h2>
+          <p>A complete heading hierarchy and common inline semantics.</p>
+        </hgroup>
+
+        <h1>Heading level one</h1>
+        <h2>Heading level two</h2>
+        <h3>Heading level three</h3>
+        <h4>Heading level four</h4>
+        <h5>Heading level five</h5>
+        <h6>Heading level six</h6>
+
+        <p>
+          A paragraph can contain a <a href="#type">link</a>, <strong>strong importance</strong>,
+          <b>visual attention</b>, <em>emphasis</em>, <mark>highlighted text</mark>, and
+          <small>small print</small>.
+        </p>
+        <p>
+          <abbr title="HyperText Markup Language">HTML</abbr> carries meaning.
+          <del>Removed copy</del> can sit beside <ins>inserted copy</ins>, while
+          <s>outdated information</s> remains visible.
+        </p>
+        <p>
+          Formulas can show H<sub>2</sub>O and x<sup>2</sup>. A short inline quotation such as
+          <q>start with the platform</q> keeps native punctuation.
+        </p>
+      </section>
+
+      <section id="lists">
+        <hgroup>
+          <h2>Lists</h2>
+          <p>Ordered, unordered, nested, and descriptive content.</p>
+        </hgroup>
+
+        <h3>Unordered</h3>
+        <ul>
+          <li>Semantic markup first</li>
+          <li>Utilities for local decisions
+            <ul>
+              <li>Layout</li>
+              <li>Responsive behavior</li>
+            </ul>
+          </li>
+          <li>Components for repeated meaning</li>
+        </ul>
+
+        <h3>Ordered</h3>
+        <ol>
+          <li>Import Tailwind.</li>
+          <li>Import Semanticwind.</li>
+          <li>Write ordinary HTML.</li>
+        </ol>
+
+        <h3>Description list</h3>
+        <dl>
+          <dt>Baseline</dt>
+          <dd>Broadly useful native defaults.</dd>
+          <dt>Escape hatch</dt>
+          <dd>Tailwind utilities and explicit components.</dd>
+        </dl>
+      </section>
+
+      <section id="code">
+        <hgroup>
+          <h2>Code and quotations</h2>
+          <p>Technical text stays distinct without dominating the document.</p>
+        </hgroup>
+
+        <p>
+          Run <code>npm run build</code>, press <kbd>⌘</kbd> + <kbd>K</kbd>, and expect
+          <samp>Done in 48ms</samp>. The variable <var>element</var> remains inline.
+        </p>
+
+        <pre><code>@import "tailwindcss";
+@import "semanticwind";</code></pre>
+
+        <blockquote>
+          <p>Would this style make sense for almost every correct use of this element?</p>
+          <cite>Semanticwind’s boundary test</cite>
+        </blockquote>
+      </section>
+
+      <section id="media">
+        <hgroup>
+          <h2>Media</h2>
+          <p>Media stays responsive and captions remain close to their subject.</p>
+        </hgroup>
+
+        <figure>
+          <picture>
+            <img src="./assets/icon-512.png" width="256" height="256" alt="Semanticwind’s blue HTML-and-wind mark">
+          </picture>
+          <figcaption>The Semanticwind project icon inside a native figure.</figcaption>
+        </figure>
+
+        <h3>Audio</h3>
+        <audio controls>
+          Your browser does not support the audio element.
+        </audio>
+
+        <h3>Video</h3>
+        <video controls width="480" height="270" poster="./assets/icon-512.png">
+          Your browser does not support the video element.
+        </video>
+
+        <h3>Canvas</h3>
+        <canvas id="gallery-canvas" width="640" height="160">
+          A blue gradient canvas sample.
+        </canvas>
+
+        <h3>Embedded document</h3>
+        <iframe src="./plain.html#semanticwind" title="Semanticwind classless form preview"></iframe>
+      </section>
+
+      <section id="tables">
+        <hgroup>
+          <h2>Tables</h2>
+          <p>Headers, body rows, captions, and totals remain easy to scan.</p>
+        </hgroup>
+
+        <table>
+          <caption>Recent package checks</caption>
+          <thead>
+            <tr>
+              <th scope="col">Check</th>
+              <th scope="col">Status</th>
+              <th scope="col">Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Build</th>
+              <td>Passed</td>
+              <td>48 ms</td>
+            </tr>
+            <tr>
+              <th scope="row">Browser</th>
+              <td>Passed</td>
+              <td>1.2 s</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Total</th>
+              <td>2 passed</td>
+              <td>1.25 s</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+      <section id="forms">
+        <hgroup>
+          <h2>Forms</h2>
+          <p>Common controls, specialized inputs, validation, and disabled states.</p>
+        </hgroup>
+
+        <form>
+          <label>
+            Text
+            <input type="text" value="Semanticwind">
+          </label>
+          <label>
+            Email
+            <input type="email" value="hello@example.com" aria-invalid="false">
+            <small>This address is valid.</small>
+          </label>
+          <label>
+            Invalid example
+            <input type="text" value="Needs attention" aria-invalid="true">
+            <small>Validation remains visible without a component.</small>
+          </label>
+          <label>
+            Password
+            <input type="password" value="semanticwind">
+          </label>
+          <label>
+            Search
+            <input type="search" placeholder="Search native elements">
+          </label>
+          <label>
+            Telephone
+            <input type="tel" placeholder="+886 912 345 678">
+          </label>
+          <label>
+            URL
+            <input type="url" value="https://example.com">
+          </label>
+          <label>
+            Number
+            <input type="number" value="42" min="0" max="100">
+          </label>
+          <label>
+            Framework
+            <select>
+              <optgroup label="Server rendered">
+                <option>Plain HTML</option>
+                <option>Phoenix LiveView</option>
+              </optgroup>
+              <optgroup label="Client rendered">
+                <option>React</option>
+                <option>Vue</option>
+              </optgroup>
+            </select>
+          </label>
+          <label>
+            Notes
+            <textarea placeholder="Add a short note"></textarea>
+          </label>
+          <label>
+            Disabled field
+            <input type="text" value="Unavailable" disabled>
+          </label>
+
+          <fieldset>
+            <legend>Notifications</legend>
+            <label><input type="checkbox" checked> Product updates</label>
+            <label><input type="checkbox"> Weekly digest</label>
+            <label><input type="radio" name="frequency" checked> Immediately</label>
+            <label><input type="radio" name="frequency"> Daily</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Date and time</legend>
+            <label>Date <input type="date"></label>
+            <label>Date and time <input type="datetime-local"></label>
+            <label>Month <input type="month"></label>
+            <label>Week <input type="week"></label>
+            <label>Time <input type="time"></label>
+          </fieldset>
+
+          <label>
+            Attachment
+            <input type="file">
+          </label>
+          <label>
+            Accent color
+            <input type="color" value="#2563eb">
+          </label>
+          <label>
+            Confidence
+            <input type="range" min="0" max="100" value="72" oninput="confidence.value = this.value">
+            <output id="confidence">72</output>
+          </label>
+
+          <p>
+            <button type="button">Primary action</button>
+            <input type="button" value="Input button">
+            <input type="submit" value="Submit" onclick="return false">
+            <input type="reset" value="Reset">
+            <button type="button" disabled>Disabled</button>
+          </p>
+        </form>
+
+        <h3>Image input</h3>
+        <input type="image" src="./assets/icon-192.png" width="64" height="64" alt="Semanticwind icon input">
+      </section>
+
+      <section id="interactive">
+        <hgroup>
+          <h2>Native interaction</h2>
+          <p>Disclosure, progress, measurement, and dialog use the platform’s behavior.</p>
+        </hgroup>
+
+        <details>
+          <summary>Closed disclosure</summary>
+          <p>This content appears when the summary is activated.</p>
+        </details>
+
+        <details open>
+          <summary>Open disclosure</summary>
+          <p>The open state keeps its summary visually connected to the content.</p>
+        </details>
+
+        <label for="gallery-progress">Build progress</label>
+        <progress id="gallery-progress" value="72" max="100">72%</progress>
+
+        <label for="gallery-meter">Quality score</label>
+        <meter id="gallery-meter" min="0" max="100" low="40" high="80" optimum="90" value="86">86%</meter>
+
+        <p><button type="button" onclick="document.querySelector('#gallery-dialog').showModal()">Open dialog</button></p>
+        <dialog id="gallery-dialog">
+          <h2>Native dialog</h2>
+          <p>The browser owns focus, escape handling, and modal behavior. Semanticwind supplies the visual baseline.</p>
+          <form method="dialog">
+            <button>Close</button>
+          </form>
+        </dialog>
+      </section>
+    </main>
+
+    <footer>
+      <p><a href="./index.html">← Back to Semanticwind</a></p>
+      <p>Native HTML first. Utilities and components only when the interface asks for them.</p>
+    </footer>
+
+    <script>
+      const canvas = document.querySelector('#gallery-canvas');
+      const context = canvas.getContext('2d');
+      const gradient = context.createLinearGradient(0, 0, canvas.width, 0);
+      gradient.addColorStop(0, '#2563eb');
+      gradient.addColorStop(1, '#60a5fa');
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Semanticwind comparison</title>
+    <link id="preview-stylesheet" rel="stylesheet">
+    <script>
+      function setStylesheet() {
+        const link = document.querySelector('#preview-stylesheet');
+        ['#semanticwind', '#source'].includes(location.hash)
+          ? link.href = './assets/site.css?v=refined'
+          : link.removeAttribute('href');
+      }
+
+      function setView() {
+        setStylesheet();
+
+        const preview = document.querySelector('main');
+        let source = document.querySelector('#preview-source');
+        const showSource = location.hash === '#source';
+        const markup = preview.outerHTML;
+
+        preview.hidden = showSource;
+
+        if (!showSource) {
+          if (source) source.hidden = true;
+          return;
+        }
+
+        if (!source) {
+          source = document.createElement('main');
+          source.id = 'preview-source';
+
+          const pre = document.createElement('pre');
+          const code = document.createElement('code');
+          code.textContent = markup;
+          pre.append(code);
+          source.append(pre);
+          document.body.append(source);
+        }
+
+        source.hidden = false;
+      }
+
+      addEventListener('DOMContentLoaded', setView);
+      addEventListener('hashchange', setView);
+      setStylesheet();
+    </script>
+  </head>
+  <body>
+    <main>
+      <hgroup>
+        <h1>Account settings</h1>
+        <p>Update how your profile appears to the team.</p>
+      </hgroup>
+
+      <form>
+        <label>
+          Display name
+          <input type="text" value="Ada Lovelace">
+        </label>
+        <label><input type="checkbox" checked> Send product updates</label>
+        <button type="button">Save changes</button>
+      </form>
+
+      <details>
+        <summary>What changes are public?</summary>
+        <p>Your display name is visible to teammates. Your email stays private.</p>
+      </details>
+
+      <label for="profile-progress">Profile completeness</label>
+      <progress id="profile-progress" value="72" max="100">72%</progress>
+      <p><a href="https://github.com/iketiunn/semanticwind">View the project</a></p>
+    </main>
+  </body>
+</html>

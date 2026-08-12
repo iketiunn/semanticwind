@@ -1,258 +1,445 @@
 /*
  * Semanticwind
- * Semantic HTML defaults authored for Tailwind CSS v4.
+ * Useful semantic HTML defaults authored for Tailwind CSS v4.
  *
- * Principles:
- * - Semantic elements get useful, low-specificity defaults.
- * - HTML semantics never stand in for component variants.
- * - Structural tags do not silently become layout/component primitives.
- * - Tailwind utilities and component styles should override this base layer cleanly.
+ * Native elements get low-specificity defaults. Layout, variants, reusable UI,
+ * and product concepts remain the application or component layer's job.
  */
 
 @layer base {
-  :where(body) {
-    @apply m-0 bg-white text-zinc-950 antialiased dark:bg-zinc-950 dark:text-zinc-50;
+  :is(html) {
+    color-scheme: light dark;
+  }
+
+  :is(body) {
+    @apply m-0 min-h-screen bg-white text-zinc-950 antialiased dark:bg-zinc-950 dark:text-zinc-50;
     font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
     line-height: 1.5;
     text-rendering: optimizeLegibility;
   }
 
+  :is(body > header, body > main, body > footer) {
+    @apply mx-auto w-full max-w-5xl px-5 sm:px-8;
+  }
+
+  :is(body > header) {
+    @apply pt-8;
+  }
+
+  :is(body > main) {
+    @apply py-10 sm:py-14;
+  }
+
+  :is(body > footer) {
+    @apply py-8 text-sm text-zinc-500 dark:text-zinc-400;
+  }
+
+  /* Document structure: rhythm only, never component appearance. */
+
+  :is(article, aside) {
+    @apply mb-10;
+  }
+
+  :is(main > section) {
+    @apply mb-16 sm:mb-20;
+  }
+
+  :is(section > :is(h1, h2, h3, h4, h5, h6):first-child, article > :is(h1, h2, h3, h4, h5, h6):first-child) {
+    @apply mt-0;
+  }
+
+  :is(address) {
+    @apply mb-4 not-italic;
+  }
+
   /* Typography */
 
-  :where(h1, h2, h3, h4, h5, h6) {
-    @apply mt-6 mb-2 font-semibold leading-tight text-balance;
+  :is(h1, h2, h3, h4, h5, h6) {
+    @apply mt-7 mb-3 font-semibold leading-tight text-balance;
   }
 
-  :where(h1) {
-    @apply text-4xl font-bold tracking-tight;
+  :is(h1) {
+    @apply text-4xl font-bold tracking-tight sm:text-5xl;
   }
 
-  :where(h2) {
+  :is(h2) {
     @apply text-3xl tracking-tight;
   }
 
-  :where(h3) {
-    @apply text-xl tracking-tight;
+  :is(h3) {
+    @apply text-2xl tracking-tight;
   }
 
-  :where(h4) {
+  :is(h4) {
+    @apply text-xl;
+  }
+
+  :is(h5) {
     @apply text-lg;
   }
 
-  :where(h5, h6) {
+  :is(h6) {
     @apply text-base;
   }
 
-  :where(p) {
-    @apply mb-4 text-pretty;
+  :is(p) {
+    @apply mb-4 leading-7 text-pretty;
   }
 
-  :where(a) {
-    @apply text-blue-600 underline decoration-blue-600/40 underline-offset-3 hover:decoration-current dark:text-blue-400 dark:decoration-blue-400/40;
+  :is(hgroup) {
+    @apply mb-6;
   }
 
-  :where(strong, b) {
+  :is(hgroup > :is(h1, h2, h3, h4, h5, h6)) {
+    @apply mb-1;
+  }
+
+  :is(hgroup > :is(h1, h2, h3, h4, h5, h6):first-child) {
+    @apply mt-0;
+  }
+
+  :is(hgroup > p) {
+    @apply text-lg text-zinc-600 dark:text-zinc-400;
+  }
+
+  :is(hgroup > p:last-child) {
+    @apply mb-0;
+  }
+
+  :is(a) {
+    @apply text-blue-600 underline decoration-blue-600/40 underline-offset-3 hover:decoration-current focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 dark:text-blue-400 dark:decoration-blue-400/40;
+  }
+
+  :is(strong, b) {
     @apply font-semibold;
   }
 
-  :where(small) {
+  :is(small) {
     @apply text-sm text-zinc-500 dark:text-zinc-400;
   }
 
-  :where(mark) {
+  :is(mark) {
     @apply rounded-sm bg-yellow-200 px-0.5 text-inherit dark:bg-yellow-900/60;
   }
 
-  :where(abbr[title]) {
+  :is(abbr[title]) {
     @apply cursor-help underline decoration-dotted underline-offset-3;
+  }
+
+  :is(del, s) {
+    @apply text-zinc-500 dark:text-zinc-400;
+  }
+
+  :is(ins) {
+    @apply decoration-emerald-500 decoration-2 underline underline-offset-2;
+  }
+
+  :is(sub, sup) {
+    @apply text-xs leading-none;
+  }
+
+  :is(time) {
+    @apply tabular-nums;
   }
 
   /* Lists */
 
-  :where(ul, ol) {
+  :is(ul, ol) {
     @apply mb-4 ps-6;
   }
 
-  :where(ul) {
+  :is(ul) {
     @apply list-disc;
   }
 
-  :where(ol) {
+  :is(ol) {
     @apply list-decimal;
   }
 
-  :where(li + li) {
+  :is(li + li) {
     @apply mt-1;
   }
 
-  :where(dl) {
+  :is(li > ul, li > ol) {
+    @apply mt-1 mb-0;
+  }
+
+  :is(dl) {
     @apply mb-4;
   }
 
-  :where(dt) {
+  :is(dt) {
     @apply font-semibold;
   }
 
-  :where(dd) {
+  :is(dd) {
     @apply mb-3 ms-6;
   }
 
   /* Code and quotations */
 
-  :where(code, kbd, samp, pre) {
+  :is(code, kbd, samp, pre) {
     font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
   }
 
-  :where(code, kbd) {
+  :is(code, kbd) {
     @apply rounded-md border border-zinc-200 bg-zinc-100 px-1.5 py-0.5 text-[0.875em] dark:border-zinc-800 dark:bg-zinc-900;
   }
 
-  :where(kbd) {
+  :is(kbd) {
     @apply font-medium shadow-xs;
   }
 
-  :where(pre) {
+  :is(pre) {
     @apply mb-6 overflow-x-auto rounded-lg border border-zinc-200 bg-zinc-100 p-4 text-sm leading-7 dark:border-zinc-800 dark:bg-zinc-900;
   }
 
-  :where(pre code) {
+  :is(pre code) {
     @apply border-0 bg-transparent p-0 text-inherit shadow-none;
   }
 
-  :where(blockquote) {
+  :is(blockquote) {
     @apply mb-6 border-s-4 border-zinc-200 ps-4 text-zinc-600 dark:border-zinc-800 dark:text-zinc-400;
   }
 
-  :where(blockquote > :last-child) {
+  :is(blockquote > :last-child) {
     @apply mb-0;
   }
 
-  :where(hr) {
-    @apply my-8 border-0 border-t border-zinc-200 dark:border-zinc-800;
+  :is(cite) {
+    @apply text-sm text-zinc-500 dark:text-zinc-400;
+  }
+
+  :is(hr) {
+    @apply my-10 border-0 border-t border-zinc-200 dark:border-zinc-800;
   }
 
   /* Media */
 
-  :where(img, picture, video, canvas, svg) {
+  :is(img, picture, video, canvas, svg, iframe) {
     @apply max-w-full;
   }
 
-  :where(img, video) {
+  :is(img, video) {
     @apply h-auto;
   }
 
-  :where(figure) {
+  :is(audio) {
+    @apply max-w-full;
+  }
+
+  :is(figure) {
     @apply mb-6;
   }
 
-  :where(figcaption) {
+  :is(figcaption) {
     @apply mt-2 text-sm text-zinc-500 dark:text-zinc-400;
   }
 
   /* Tables */
 
-  :where(table) {
+  :is(table) {
     @apply mb-6 w-full border-collapse text-sm tabular-nums;
   }
 
-  :where(caption) {
+  :is(caption) {
     @apply mb-2 text-start text-sm text-zinc-500 dark:text-zinc-400;
   }
 
-  :where(th, td) {
+  :is(th, td) {
     @apply border-b border-zinc-200 px-3 py-2.5 text-start align-top dark:border-zinc-800;
   }
 
-  :where(th) {
+  :is(th) {
     @apply font-semibold;
+  }
+
+  :is(thead th) {
+    @apply border-b-zinc-300 dark:border-b-zinc-700;
+  }
+
+  :is(tfoot) {
+    @apply font-medium;
   }
 
   /* Forms: neutral controls only. Variants belong to components. */
 
-  :where(label) {
+  :is(label) {
     @apply inline-block text-sm font-medium;
   }
 
-  :where(fieldset) {
-    @apply mb-4 rounded-lg border border-zinc-200 p-4 dark:border-zinc-800;
+  :is(label > small) {
+    @apply mt-1 block font-normal;
   }
 
-  :where(legend) {
+  :is(label:has(> input[type='checkbox'], > input[type='radio'])) {
+    @apply inline-flex items-center gap-2;
+  }
+
+  :is(fieldset) {
+    @apply mb-4 grid gap-3 rounded-lg border border-zinc-200 p-4 dark:border-zinc-800;
+  }
+
+  :is(legend) {
     @apply px-1.5 font-semibold;
   }
 
-  :where(
-      input:not([type='checkbox'], [type='radio'], [type='range'], [type='button'], [type='submit'], [type='reset']),
+  :is(
+      input:not([type]),
+      input[type='text'],
+      input[type='email'],
+      input[type='password'],
+      input[type='search'],
+      input[type='tel'],
+      input[type='url'],
+      input[type='number'],
+      input[type='date'],
+      input[type='datetime-local'],
+      input[type='month'],
+      input[type='week'],
+      input[type='time'],
       textarea,
       select
     ) {
-    @apply min-h-9 max-w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-950 outline-none transition-colors placeholder:text-zinc-400 focus-visible:border-blue-500 focus-visible:ring-3 focus-visible:ring-blue-500/20 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500;
-    font: inherit;
-    font-size: 0.875rem;
+    font-family: inherit;
+    @apply min-h-10 max-w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-950 outline-none transition-colors placeholder:text-zinc-400 focus-visible:border-blue-500 focus-visible:ring-3 focus-visible:ring-blue-500/20 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500;
   }
 
-  :where(textarea) {
-    @apply min-h-24 resize-y;
+  :is(textarea) {
+    @apply min-h-28 resize-y;
   }
 
-  :where(button, input[type='button'], input[type='submit'], input[type='reset']) {
-    @apply inline-flex min-h-9 cursor-pointer items-center justify-center rounded-lg border border-zinc-200 bg-zinc-100 px-3.5 py-2 text-sm font-medium text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-50 dark:hover:bg-zinc-800;
-    font: inherit;
-    font-size: 0.875rem;
+  :is(select) {
+    @apply pe-9;
   }
 
-  :where(input[type='checkbox'], input[type='radio'], input[type='range']) {
-    @apply accent-blue-600 dark:accent-blue-400;
+  :is(input[type='file']) {
+    font-family: inherit;
+    @apply max-w-full text-sm text-zinc-600 disabled:cursor-not-allowed disabled:opacity-50 dark:text-zinc-400;
   }
 
-  :where(output) {
+  :is(input[type='file'])::file-selector-button {
+    font-family: inherit;
+    @apply me-3 min-h-10 cursor-pointer rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-2 text-sm font-medium text-zinc-950 hover:bg-zinc-200 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-50 dark:hover:bg-zinc-800;
+  }
+
+  :is(input[type='color']) {
+    @apply h-10 w-16 cursor-pointer rounded-lg border border-zinc-300 bg-white p-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:bg-zinc-950;
+  }
+
+  :is(input[type='range']) {
+    @apply w-full cursor-pointer accent-blue-600 disabled:cursor-not-allowed disabled:opacity-50 dark:accent-blue-400;
+  }
+
+  :is(input[type='checkbox'], input[type='radio']) {
+    @apply size-4 accent-blue-600 disabled:cursor-not-allowed disabled:opacity-50 dark:accent-blue-400;
+  }
+
+  :is(input[type='image']) {
+    @apply h-auto max-w-full;
+  }
+
+  :is(button, input[type='button'], input[type='submit'], input[type='reset']) {
+    font-family: inherit;
+    @apply inline-flex min-h-10 cursor-pointer items-center justify-center rounded-lg border border-blue-600 bg-blue-600 px-3.5 py-2 text-sm font-medium text-white transition-colors hover:border-blue-700 hover:bg-blue-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-500 dark:bg-blue-500 dark:hover:border-blue-400 dark:hover:bg-blue-400;
+  }
+
+  :is(input, textarea, select)[aria-invalid='true'],
+  :is(input, textarea, select):user-invalid {
+    @apply border-red-500 focus-visible:border-red-500 focus-visible:ring-red-500/20;
+  }
+
+  :is(input, textarea, select)[aria-invalid='false'],
+  :is(input, textarea, select):user-valid {
+    @apply border-emerald-500 focus-visible:border-emerald-500 focus-visible:ring-emerald-500/20;
+  }
+
+  :is(output) {
     @apply font-medium tabular-nums;
   }
 
-  /* A classless form gets useful prototype flow. Add any form class to own the layout. */
+  /* A classless form gets useful prototype flow. Add a class to own its layout. */
 
-  :where(form:not([class])) {
+  :is(form:not([class])) {
     @apply grid gap-4;
   }
 
-  :where(form:not([class]) > label:has(> input, > textarea, > select)) {
+  :is(form:not([class]) > label:has(> input, > textarea, > select)) {
     @apply grid gap-1.5;
   }
 
-  :where(form:not([class]) input:not([type='checkbox'], [type='radio'], [type='range'], [type='button'], [type='submit'], [type='reset'])),
-  :where(form:not([class]) textarea),
-  :where(form:not([class]) select) {
+  :is(
+      form:not([class])
+        :is(
+          input:not([type]),
+          input[type='text'],
+          input[type='email'],
+          input[type='password'],
+          input[type='search'],
+          input[type='tel'],
+          input[type='url'],
+          input[type='number'],
+          input[type='date'],
+          input[type='datetime-local'],
+          input[type='month'],
+          input[type='week'],
+          input[type='time'],
+          input[type='file'],
+          input[type='range'],
+          textarea,
+          select
+        )
+    ) {
     @apply w-full;
   }
 
   /* Native interactive elements */
 
-  :where(details) {
+  :is(details) {
     @apply mb-4 rounded-lg border border-zinc-200 px-4 py-3 dark:border-zinc-800;
   }
 
-  :where(summary) {
-    @apply cursor-pointer font-semibold;
+  :is(summary) {
+    @apply cursor-pointer font-semibold focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500;
   }
 
-  :where(details[open] > summary) {
+  :is(details[open] > summary) {
     @apply mb-3;
   }
 
-  :where(dialog) {
+  :is(dialog) {
     @apply m-auto max-w-[min(32rem,calc(100vw-2rem))] rounded-lg border border-zinc-200 bg-white p-5 text-zinc-950 shadow-xl dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50;
   }
 
-  :where(dialog::backdrop) {
+  :is(dialog)::backdrop {
     @apply bg-black/55 backdrop-blur-[2px];
   }
 
-  :where(progress, meter) {
-    @apply max-w-full accent-blue-600 dark:accent-blue-400;
+  :is(progress) {
+    appearance: none;
+    @apply h-2.5 w-full max-w-full overflow-hidden rounded-full border-0 bg-zinc-200 align-middle dark:bg-zinc-800;
+  }
+
+  :is(progress)::-webkit-progress-bar {
+    @apply rounded-full bg-zinc-200 dark:bg-zinc-800;
+  }
+
+  :is(progress)::-webkit-progress-value {
+    @apply rounded-full bg-blue-600 dark:bg-blue-400;
+  }
+
+  :is(progress)::-moz-progress-bar {
+    @apply rounded-full bg-blue-600 dark:bg-blue-400;
+  }
+
+  :is(meter) {
+    @apply h-2.5 w-full max-w-full accent-blue-600 align-middle dark:accent-blue-400;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    :where(*, *::before, *::after) {
+    :is(*),
+    :is(*)::before,
+    :is(*)::after {
       scroll-behavior: auto !important;
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
