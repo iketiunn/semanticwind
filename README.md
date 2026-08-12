@@ -16,6 +16,8 @@ Tailwind utilities
 your own component
 ```
 
+That is a **growth path**, not a rule that every element must climb through every layer.
+
 ## Why
 
 Tailwind is excellent once you know what you are designing. It is less pleasant when you are still sketching a page and every heading, form control, table, and code block begins life as an unstyled browser default.
@@ -31,7 +33,7 @@ Semanticwind takes a narrower approach:
 - Tailwind utilities remain the normal escape hatch for layout and one-off customization.
 - Repeated product concepts become your own components instead of more global selectors.
 
-The baseline lives in Tailwind's `base` layer and uses `:where(...)` selectors wherever practical. Basecoat component styles and Tailwind utilities therefore remain easy to layer on top.
+The baseline lives in Tailwind's `base` layer and uses `:where(...)` selectors wherever practical.
 
 ## The scaling model
 
@@ -53,6 +55,8 @@ The baseline lives in Tailwind's `base` layer and uses `:where(...)` selectors w
 
 This should already be useful. No `.prose`, `.input`, `.button`, or wrapper component is required just to get a reasonable baseline.
 
+A completely classless `<form>` gets a simple vertical flow for prototyping. The moment you add a class to the form, Semanticwind stops choosing its form layout so Tailwind or your component layer can own it.
+
 ### 2. Graduate to Basecoat when HTML is not enough
 
 A button variant is component meaning, not HTML meaning:
@@ -72,6 +76,8 @@ A richer field can use Basecoat's component contract while keeping native contro
   <p>Your public display name.</p>
 </div>
 ```
+
+Semanticwind ships a small Basecoat compatibility bridge because Basecoat is authored against Tailwind Preflight. The bridge only neutralizes known base-style collisions such as heading rhythm inside card chrome and the native box around an accordion's `<details>`.
 
 ### 3. Use Tailwind for context and local exceptions
 
@@ -101,6 +107,8 @@ Responsive width is contextual layout. It belongs in Tailwind, not in the semant
 ```
 
 `article` still means article. `.device-card` is application meaning. `.btn` and `.badge` are generic UI primitives. Tailwind composes the layout.
+
+Your own reusable UI should normally live in Tailwind's `components` layer too. Utilities should remain the highest-priority local override.
 
 ## What belongs in Semanticwind?
 
@@ -149,21 +157,33 @@ With Basecoat:
 @import "tailwindcss";
 @import "basecoat-css/nova";
 @import "./src/semanticwind.css";
+@import "./src/basecoat.css";
 ```
 
-The intended cascade is:
+Once packaged, the intended imports are:
+
+```css
+@import "tailwindcss";
+@import "basecoat-css/nova";
+@import "semanticwind";
+@import "semanticwind/basecoat";
+```
+
+### CSS layer priority
+
+The scaling path above describes how an interface *grows*. The CSS cascade is simpler:
 
 ```text
-Tailwind theme / reset
+Tailwind theme / Preflight
         ↓
 Semanticwind base defaults
         ↓
-Basecoat components
+Basecoat + your component styles
         ↓
 Tailwind utilities
-        ↓
-product-specific components
 ```
+
+Lower layers provide defaults. Higher layers express increasingly explicit intent.
 
 ## Development
 
