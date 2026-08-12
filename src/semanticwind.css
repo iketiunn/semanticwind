@@ -6,7 +6,7 @@
  * - Semantic elements get useful, low-specificity defaults.
  * - HTML semantics never stand in for component variants.
  * - Structural tags do not silently become layout/component primitives.
- * - Basecoat components and Tailwind utilities should override this layer cleanly.
+ * - Component layers and Tailwind utilities should override this layer cleanly.
  */
 
 @layer base {
@@ -355,7 +355,7 @@
     width: 100%;
   }
 
-  /* Native interactive elements */
+  /* Native interactive elements. */
 
   :where(details) {
     margin-block: 0 1rem;
@@ -382,7 +382,7 @@
     padding: 1.25rem;
   }
 
-  :where(dialog::backdrop) {
+  dialog::backdrop {
     background: oklch(0 0 0 / 55%);
     backdrop-filter: blur(2px);
   }
@@ -393,7 +393,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    :where(*, *::before, *::after) {
+    *,
+    *::before,
+    *::after {
       scroll-behavior: auto !important;
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
