@@ -1,0 +1,403 @@
+/*
+ * Semanticwind
+ * Semantic HTML defaults for Tailwind CSS.
+ *
+ * Principles:
+ * - Semantic elements get useful, low-specificity defaults.
+ * - HTML semantics never stand in for component variants.
+ * - Structural tags do not silently become layout/component primitives.
+ * - Basecoat components and Tailwind utilities should override this layer cleanly.
+ */
+
+@layer base {
+  :root {
+    --semanticwind-background: var(--background, oklch(1 0 0));
+    --semanticwind-foreground: var(--foreground, oklch(0.145 0 0));
+    --semanticwind-muted: var(--muted, oklch(0.97 0 0));
+    --semanticwind-muted-foreground: var(--muted-foreground, oklch(0.556 0 0));
+    --semanticwind-border: var(--border, oklch(0.922 0 0));
+    --semanticwind-input: var(--input, oklch(0.922 0 0));
+    --semanticwind-primary: var(--primary, oklch(0.205 0 0));
+    --semanticwind-primary-foreground: var(--primary-foreground, oklch(0.985 0 0));
+    --semanticwind-ring: var(--ring, oklch(0.708 0 0));
+    --semanticwind-radius: var(--radius, 0.625rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --semanticwind-background: var(--background, oklch(0.145 0 0));
+      --semanticwind-foreground: var(--foreground, oklch(0.985 0 0));
+      --semanticwind-muted: var(--muted, oklch(0.269 0 0));
+      --semanticwind-muted-foreground: var(--muted-foreground, oklch(0.708 0 0));
+      --semanticwind-border: var(--border, oklch(1 0 0 / 10%));
+      --semanticwind-input: var(--input, oklch(1 0 0 / 15%));
+      --semanticwind-primary: var(--primary, oklch(0.922 0 0));
+      --semanticwind-primary-foreground: var(--primary-foreground, oklch(0.205 0 0));
+      --semanticwind-ring: var(--ring, oklch(0.556 0 0));
+    }
+  }
+
+  :where(html) {
+    color-scheme: light dark;
+  }
+
+  :where(body) {
+    margin: 0;
+    background: var(--semanticwind-background);
+    color: var(--semanticwind-foreground);
+    font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Typography */
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    margin-block: 1.5em 0.5em;
+    color: inherit;
+    font-weight: 600;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  :where(h1) {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  :where(h2) {
+    font-size: clamp(1.5rem, 3vw, 1.875rem);
+    letter-spacing: -0.02em;
+  }
+
+  :where(h3) {
+    font-size: 1.25rem;
+    letter-spacing: -0.015em;
+  }
+
+  :where(h4) {
+    font-size: 1.125rem;
+  }
+
+  :where(h5, h6) {
+    font-size: 1rem;
+  }
+
+  :where(p) {
+    margin-block: 0 1em;
+    text-wrap: pretty;
+  }
+
+  :where(a) {
+    color: var(--semanticwind-primary);
+    text-decoration-line: underline;
+    text-decoration-color: color-mix(in oklch, currentColor 45%, transparent);
+    text-underline-offset: 0.2em;
+  }
+
+  :where(a:hover) {
+    text-decoration-color: currentColor;
+  }
+
+  :where(strong, b) {
+    font-weight: 600;
+  }
+
+  :where(small) {
+    color: var(--semanticwind-muted-foreground);
+    font-size: 0.875em;
+  }
+
+  :where(mark) {
+    border-radius: 0.2em;
+    background: color-mix(in oklch, var(--semanticwind-primary) 20%, transparent);
+    color: inherit;
+    padding-inline: 0.15em;
+  }
+
+  :where(abbr[title]) {
+    cursor: help;
+    text-decoration: underline dotted;
+    text-underline-offset: 0.2em;
+  }
+
+  /* Lists */
+
+  :where(ul, ol) {
+    margin-block: 0 1em;
+    padding-inline-start: 1.5rem;
+  }
+
+  :where(ul) {
+    list-style: disc;
+  }
+
+  :where(ol) {
+    list-style: decimal;
+  }
+
+  :where(li + li) {
+    margin-block-start: 0.25em;
+  }
+
+  :where(dl) {
+    margin-block: 0 1em;
+  }
+
+  :where(dt) {
+    font-weight: 600;
+  }
+
+  :where(dd) {
+    margin-inline-start: 1.5rem;
+    margin-block-end: 0.75em;
+  }
+
+  /* Code and quotations */
+
+  :where(code, kbd, samp, pre) {
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  }
+
+  :where(code, kbd) {
+    border: 1px solid var(--semanticwind-border);
+    border-radius: calc(var(--semanticwind-radius) * 0.6);
+    background: var(--semanticwind-muted);
+    padding: 0.1em 0.35em;
+    font-size: 0.875em;
+  }
+
+  :where(kbd) {
+    box-shadow: 0 1px 0 var(--semanticwind-border);
+    font-weight: 500;
+  }
+
+  :where(pre) {
+    margin-block: 0 1.5rem;
+    overflow-x: auto;
+    border: 1px solid var(--semanticwind-border);
+    border-radius: var(--semanticwind-radius);
+    background: var(--semanticwind-muted);
+    padding: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+
+  :where(pre code) {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  :where(blockquote) {
+    margin: 0 0 1.5rem;
+    border-inline-start: 0.25rem solid var(--semanticwind-border);
+    padding-inline-start: 1rem;
+    color: var(--semanticwind-muted-foreground);
+  }
+
+  :where(blockquote > :last-child) {
+    margin-block-end: 0;
+  }
+
+  :where(hr) {
+    margin-block: 2rem;
+    border: 0;
+    border-block-start: 1px solid var(--semanticwind-border);
+  }
+
+  /* Media */
+
+  :where(img, picture, video, canvas, svg) {
+    max-width: 100%;
+  }
+
+  :where(img, video) {
+    height: auto;
+  }
+
+  :where(figure) {
+    margin: 0 0 1.5rem;
+  }
+
+  :where(figcaption) {
+    margin-block-start: 0.5rem;
+    color: var(--semanticwind-muted-foreground);
+    font-size: 0.875rem;
+  }
+
+  /* Tables */
+
+  :where(table) {
+    width: 100%;
+    margin-block: 0 1.5rem;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+
+  :where(caption) {
+    margin-block-end: 0.5rem;
+    color: var(--semanticwind-muted-foreground);
+    font-size: 0.875rem;
+    text-align: start;
+  }
+
+  :where(th, td) {
+    border-block-end: 1px solid var(--semanticwind-border);
+    padding: 0.65rem 0.75rem;
+    text-align: start;
+    vertical-align: top;
+  }
+
+  :where(th) {
+    font-weight: 600;
+  }
+
+  /* Forms: neutral controls only. Variants belong to components. */
+
+  :where(label) {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  :where(fieldset) {
+    margin: 0 0 1rem;
+    border: 1px solid var(--semanticwind-border);
+    border-radius: var(--semanticwind-radius);
+    padding: 1rem;
+  }
+
+  :where(legend) {
+    padding-inline: 0.35rem;
+    font-weight: 600;
+  }
+
+  :where(
+      input:not([type='checkbox'], [type='radio'], [type='range'], [type='button'], [type='submit'], [type='reset']),
+      textarea,
+      select
+    ) {
+    min-height: 2.25rem;
+    max-width: 100%;
+    border: 1px solid var(--semanticwind-input);
+    border-radius: var(--semanticwind-radius);
+    background: var(--semanticwind-background);
+    color: var(--semanticwind-foreground);
+    padding: 0.5rem 0.75rem;
+    font: inherit;
+    font-size: 0.875rem;
+  }
+
+  :where(textarea) {
+    min-height: 6rem;
+    resize: vertical;
+  }
+
+  :where(button, input[type='button'], input[type='submit'], input[type='reset']) {
+    display: inline-flex;
+    min-height: 2.25rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--semanticwind-border);
+    border-radius: var(--semanticwind-radius);
+    background: var(--semanticwind-muted);
+    color: var(--semanticwind-foreground);
+    padding: 0.5rem 0.875rem;
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  :where(button, input[type='button'], input[type='submit'], input[type='reset']):hover {
+    background: color-mix(in oklch, var(--semanticwind-muted), var(--semanticwind-foreground) 6%);
+  }
+
+  :where(input[type='checkbox'], input[type='radio'], input[type='range']) {
+    accent-color: var(--semanticwind-primary);
+  }
+
+  :where(input, textarea, select, button, summary, a):focus-visible {
+    outline: 2px solid var(--semanticwind-ring);
+    outline-offset: 2px;
+  }
+
+  :where(:disabled, [disabled]) {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  :where(output) {
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+  }
+
+  /* A classless form gets useful prototype flow. Add any form class to own the layout. */
+
+  :where(form:not([class])) {
+    display: grid;
+    gap: 1rem;
+  }
+
+  :where(form:not([class]) > label:has(> input, > textarea, > select)) {
+    display: grid;
+    gap: 0.375rem;
+  }
+
+  :where(form:not([class]) input:not([type='checkbox'], [type='radio'], [type='range'], [type='button'], [type='submit'], [type='reset'])),
+  :where(form:not([class]) textarea),
+  :where(form:not([class]) select) {
+    width: 100%;
+  }
+
+  /* Native interactive elements */
+
+  :where(details) {
+    margin-block: 0 1rem;
+    border: 1px solid var(--semanticwind-border);
+    border-radius: var(--semanticwind-radius);
+    padding: 0.75rem 1rem;
+  }
+
+  :where(summary) {
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  :where(details[open] > summary) {
+    margin-block-end: 0.75rem;
+  }
+
+  :where(dialog) {
+    max-width: min(32rem, calc(100vw - 2rem));
+    border: 1px solid var(--semanticwind-border);
+    border-radius: var(--semanticwind-radius);
+    background: var(--semanticwind-background);
+    color: var(--semanticwind-foreground);
+    padding: 1.25rem;
+  }
+
+  :where(dialog::backdrop) {
+    background: oklch(0 0 0 / 55%);
+    backdrop-filter: blur(2px);
+  }
+
+  :where(progress, meter) {
+    max-width: 100%;
+    accent-color: var(--semanticwind-primary);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(*, *::before, *::after) {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
