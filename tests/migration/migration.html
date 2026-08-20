@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Semantic CSS migration comparison</title>
+    <link id="stack-stylesheet" rel="stylesheet">
+    <script>
+      const stack = new URLSearchParams(location.search).get('stack') === 'pico' ? 'pico' : 'semanticwind';
+      const stylesheet = document.querySelector('#stack-stylesheet');
+      window.stackStylesLoaded = new Promise((resolve, reject) => {
+        stylesheet.addEventListener('load', resolve, { once: true });
+        stylesheet.addEventListener('error', reject, { once: true });
+      });
+      stylesheet.href = `./${stack}.out.css`;
+      document.title = `${stack} → Tailwind migration`;
+    </script>
+  </head>
+  <body>
+    <main>
+      <hgroup>
+        <h1>Project settings</h1>
+        <p>The markup is identical in both migration paths.</p>
+      </hgroup>
+
+      <form>
+        <label>
+          Project name
+          <input type="text" value="Semantic HTML">
+        </label>
+        <button id="baseline-button" type="button">Save changes</button>
+      </form>
+
+      <section id="custom-layout" class="mt-8 grid gap-4 sm:grid-cols-2">
+        <article id="explicit-card" class="rounded-xl border border-zinc-200 p-5">
+          <h2 class="mt-0">Explicit card</h2>
+          <p class="mb-0">Tailwind owns this repeated visual treatment.</p>
+        </article>
+        <article class="rounded-xl border border-zinc-200 p-5">
+          <h2 class="mt-0">Local exception</h2>
+          <button id="utility-button" class="rounded-none border-0 bg-red-500 px-0 py-0" type="button">Delete project</button>
+        </article>
+      </section>
+
+      <span id="theme-utility" class="bg-blue-600" hidden>Shared theme token</span>
+      <span id="red-utility" class="bg-red-500" hidden>Exception token</span>
+      <output id="result">Checking…</output>
+    </main>
+
+    <script>
+      stackStylesLoaded
+        .then(() => new Promise((resolve) => setTimeout(resolve, 250)))
+        .then(() => {
+          const style = (id) => getComputedStyle(document.querySelector(`#${id}`));
+          const checks = {
+            theme: style('baseline-button').backgroundColor === style('theme-utility').backgroundColor,
+            layout: style('custom-layout').display === 'grid' && style('custom-layout').gap === '16px',
+            card: style('explicit-card').borderRadius === '12px' && style('explicit-card').padding === '20px',
+            exception: style('utility-button').backgroundColor === style('red-utility').backgroundColor && style('utility-button').borderRadius === '0px' && style('utility-button').padding === '0px',
+          };
+          const failures = Object.entries(checks).filter(([, passed]) => !passed).map(([name]) => name);
+          const result = document.querySelector('#result');
+          result.value = failures.length ? `FAIL: ${failures.join(', ')}` : `PASS: ${stack}`;
+          result.dataset.status = failures.length ? 'fail' : 'pass';
+          if (failures.length) throw new Error(result.value);
+        });
+    </script>
+  </body>
+</html>

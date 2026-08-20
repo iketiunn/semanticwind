@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Semanticwind Tailwind contract</title>
+    <link rel="stylesheet" href="./contract.out.css">
+  </head>
+  <body>
+    <main id="layout" class="max-w-none px-0 py-0">
+      <h1 id="heading" class="m-0 text-base font-normal">Tailwind owns the exception</h1>
+      <p id="measure" class="max-w-none"><a id="link" class="text-red-500 no-underline" href="#result">No underline</a></p>
+      <button id="button" class="rounded-none border-0 bg-red-500 px-0 py-0" type="button">Utility button</button>
+      <button id="themed-button" type="button">Semanticwind button</button>
+      <span id="themed-utility" class="bg-blue-600">Tailwind theme utility</span>
+      <table id="table" class="rounded-none shadow-none">
+        <tbody><tr><td>Utility-owned surface</td></tr></tbody>
+      </table>
+      <details id="details" class="max-w-none rounded-none shadow-none">
+        <summary>Utility-owned disclosure</summary>
+        <p>Still native.</p>
+      </details>
+      <output id="result">Checking…</output>
+    </main>
+
+    <script>
+      const style = (id) => getComputedStyle(document.querySelector(`#${id}`));
+      const checks = {
+        layout: style('layout').maxWidth === 'none' && style('layout').paddingLeft === '0px',
+        typography: style('heading').fontSize === '16px' && style('heading').fontWeight === '400' && style('heading').marginTop === '0px',
+        measure: style('measure').maxWidth === 'none',
+        link: style('link').textDecorationLine === 'none' && style('link').color === style('button').backgroundColor,
+        control: style('button').borderRadius === '0px' && style('button').padding === '0px' && style('button').borderWidth === '0px',
+        theme: style('themed-button').backgroundColor === style('themed-utility').backgroundColor,
+        surfaces: style('table').borderRadius === '0px' && style('details').maxWidth === 'none' && style('details').borderRadius === '0px',
+      };
+      const failures = Object.entries(checks).filter(([, passed]) => !passed).map(([name]) => name);
+      const result = document.querySelector('#result');
+      result.value = failures.length ? `FAIL: ${failures.join(', ')}` : 'PASS';
+      result.dataset.status = failures.length ? 'fail' : 'pass';
+      if (failures.length) throw new Error(result.value);
+    </script>
+  </body>
+</html>

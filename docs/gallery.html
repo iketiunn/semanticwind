@@ -7,7 +7,7 @@
       name="description"
       content="A classless gallery of the native HTML elements styled by Semanticwind."
     >
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="light">
     <title>Native element gallery — Semanticwind</title>
     <link rel="icon" href="./assets/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192.png">
@@ -106,6 +106,10 @@
           Formulas can show H<sub>2</sub>O and x<sup>2</sup>. A short inline quotation such as
           <q>start with the platform</q> keeps native punctuation.
         </p>
+        <p>
+          A <dfn>semantic baseline</dfn> describes meaning before appearance, while
+          <data value="0.1.0">version 0.1.0</data> keeps a machine-readable value.
+        </p>
       </section>
 
       <section id="lists">
@@ -128,9 +132,9 @@
 
         <h3>Ordered</h3>
         <ol>
-          <li>Import Tailwind.</li>
-          <li>Import Semanticwind.</li>
+          <li>Link Semanticwind.</li>
           <li>Write ordinary HTML.</li>
+          <li>Add Tailwind when the interface needs it.</li>
         </ol>
 
         <h3>Description list</h3>
@@ -190,8 +194,6 @@
           A blue gradient canvas sample.
         </canvas>
 
-        <h3>Embedded document</h3>
-        <iframe src="./plain.html#semanticwind" title="Semanticwind classless form preview"></iframe>
       </section>
 
       <section id="tables">
@@ -220,6 +222,11 @@
               <td>Passed</td>
               <td>1.2 s</td>
             </tr>
+            <tr>
+              <th scope="row">Package</th>
+              <td>Passed</td>
+              <td>320 ms</td>
+            </tr>
           </tbody>
           <tfoot>
             <tr>
@@ -238,6 +245,17 @@
         </hgroup>
 
         <form>
+          <search>
+            <label>
+              Search this MVP
+              <input type="search" placeholder="Search projects" list="project-suggestions">
+            </label>
+            <datalist id="project-suggestions">
+              <option value="Customer portal"></option>
+              <option value="Admin dashboard"></option>
+              <option value="Waitlist"></option>
+            </datalist>
+          </search>
           <label>
             Text
             <input type="text" value="Semanticwind">
@@ -286,6 +304,14 @@
             </select>
           </label>
           <label>
+            Deployment targets
+            <select multiple size="3">
+              <option selected>Web</option>
+              <option>Internal admin</option>
+              <option>Customer portal</option>
+            </select>
+          </label>
+          <label>
             Notes
             <textarea placeholder="Add a short note"></textarea>
           </label>
@@ -309,6 +335,12 @@
             <label>Month <input type="month"></label>
             <label>Week <input type="week"></label>
             <label>Time <input type="time"></label>
+          </fieldset>
+
+          <fieldset disabled>
+            <legend>Unavailable plan</legend>
+            <label><input type="checkbox"> Enterprise audit log</label>
+            <label>Seats <input type="number" value="10"></label>
           </fieldset>
 
           <label>
@@ -354,10 +386,17 @@
           <p>The open state keeps its summary visually connected to the content.</p>
         </details>
 
+        <p><button type="button" popovertarget="gallery-popover">Open popover</button></p>
+        <div id="gallery-popover" popover>
+          <h2>Native popover</h2>
+          <p>No JavaScript is required for its open and close behavior.</p>
+          <button type="button" popovertarget="gallery-popover" popovertargetaction="hide">Close</button>
+        </div>
+
         <label for="gallery-progress">Build progress</label>
         <progress id="gallery-progress" value="72" max="100">72%</progress>
 
-        <label for="gallery-meter">Quality score</label>
+        <label for="gallery-meter">Quality score · 86 / 100</label>
         <meter id="gallery-meter" min="0" max="100" low="40" high="80" optimum="90" value="86">86%</meter>
 
         <p><button type="button" onclick="document.querySelector('#gallery-dialog').showModal()">Open dialog</button></p>

@@ -1,0 +1,10 @@
+@import "tailwindcss" source(none);
+@import "../../src/semanticwind.css";
+
+@theme {
+  --color-blue-500: #7c3aed;
+  --color-blue-600: #7c3aed;
+  --color-blue-700: #7c3aed;
+}
+
+@source "./migration.html";

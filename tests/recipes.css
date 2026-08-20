@@ -1,0 +1,5 @@
+@import "tailwindcss" source(none);
+@import "../src/semanticwind.css";
+
+
+@source inline("mx-auto w-full max-w-5xl max-w-none px-0 px-5 pt-8 py-10 sm:px-8 sm:py-14 flex flex-wrap items-center justify-between gap-4");

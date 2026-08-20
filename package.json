@@ -1,20 +1,26 @@
 {
   "name": "semanticwind",
   "version": "0.0.0-dev.0",
-  "description": "Semantic HTML defaults authored for Tailwind CSS v4, with utilities and components as clean escape hatches.",
+  "description": "Zero-build semantic CSS for projects that grow into Tailwind CSS v4.",
   "license": "MIT",
   "type": "module",
   "files": [
-    "src/semanticwind.css"
+    "src/semanticwind.css",
+    "dist/semanticwind.min.css"
   ],
   "style": "src/semanticwind.css",
   "exports": {
     ".": "./src/semanticwind.css",
-    "./css": "./src/semanticwind.css"
+    "./css": "./src/semanticwind.css",
+    "./standalone": "./dist/semanticwind.min.css"
   },
   "scripts": {
     "dev": "tailwindcss -i ./docs/app.css -o ./docs/assets/site.css --watch",
-    "build": "tailwindcss -i ./docs/app.css -o ./docs/assets/site.css --minify"
+    "build": "tailwindcss -i ./docs/app.css -o ./docs/assets/site.css --minify",
+    "build:cdn": "tailwindcss -i ./src/cdn.css -o ./dist/semanticwind.min.css --minify",
+    "build:tests": "node ./tests/migration/prepare-pico.mjs && tailwindcss -i ./tests/recipes.css -o ./tests/recipes.out.css --minify && tailwindcss -i ./tests/contract.css -o ./tests/contract.out.css --minify && tailwindcss -i ./tests/migration/semanticwind.css -o ./tests/migration/semanticwind.out.css --minify && tailwindcss -i ./tests/migration/pico.css -o ./tests/migration/pico.out.css --minify",
+    "check": "npm run build && npm run build:cdn && npm run build:tests && node ./tests/check-build.mjs",
+    "prepack": "npm run check"
   },
   "keywords": [
     "semantic-html",
@@ -32,7 +38,16 @@
     "url": "https://github.com/iketiunn/semanticwind/issues"
   },
   "homepage": "https://iketiunn.github.io/semanticwind/",
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "tailwindcss": {
+      "optional": true
+    }
+  },
   "devDependencies": {
+    "@picocss/pico": "2.1.1",
     "@tailwindcss/cli": "^4.3.3",
     "tailwindcss": "^4.3.3"
   }

@@ -1,0 +1,24 @@
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "./pico.fixture.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+
+@theme {
+  --color-blue-500: #7c3aed;
+  --color-blue-600: #7c3aed;
+  --color-blue-700: #7c3aed;
+}
+
+:root {
+  --pico-font-size: 100%;
+  --pico-primary: var(--color-blue-600);
+  --pico-primary-background: var(--color-blue-600);
+  --pico-primary-border: var(--color-blue-600);
+  --pico-primary-hover: var(--color-blue-700);
+  --pico-primary-hover-background: var(--color-blue-700);
+  --pico-primary-hover-border: var(--color-blue-700);
+  --pico-primary-focus: color-mix(in oklab, var(--color-blue-600) 25%, transparent);
+}
+
+@source "./migration.html";

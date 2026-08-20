@@ -1,0 +1,11 @@
+@import "tailwindcss" source(none);
+@import "../src/semanticwind.css";
+
+@theme {
+  --color-blue-400: #7c3aed;
+  --color-blue-500: #7c3aed;
+  --color-blue-600: #7c3aed;
+  --color-blue-700: #7c3aed;
+}
+
+@source inline("m-0 max-w-none rounded-none border-0 bg-blue-600 bg-red-500 px-0 py-0 text-base font-normal text-red-500 no-underline shadow-none");
