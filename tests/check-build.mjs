@@ -35,7 +35,13 @@ assert.match(semanticwindSource, /@layer base\s*{/, 'the default package export 
 assert.match(semanticwindSource, /@media \(max-width: 39\.999rem\)[\s\S]*overflow-x-auto/, 'wide tables must remain usable on small screens');
 assert.match(semanticwindSource, /input\[type='file'\][\s\S]*::file-selector-button[\s\S]*min-h-11/, 'the file picker button must keep the common control target height');
 assert.match(semanticwindSource, /@supports \(appearance: base-select\)\s*{\s*@media \(hover: hover\) and \(pointer: fine\)/, 'custom select styling must preserve native touch and unsupported-browser pickers');
+assert.match(semanticwindSource, /option:is\(:hover, :focus\)/, 'custom select options must keep pointer and keyboard highlights in parity');
 assert.match(semanticwindSource, /form:not\(\[class\]\) > label > :is\(input:not\(\[type='checkbox'\], \[type='radio'\]\), textarea, select\)/, 'classless form flow must not stack checkbox labels or inline label text');
+assert.match(semanticwindSource, /:is\(input, textarea\)\[readonly\][\s\S]*bg-zinc-100/, 'read-only controls must remain distinct without disabled styling');
+assert.match(semanticwindSource, /:is\(menu\)[\s\S]*flex[\s\S]*flex-wrap[\s\S]*gap-2/, 'command menus must receive a minimal wrapping toolbar layout');
+assert.match(semanticwindSource, /:is\(\[role='tooltip'\]\)[\s\S]*bg-zinc-950[\s\S]*text-white/, 'tooltip roles must receive surface styling without behavior');
+assert.match(semanticwindSource, /:is\(dialog\)::backdrop/, 'modal dialogs must retain the strong backdrop');
+assert.doesNotMatch(semanticwindSource, /\[popover\]\)::backdrop|\[popover\]::backdrop/, 'non-modal popovers must not receive the modal dialog backdrop');
 assert.match(semanticwindSource, /:is\(meter\)\s*{\s*appearance: none;[\s\S]*h-1\.5[\s\S]*rounded-\[3px\]/, 'meter must use a thin precision track distinct from progress');
 assert.match(semanticwindSource, /::-webkit-meter-bar\s*{\s*background-image: none;/, 'meter must remove the native WebKit track gradient');
 assert.match(semanticwindSource, /border-inline-end: 2px solid var\(--color-zinc-50\);[\s\S]*border-start-end-radius: 0;[\s\S]*border-end-end-radius: 0;/, 'meter must use a neutral cutout endpoint marker');
@@ -58,6 +64,10 @@ assert.match(gallery, /<td>3 passed<\/td>\s*<td>1\.568 s<\/td>/, 'the gallery ta
 assert.match(gallery, /<input id="confidence-input"[^>]*>[\s\S]*<output id="confidence" for="confidence-input">/, 'the range output must explicitly name its input');
 assert.match(gallery, /<dl>\s*<div>/, 'the gallery must cover grouped description rows');
 assert.match(gallery, /<input value="Uses the default text behavior">/, 'the gallery must cover untyped inputs');
+assert.match(gallery, /<input type="text" value="Focusable and submitted" readonly>/, 'the gallery must cover read-only controls');
+assert.match(gallery, /<menu aria-label="Editor actions">[\s\S]*<button type="button">Copy<\/button>/, 'the gallery must cover native command menus');
+assert.match(gallery, /aria-describedby="gallery-tooltip"[\s\S]*role="tooltip"/, 'the gallery must cover a correctly associated tooltip surface');
+assert.equal(gallery.match(/<details name="gallery-disclosure"/g)?.length, 2, 'the gallery must cover native exclusive disclosure groups');
 for (const element of ['svg', 'iframe', 'embed', 'object']) {
   assert.match(gallery, new RegExp(`<${element}\\b`), `the gallery must cover the ${element} element`);
 }
@@ -77,6 +87,7 @@ assert.doesNotMatch(standalone, /@(?:apply|import)\b/, 'standalone CSS must be f
 assert.match(standalone, /data-sw-motion=off/, 'the standalone build must preserve the motion opt-out');
 assert.match(standalone, /@keyframes semanticwind-progress/, 'the standalone build must include indeterminate progress motion');
 assert.match(standalone, /\[popover\]/, 'the standalone build must cover native popovers');
+assert.match(standalone, /\[role=tooltip\]/, 'the standalone build must cover tooltip surfaces');
 assert.match(standalone, /select:is\(\[multiple\],\[size\]\)/, 'the standalone build must cover multiselect controls');
 assert.match(standalone, /:is\(search\)\{/, 'the standalone build must cover the search landmark');
 assert.doesNotMatch(recipes, /prefers-color-scheme:dark|\[data-theme=dark\]/, 'recipes must remain light-only');

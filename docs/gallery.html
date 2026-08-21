@@ -355,6 +355,11 @@
             Disabled field
             <input type="text" value="Unavailable" disabled>
           </label>
+          <label>
+            Read-only field
+            <input type="text" value="Focusable and submitted" readonly>
+            <small>Read-only values remain focusable and are still submitted.</small>
+          </label>
 
           <fieldset>
             <legend>Notifications</legend>
@@ -412,15 +417,27 @@
           <p>Disclosure, progress, measurement, and dialog use the platform’s behavior.</p>
         </hgroup>
 
-        <details>
+        <details name="gallery-disclosure">
           <summary>Closed disclosure</summary>
           <p>This content appears when the summary is activated.</p>
         </details>
 
-        <details open>
+        <details name="gallery-disclosure" open>
           <summary>Open disclosure</summary>
-          <p>The open state keeps its summary visually connected to the content.</p>
+          <p>The shared name keeps only one disclosure in this group open.</p>
         </details>
+
+        <h3>Command menu</h3>
+        <menu aria-label="Editor actions">
+          <li><button type="button">Copy</button></li>
+          <li><button type="button">Cut</button></li>
+          <li><button type="button">Paste</button></li>
+        </menu>
+
+        <h3>Tooltip surface</h3>
+        <p><button type="button" aria-describedby="gallery-tooltip">Save draft</button></p>
+        <div id="gallery-tooltip" role="tooltip">Saves the current draft.</div>
+        <p><small>The gallery keeps this surface visible; applications own its visibility, position, and dismissal.</small></p>
 
         <p><button type="button" popovertarget="gallery-popover">Open popover</button></p>
         <div id="gallery-popover" popover>
