@@ -69,6 +69,16 @@ Then write ordinary HTML:
 
 The standalone build contains Tailwind Preflight plus Semanticwind's native defaults, but no utility classes or runtime.
 
+### Motion
+
+Semanticwind enables transitions, control feedback, smooth scrolling, and indeterminate progress animation by default. To opt out, set `data-sw-motion="off"` on the root element:
+
+```html
+<html data-sw-motion="off">
+```
+
+The project can then supply its own motion. Semanticwind motion also stays off when the user requests reduced motion.
+
 ## Add Tailwind when you need it
 
 When a local design choice earns a class, replace the standalone stylesheet with a Tailwind CSS entry file:
@@ -144,8 +154,6 @@ npm run dev
 Run `npm run check` to build the demo and compile the documented escape-hatch recipes and Tailwind contract fixture. Open `tests/contract.html`; it must report `PASS` after representative layout, typography, link, control, and theme overrides are computed by the browser.
 
 The contract fixture is intentionally small: it tests the reason this package exists, not every declaration in the stylesheet.
-
-Semanticwind is a private alpha until its standalone-to-Tailwind transition is validated in real projects. Use the repeatable [alpha validation exercise](https://github.com/iketiunn/semanticwind/blob/main/VALIDATION.md) when testing it with target developers.
 
 ## License
 

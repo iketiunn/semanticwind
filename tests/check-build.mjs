@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import { gzipSync } from 'node:zlib';
 
-const [manifestSource, semanticwindSource, landing, gallery, standalone, recipes, contract, semanticwindMigration, picoMigration, semanticwindMigrationSource, picoMigrationSource] = await Promise.all([
+const [manifestSource, semanticwindSource, documentationSource, landing, gallery, standalone, recipes, contract, semanticwindMigration, picoMigration, semanticwindMigrationSource, picoMigrationSource] = await Promise.all([
   readFile('package.json', 'utf8'),
   readFile('src/semanticwind.css', 'utf8'),
+  readFile('docs/app.css', 'utf8'),
   readFile('docs/index.html', 'utf8'),
   readFile('docs/gallery.html', 'utf8'),
   readFile('dist/semanticwind.min.css', 'utf8'),
@@ -18,6 +19,11 @@ const [manifestSource, semanticwindSource, landing, gallery, standalone, recipes
 
 const manifest = JSON.parse(manifestSource);
 const publishedFiles = new Set(manifest.files);
+
+await Promise.all([
+  access('docs/assets/sample-tone.wav'),
+  access('docs/assets/sample-video.mp4'),
+]);
 
 for (const exportPath of Object.values(manifest.exports)) {
   assert.ok(publishedFiles.has(exportPath.replace(/^\.\//, '')), `${exportPath} must be included in the npm package`);
@@ -39,6 +45,23 @@ assert.match(semanticwindSource, /::-webkit-meter-suboptimum-value[\s\S]*var\(--
 assert.match(semanticwindSource, /::-webkit-meter-even-less-good-value[\s\S]*var\(--color-red-500\)/, 'meter must preserve semantic poor coloring');
 assert.match(semanticwindSource, /color-scheme:\s*light;/, 'Semanticwind must remain light-only');
 assert.doesNotMatch(semanticwindSource, /\bdark:|light-dark\(/, 'Semanticwind must not ship dark-theme styling');
+assert.match(semanticwindSource, /@media \(prefers-reduced-motion: no-preference\)[\s\S]*:where\(html:not\(\[data-sw-motion='off'\]\)\)[\s\S]*scroll-behavior: smooth;/, 'Semanticwind motion must run by default unless the root opts out or requests reduced motion');
+assert.match(semanticwindSource, /data-sw-motion='off'[\s\S]*input\[type='checkbox'\][\s\S]*input\[type='radio'\][\s\S]*active:scale-90/, 'default motion must cover native choice control presses');
+assert.match(semanticwindSource, /data-sw-motion='off'[\s\S]*input\[type='file'\][\s\S]*::file-selector-button[\s\S]*transition-colors/, 'default motion must cover the file picker button');
+assert.match(semanticwindSource, /progress:indeterminate[\s\S]*animation: semanticwind-progress 1\.5s linear infinite;/, 'default motion must animate indeterminate progress at the restrained pace');
+assert.doesNotMatch(semanticwindSource, /prefers-reduced-motion: reduce|animation-duration: 0\.01ms/, 'Semanticwind must not globally override application-owned motion');
+assert.match(landing, /<html lang="en">/, 'the landing page must demonstrate default motion');
+assert.match(gallery, /<html lang="en">[\s\S]*<progress id="gallery-progress-indeterminate">/, 'the gallery must demonstrate default motion and indeterminate progress');
+assert.match(documentationSource, /:where\(:root:not\(\[data-sw-motion='off'\]\)\) \.copy-label/, 'documentation-only motion must use the same opt-out');
+assert.match(gallery, /<audio controls>[\s\S]*sample-tone\.wav[\s\S]*<video controls[\s\S]*sample-video\.mp4/, 'the gallery media controls must have playable local sources');
+assert.match(gallery, /<td>3 passed<\/td>\s*<td>1\.568 s<\/td>/, 'the gallery table total must match its three checks');
+assert.match(gallery, /<input id="confidence-input"[^>]*>[\s\S]*<output id="confidence" for="confidence-input">/, 'the range output must explicitly name its input');
+assert.match(gallery, /<dl>\s*<div>/, 'the gallery must cover grouped description rows');
+assert.match(gallery, /<input value="Uses the default text behavior">/, 'the gallery must cover untyped inputs');
+for (const element of ['svg', 'iframe', 'embed', 'object']) {
+  assert.match(gallery, new RegExp(`<${element}\\b`), `the gallery must cover the ${element} element`);
+}
+assert.equal(gallery.match(/<meter\b/g)?.length, 3, 'the gallery must demonstrate all three meter states');
 assert.match(landing, /cdn\.jsdelivr\.net\/npm\/semanticwind@0\.1\.0\/dist\/semanticwind\.min\.css/, 'the landing page must show the planned pinned CDN path');
 assert.equal(landing.match(/class="copy-block"/g)?.length, 2, 'both install snippets must have copy controls');
 assert.equal(landing.match(/class="copy-label"/g)?.length, 2, 'both install snippets must use native copy buttons');
@@ -51,6 +74,8 @@ assert.doesNotMatch(landing, /copy\.js|data-copy|role="button"/, 'copy controls 
 assert.doesNotMatch(landing, /data-theme-toggle/, 'the landing page must remain light-only');
 assert.doesNotMatch(gallery, /data-theme-toggle/, 'the gallery must remain light-only');
 assert.doesNotMatch(standalone, /@(?:apply|import)\b/, 'standalone CSS must be fully compiled');
+assert.match(standalone, /data-sw-motion=off/, 'the standalone build must preserve the motion opt-out');
+assert.match(standalone, /@keyframes semanticwind-progress/, 'the standalone build must include indeterminate progress motion');
 assert.match(standalone, /\[popover\]/, 'the standalone build must cover native popovers');
 assert.match(standalone, /select:is\(\[multiple\],\[size\]\)/, 'the standalone build must cover multiselect controls');
 assert.match(standalone, /:is\(search\)\{/, 'the standalone build must cover the search landmark');

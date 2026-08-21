@@ -9,7 +9,6 @@
 @layer base {
   :is(html) {
     color-scheme: light;
-    scroll-behavior: smooth;
   }
 
   :is(body) {
@@ -124,7 +123,7 @@
   }
 
   :is(a) {
-    @apply text-blue-600 underline decoration-blue-600/40 underline-offset-3 transition-colors hover:text-blue-700 hover:decoration-current focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500;
+    @apply text-blue-600 underline decoration-blue-600/40 underline-offset-3 hover:text-blue-700 hover:decoration-current focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500;
   }
 
   :is(a[aria-current='page']) {
@@ -316,7 +315,7 @@
   }
 
   :is(tbody tr) {
-    @apply transition-colors hover:bg-blue-50/60;
+    @apply hover:bg-blue-50/60;
   }
 
   :is(tfoot) {
@@ -377,7 +376,7 @@
       select
     ) {
     font-family: inherit;
-    @apply min-h-11 max-w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-sm text-zinc-950 shadow-xs outline-none transition-[border-color,box-shadow,background-color] placeholder:text-zinc-400 hover:border-zinc-400 focus-visible:border-blue-500 focus-visible:ring-3 focus-visible:ring-blue-500/20 disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:opacity-60;
+    @apply min-h-11 max-w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-sm text-zinc-950 shadow-xs outline-none placeholder:text-zinc-400 hover:border-zinc-400 focus-visible:border-blue-500 focus-visible:ring-3 focus-visible:ring-blue-500/20 disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:opacity-60;
   }
 
   :is(textarea) {
@@ -453,7 +452,7 @@
 
   :is(button, input[type='button'], input[type='submit'], input[type='reset']) {
     font-family: inherit;
-    @apply inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl border border-blue-600 bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-[background-color,border-color,box-shadow,transform] hover:border-blue-700 hover:bg-blue-700 hover:shadow-md active:translate-y-px active:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none;
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl border border-blue-600 bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-blue-700 hover:bg-blue-700 hover:shadow-md active:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none;
   }
 
   :is(input, textarea, select)[aria-invalid='true'],
@@ -520,7 +519,7 @@
   /* Native interactive elements */
 
   :is(details) {
-    @apply mb-4 max-w-3xl rounded-xl border border-zinc-200 bg-white px-4 py-3 shadow-xs transition-colors open:bg-zinc-50;
+    @apply mb-4 max-w-3xl rounded-xl border border-zinc-200 bg-white px-4 py-3 shadow-xs open:bg-zinc-50;
   }
 
   :is(summary) {
@@ -597,14 +596,69 @@
     background-color: var(--color-red-500);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    :is(*),
-    :is(*)::before,
-    :is(*)::after {
-      scroll-behavior: auto !important;
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
+  @media (prefers-reduced-motion: no-preference) {
+    :where(html:not([data-sw-motion='off'])) {
+      scroll-behavior: smooth;
+    }
+
+    :where(:root:not([data-sw-motion='off'])) :is(a, tbody tr, details),
+    :where(:root:not([data-sw-motion='off'])) :is(input[type='file'])::file-selector-button {
+      @apply transition-colors;
+    }
+
+    :where(:root:not([data-sw-motion='off']))
+      :is(
+        input:not([type]),
+        input[type='text'],
+        input[type='email'],
+        input[type='password'],
+        input[type='search'],
+        input[type='tel'],
+        input[type='url'],
+        input[type='number'],
+        input[type='date'],
+        input[type='datetime-local'],
+        input[type='month'],
+        input[type='week'],
+        input[type='time'],
+        textarea,
+        select
+      ) {
+      @apply transition-[border-color,box-shadow,background-color];
+    }
+
+    :where(:root:not([data-sw-motion='off'])) :is(input[type='checkbox'], input[type='radio']):enabled {
+      @apply transition-transform active:scale-90;
+    }
+
+    :where(:root:not([data-sw-motion='off'])) :is(button, input[type='button'], input[type='submit'], input[type='reset']) {
+      @apply transition-[background-color,border-color,box-shadow,translate] active:translate-y-px;
+    }
+
+    :where(:root:not([data-sw-motion='off'])) :is(progress:indeterminate) {
+      background-color: var(--color-zinc-200);
+      background-image: linear-gradient(
+        to right,
+        transparent 30%,
+        var(--color-blue-600) 30% 60%,
+        transparent 60%
+      );
+      background-position: 200% 0;
+      background-repeat: no-repeat;
+      background-size: 150% 100%;
+      animation: semanticwind-progress 1.5s linear infinite;
+    }
+
+    :where(:root:not([data-sw-motion='off'])) :is(progress:indeterminate)::-webkit-progress-bar,
+    :where(:root:not([data-sw-motion='off'])) :is(progress:indeterminate)::-webkit-progress-value,
+    :where(:root:not([data-sw-motion='off'])) :is(progress:indeterminate)::-moz-progress-bar {
+      background-color: transparent;
+    }
+
+    @keyframes semanticwind-progress {
+      to {
+        background-position: -200% 0;
+      }
     }
   }
 }

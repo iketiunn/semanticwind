@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="A classless gallery of the native HTML elements styled by Semanticwind."
+      content="A gallery of the native HTML elements styled by Semanticwind."
     >
     <meta name="color-scheme" content="light">
     <title>Native element gallery — Semanticwind</title>
@@ -15,20 +15,21 @@
     <link rel="stylesheet" href="./assets/site.css?v=gallery">
   </head>
   <body>
-    <header>
-      <nav aria-label="Documentation">
-        <p>
-          <a href="./index.html"><strong>Semanticwind</strong></a> ·
-          <a href="./gallery.html" aria-current="page">Native gallery</a> ·
-          <a href="https://github.com/iketiunn/semanticwind">GitHub ↗</a>
-        </p>
+    <header class="site-header">
+      <nav class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3" aria-label="Primary navigation">
+        <a class="site-wordmark font-semibold text-inherit no-underline" href="./index.html">Semanticwind</a>
+        <ul class="m-0 flex list-none flex-wrap items-center gap-5 p-0 text-sm">
+          <li class="m-0"><a class="text-inherit" href="./index.html#start">Install</a></li>
+          <li class="m-0"><a class="text-inherit" href="./gallery.html" aria-current="page">Gallery</a></li>
+          <li class="m-0"><a class="text-inherit" href="https://github.com/iketiunn/semanticwind">GitHub</a></li>
+        </ul>
       </nav>
     </header>
 
     <main>
       <hgroup>
         <h1>Native element gallery</h1>
-        <p>Real semantic HTML with no utility or component classes.</p>
+        <p>Real semantic HTML examples with no utility or component classes.</p>
       </hgroup>
 
       <aside>
@@ -139,10 +140,14 @@
 
         <h3>Description list</h3>
         <dl>
-          <dt>Baseline</dt>
-          <dd>Broadly useful native defaults.</dd>
-          <dt>Escape hatch</dt>
-          <dd>Tailwind utilities and explicit components.</dd>
+          <div>
+            <dt>Baseline</dt>
+            <dd>Broadly useful native defaults.</dd>
+          </div>
+          <div>
+            <dt>Escape hatch</dt>
+            <dd>Tailwind utilities and explicit components.</dd>
+          </div>
         </dl>
       </section>
 
@@ -174,6 +179,7 @@
 
         <figure>
           <picture>
+            <source media="(max-width: 30rem)" srcset="./assets/icon-192.png">
             <img src="./assets/icon-512.png" width="256" height="256" alt="Semanticwind’s blue HTML-and-wind mark">
           </picture>
           <figcaption>The Semanticwind project icon inside a native figure.</figcaption>
@@ -181,11 +187,13 @@
 
         <h3>Audio</h3>
         <audio controls>
+          <source src="./assets/sample-tone.wav" type="audio/wav">
           Your browser does not support the audio element.
         </audio>
 
         <h3>Video</h3>
         <video controls width="480" height="270" poster="./assets/icon-512.png">
+          <source src="./assets/sample-video.mp4" type="video/mp4">
           Your browser does not support the video element.
         </video>
 
@@ -193,6 +201,30 @@
         <canvas id="gallery-canvas" width="640" height="160">
           A blue gradient canvas sample.
         </canvas>
+
+        <h3>Scalable and embedded media</h3>
+        <figure>
+          <svg viewBox="0 0 320 120" width="320" height="120" role="img" aria-labelledby="gallery-svg-title">
+            <title id="gallery-svg-title">A blue circle crossing a horizontal line</title>
+            <line x1="20" y1="60" x2="300" y2="60" stroke="#93c5fd" stroke-width="8"></line>
+            <circle cx="160" cy="60" r="42" fill="#2563eb"></circle>
+          </svg>
+          <figcaption>An inline SVG remains responsive.</figcaption>
+        </figure>
+        <figure>
+          <iframe title="Embedded document sample" srcdoc="<p>Embedded document</p>" width="320" height="120"></iframe>
+          <figcaption>A native inline frame.</figcaption>
+        </figure>
+        <figure>
+          <embed src="./assets/icon-192.png" type="image/png" width="160" height="160" title="Embedded Semanticwind icon">
+          <figcaption>A native embedded resource.</figcaption>
+        </figure>
+        <figure>
+          <object data="./assets/icon-192.png" type="image/png" width="160" height="160" title="Semanticwind icon object">
+            Semanticwind icon object.
+          </object>
+          <figcaption>A native object with fallback content.</figcaption>
+        </figure>
 
       </section>
 
@@ -231,8 +263,8 @@
           <tfoot>
             <tr>
               <th scope="row">Total</th>
-              <td>2 passed</td>
-              <td>1.25 s</td>
+              <td>3 passed</td>
+              <td>1.568 s</td>
             </tr>
           </tfoot>
         </table>
@@ -247,8 +279,8 @@
         <form>
           <search>
             <label>
-              Search this MVP
-              <input type="search" placeholder="Search projects" list="project-suggestions">
+              Search this gallery
+              <input type="search" placeholder="Search native elements" list="project-suggestions">
             </label>
             <datalist id="project-suggestions">
               <option value="Customer portal"></option>
@@ -256,6 +288,10 @@
               <option value="Waitlist"></option>
             </datalist>
           </search>
+          <label>
+            Untyped input
+            <input value="Uses the default text behavior">
+          </label>
           <label>
             Text
             <input type="text" value="Semanticwind">
@@ -353,8 +389,8 @@
           </label>
           <label>
             Confidence
-            <input type="range" min="0" max="100" value="72" oninput="confidence.value = this.value">
-            <output id="confidence">72</output>
+            <input id="confidence-input" type="range" min="0" max="100" value="72" oninput="this.nextElementSibling.value = this.value">
+            <output id="confidence" for="confidence-input">72</output>
           </label>
 
           <p>
@@ -396,8 +432,17 @@
         <label for="gallery-progress">Build progress</label>
         <progress id="gallery-progress" value="72" max="100">72%</progress>
 
-        <label for="gallery-meter">Quality score · 86 / 100</label>
-        <meter id="gallery-meter" min="0" max="100" low="40" high="80" optimum="90" value="86">86%</meter>
+        <label for="gallery-progress-indeterminate">Checking dependencies</label>
+        <progress id="gallery-progress-indeterminate">Checking dependencies…</progress>
+
+        <label for="gallery-meter-optimum">Quality score · 86 / 100</label>
+        <meter id="gallery-meter-optimum" min="0" max="100" low="40" high="80" optimum="90" value="86">86%</meter>
+
+        <label for="gallery-meter-suboptimum">Review score · 62 / 100</label>
+        <meter id="gallery-meter-suboptimum" min="0" max="100" low="40" high="80" optimum="90" value="62">62%</meter>
+
+        <label for="gallery-meter-poor">Coverage score · 28 / 100</label>
+        <meter id="gallery-meter-poor" min="0" max="100" low="40" high="80" optimum="90" value="28">28%</meter>
 
         <p><button type="button" onclick="document.querySelector('#gallery-dialog').showModal()">Open dialog</button></p>
         <dialog id="gallery-dialog">
