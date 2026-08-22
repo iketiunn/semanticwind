@@ -550,10 +550,6 @@
     @apply bg-black/55 backdrop-blur-[2px];
   }
 
-  :is([role='tooltip']) {
-    @apply max-w-xs rounded-lg bg-zinc-950 px-2.5 py-1.5 text-sm text-white shadow-lg;
-  }
-
   :is(progress) {
     appearance: none;
     @apply h-3 w-full max-w-full overflow-hidden rounded-full border-0 bg-zinc-200 align-middle shadow-inner;

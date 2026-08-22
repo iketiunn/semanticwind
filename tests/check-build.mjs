@@ -2,7 +2,20 @@ import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
 import { gzipSync } from 'node:zlib';
 
-const [manifestSource, semanticwindSource, documentationSource, landing, gallery, standalone, recipes, contract, semanticwindMigration, picoMigration, semanticwindMigrationSource, picoMigrationSource] = await Promise.all([
+const [
+  manifestSource,
+  semanticwindSource,
+  documentationSource,
+  landing,
+  gallery,
+  standalone,
+  recipes,
+  contract,
+  semanticwindMigration,
+  picoMigration,
+  semanticwindMigrationSource,
+  picoMigrationSource,
+] = await Promise.all([
   readFile('package.json', 'utf8'),
   readFile('src/semanticwind.css', 'utf8'),
   readFile('docs/app.css', 'utf8'),
@@ -39,7 +52,7 @@ assert.match(semanticwindSource, /option:is\(:hover, :focus\)/, 'custom select o
 assert.match(semanticwindSource, /form:not\(\[class\]\) > label > :is\(input:not\(\[type='checkbox'\], \[type='radio'\]\), textarea, select\)/, 'classless form flow must not stack checkbox labels or inline label text');
 assert.match(semanticwindSource, /:is\(input, textarea\)\[readonly\][\s\S]*bg-zinc-100/, 'read-only controls must remain distinct without disabled styling');
 assert.match(semanticwindSource, /:is\(menu\)[\s\S]*flex[\s\S]*flex-wrap[\s\S]*gap-2/, 'command menus must receive a minimal wrapping toolbar layout');
-assert.match(semanticwindSource, /:is\(\[role='tooltip'\]\)[\s\S]*bg-zinc-950[\s\S]*text-white/, 'tooltip roles must receive surface styling without behavior');
+assert.doesNotMatch(semanticwindSource, /\[role='tooltip'\]/, 'tooltip roles must remain application-owned behavior and styling');
 assert.match(semanticwindSource, /:is\(dialog\)::backdrop/, 'modal dialogs must retain the strong backdrop');
 assert.doesNotMatch(semanticwindSource, /\[popover\]\)::backdrop|\[popover\]::backdrop/, 'non-modal popovers must not receive the modal dialog backdrop');
 assert.match(semanticwindSource, /:is\(meter\)\s*{\s*appearance: none;[\s\S]*h-1\.5[\s\S]*rounded-\[3px\]/, 'meter must use a thin precision track distinct from progress');
@@ -59,17 +72,32 @@ assert.doesNotMatch(semanticwindSource, /prefers-reduced-motion: reduce|animatio
 assert.match(landing, /<html lang="en">/, 'the landing page must demonstrate default motion');
 assert.match(gallery, /<html lang="en">[\s\S]*<progress id="gallery-progress-indeterminate">/, 'the gallery must demonstrate default motion and indeterminate progress');
 assert.match(documentationSource, /:where\(:root:not\(\[data-sw-motion='off'\]\)\) \.copy-label/, 'documentation-only motion must use the same opt-out');
+assert.match(documentationSource, /\.gallery-reference[\s\S]*\.gallery-outline[\s\S]*position: sticky/, 'the gallery guide must style its sticky contents outline');
+assert.match(documentationSource, /\.gallery-appendix/, 'the gallery guide must style its native appendices');
+assert.doesNotMatch(documentationSource, /\.gallery-toc/, 'the gallery guide must not restore the long sticky contents rail');
+assert.doesNotMatch(documentationSource, /\.gallery-chapter-card|\.gallery-chapter-nav/, 'the gallery guide must not restore cards or repeated previous-next bars');
+assert.equal(gallery.match(/class="gallery-outline"/g)?.length, 1, 'the gallery must use one in-page outline');
+assert.equal(gallery.match(/aria-current="location"/g)?.length, 1, 'the outline must identify its initial section');
+for (const section of ['text', 'media', 'forms', 'interaction']) {
+  assert.match(gallery, new RegExp(`href="#${section}"`), `the outline must link to the ${section} section`);
+  assert.match(gallery, new RegExp(`<section id="${section}"`), `the gallery must contain the ${section} section`);
+}
+assert.match(gallery, /IntersectionObserver[\s\S]*aria-current/, 'the outline must track the section currently in view');
 assert.match(gallery, /<audio controls>[\s\S]*sample-tone\.wav[\s\S]*<video controls[\s\S]*sample-video\.mp4/, 'the gallery media controls must have playable local sources');
 assert.match(gallery, /<td>3 passed<\/td>\s*<td>1\.568 s<\/td>/, 'the gallery table total must match its three checks');
 assert.match(gallery, /<input id="confidence-input"[^>]*>[\s\S]*<output id="confidence" for="confidence-input">/, 'the range output must explicitly name its input');
 assert.match(gallery, /<dl>\s*<div>/, 'the gallery must cover grouped description rows');
 assert.match(gallery, /<input value="Uses the default text behavior">/, 'the gallery must cover untyped inputs');
 assert.match(gallery, /<input type="text" value="Focusable and submitted" readonly>/, 'the gallery must cover read-only controls');
+assert.match(gallery, /<summary>View read-only markup<\/summary>/, 'the gallery must teach the read-only pattern');
 assert.match(gallery, /<menu aria-label="Editor actions">[\s\S]*<button type="button">Copy<\/button>/, 'the gallery must cover native command menus');
-assert.match(gallery, /aria-describedby="gallery-tooltip"[\s\S]*role="tooltip"/, 'the gallery must cover a correctly associated tooltip surface');
+assert.match(gallery, /<span title="Ready to publish after the final review\.">ⓘ<\/span>/, 'the gallery must teach the native title option');
 assert.equal(gallery.match(/<details name="gallery-disclosure"/g)?.length, 2, 'the gallery must cover native exclusive disclosure groups');
+for (const pattern of ['disclosure', 'title', 'popover', 'progress and meter', 'dialog']) {
+  assert.match(gallery, new RegExp(`<summary>View ${pattern} markup<\\/summary>`), `the gallery must teach the ${pattern} pattern`);
+}
 for (const element of ['svg', 'iframe', 'embed', 'object']) {
-  assert.match(gallery, new RegExp(`<${element}\\b`), `the gallery must cover the ${element} element`);
+  assert.match(gallery, new RegExp(`<${element}\\b`), `the media appendix must cover the ${element} element`);
 }
 assert.equal(gallery.match(/<meter\b/g)?.length, 3, 'the gallery must demonstrate all three meter states');
 assert.match(landing, /cdn\.jsdelivr\.net\/npm\/semanticwind@0\.1\.0\/dist\/semanticwind\.min\.css/, 'the landing page must show the planned pinned CDN path');
@@ -82,12 +110,14 @@ assert.equal(landing.match(/'Copy failed'/g)?.length, 2, 'both copy buttons must
 assert.equal(landing.match(/setTimeout\(/g)?.length, 2, 'both copy labels must reset');
 assert.doesNotMatch(landing, /copy\.js|data-copy|role="button"/, 'copy controls must not depend on an external script or simulated buttons');
 assert.doesNotMatch(landing, /data-theme-toggle/, 'the landing page must remain light-only');
+assert.match(gallery, /<html lang="en">/, 'the gallery must retain its document language');
 assert.doesNotMatch(gallery, /data-theme-toggle/, 'the gallery must remain light-only');
+assert.doesNotMatch(gallery, /role="tooltip"/, 'the gallery must not imply that Semanticwind provides tooltip behavior');
 assert.doesNotMatch(standalone, /@(?:apply|import)\b/, 'standalone CSS must be fully compiled');
 assert.match(standalone, /data-sw-motion=off/, 'the standalone build must preserve the motion opt-out');
 assert.match(standalone, /@keyframes semanticwind-progress/, 'the standalone build must include indeterminate progress motion');
 assert.match(standalone, /\[popover\]/, 'the standalone build must cover native popovers');
-assert.match(standalone, /\[role=tooltip\]/, 'the standalone build must cover tooltip surfaces');
+assert.doesNotMatch(standalone, /\[role=tooltip\]/, 'the standalone build must leave tooltip components to applications');
 assert.match(standalone, /select:is\(\[multiple\],\[size\]\)/, 'the standalone build must cover multiselect controls');
 assert.match(standalone, /:is\(search\)\{/, 'the standalone build must cover the search landmark');
 assert.doesNotMatch(recipes, /prefers-color-scheme:dark|\[data-theme=dark\]/, 'recipes must remain light-only');

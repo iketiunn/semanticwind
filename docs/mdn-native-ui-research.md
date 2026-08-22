@@ -47,21 +47,7 @@ Candidate:
 
 Source: [MDN: `<menu>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/menu)
 
-### 3. Skin `[role="tooltip"]`, but do not implement a tooltip
-
-MDN requires the owning element to reference the tooltip with
-`aria-describedby`; the tooltip must respond to hover and focus, remain open
-when hovered, close on `Escape`, and contain no interactive content. Those are
-behavior and positioning responsibilities, not base CSS. Semanticwind can only
-provide a readable surface when the application shows it.
-
-Candidate scope: dark background, light text, small type, padding, radius,
-shadow, and a modest max-width. Do **not** set `display`, `visibility`,
-`position`, coordinates, delay, arrow geometry, or transitions.
-
-Source: [MDN: ARIA `tooltip` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tooltip_role)
-
-### 4. Reserve the strong backdrop for modal dialogs
+### 3. Reserve the strong backdrop for modal dialogs
 
 The current combined `:is(dialog, [popover])::backdrop` rule dims and blurs the
 page for every popover. MDN describes popovers as top-layer, light-dismissible
@@ -80,7 +66,7 @@ Candidate:
 
 Sources: [MDN: `<dialog>` styling and modality](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog), [MDN: Using the Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using)
 
-### 5. Add keyboard focus parity to the existing select enhancement
+### 4. Add keyboard focus parity to the existing select enhancement
 
 The existing guarded `appearance: base-select` block styles `option:hover` but
 not `option:focus`. MDN's customizable-select example applies the same visual
@@ -99,6 +85,12 @@ Source: [MDN: Customizable select elements](https://developer.mozilla.org/en-US/
 
 ## Watch
 
+- **`title`: document it, but add no CSS.** The global attribute provides a
+  browser-owned native tooltip for advisory information. It is widely
+  supported and useful for optional hints, but its appearance cannot be styled
+  and access is inconsistent for touch, keyboard, and assistive technology.
+  Keep important information visible in the page.
+  [MDN: `title`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/title)
 - **`details[name]`: use it, but add no CSS.** MDN documents native exclusive
   disclosure groups without scripting. The current `details` styling already
   works for the group; this is a gallery/documentation tip, not a stylesheet
@@ -150,16 +142,15 @@ Source: [MDN: Customizable select elements](https://developer.mozilla.org/en-US/
 - **`<datalist>` popups, date/color pickers, and range internals.** There is no
   portable complete styling surface across the documented floor. Keep the
   current outer-control treatment and native internals.
-- **More ARIA-role skins.** Tooltip is the narrow exception already discussed.
-  Tabs, menus, alerts, toasts, comboboxes, and similar roles imply behavior and
-  product composition, so they belong in the component layer.
+- **ARIA-role skins.** Tooltips, tabs, menus, alerts, toasts, comboboxes, and
+  similar roles imply behavior and product composition, so they belong in the
+  component layer.
 
 ## Recommended order
 
 1. Read-only state.
 2. `<menu>` reset and wrapping command row.
-3. Tooltip surface only.
-4. Split modal dialog and popover backdrops.
-5. Add `option:focus` beside the existing `option:hover` rule.
+3. Split modal dialog and popover backdrops.
+4. Add `option:focus` beside the existing `option:hover` rule.
 
 Then stop until a gallery specimen exposes another native rendering problem.

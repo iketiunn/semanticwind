@@ -2,6 +2,7 @@
 @import "../src/semanticwind.css";
 
 @source "./index.html";
+@source "./gallery.html";
 
 @layer base {
   :root {
@@ -218,6 +219,230 @@
 
   .site-footer {
     border-top-color: color-mix(in oklab, var(--site-ink) 16%, transparent);
+  }
+
+  .gallery-intro {
+    margin-bottom: 0;
+    padding-block: clamp(2.5rem, 7vw, 5rem) 2rem;
+  }
+
+  .gallery-intro > aside {
+    margin-bottom: 0;
+  }
+
+  .gallery-eyebrow {
+    margin-bottom: 0.75rem;
+    color: var(--color-blue-700);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .gallery-content {
+    min-width: 0;
+  }
+
+  .gallery-outline {
+    min-width: 0;
+    margin-bottom: 2rem;
+  }
+
+  .gallery-outline ol {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.25rem 1rem;
+    margin: 0;
+    border-inline-start: 1px solid color-mix(in oklab, var(--site-ink) 18%, transparent);
+    padding: 0;
+    padding-inline-start: 0.75rem;
+    list-style: none;
+  }
+
+  .gallery-outline li {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .gallery-outline a {
+    display: block;
+    position: relative;
+    padding: 0.25rem 0;
+    color: var(--color-zinc-600);
+    text-decoration: none;
+  }
+
+  .gallery-outline a:hover,
+  .gallery-outline a[aria-current='location'] {
+    color: var(--color-blue-700);
+  }
+
+  .gallery-section {
+    margin-bottom: clamp(3.5rem, 8vw, 6rem);
+    border-top: 1px solid color-mix(in oklab, var(--site-ink) 16%, transparent);
+    padding-top: 2rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .gallery-section:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .gallery-section > hgroup {
+    max-width: none;
+    margin-bottom: clamp(2rem, 5vw, 3rem);
+    border-bottom: 1px solid color-mix(in oklab, var(--site-ink) 16%, transparent);
+    padding-bottom: 1rem;
+  }
+
+  .gallery-heading-stack,
+  .gallery-demo {
+    border: 1px solid var(--color-zinc-200);
+    border-radius: var(--radius-xl);
+    background: var(--color-white);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-xs);
+  }
+
+  .gallery-heading-stack > :first-child,
+  .gallery-demo > :first-child {
+    margin-top: 0;
+  }
+
+  .gallery-heading-stack > :last-child,
+  .gallery-demo > :last-child {
+    margin-bottom: 0;
+  }
+
+  #forms > form > fieldset {
+    margin-bottom: 1.5rem;
+  }
+
+  .gallery-field-grid,
+  .gallery-demo-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .gallery-field-grid > label {
+    margin: 0;
+  }
+
+  .gallery-field-grid > label > :is(input, textarea, select) {
+    display: block;
+    margin-top: 0.375rem;
+  }
+
+  .gallery-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+  }
+
+  .gallery-demo {
+    min-width: 0;
+  }
+
+  .gallery-demo :is(details, menu) {
+    margin-bottom: 0.75rem;
+  }
+
+  .gallery-source {
+    min-width: 0;
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+
+  .gallery-source pre {
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+
+  .gallery-appendix {
+    min-width: 0;
+    max-width: 100%;
+    margin-block: 2rem 4rem;
+  }
+
+  .gallery-page fieldset {
+    min-width: 0;
+  }
+
+  .gallery-appendix > summary {
+    font-size: var(--text-xl);
+    font-weight: 600;
+  }
+
+  .gallery-appendix > :last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .gallery-section > hgroup {
+      display: grid;
+      grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: end;
+    }
+
+    .gallery-section > hgroup > * {
+      margin-bottom: 0;
+    }
+
+    .gallery-field-grid,
+    .gallery-demo-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-demo-wide {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .gallery-reference {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(10rem, 0.26fr);
+      column-gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+    }
+
+    .gallery-reference > .gallery-intro {
+      grid-column: 1 / -1;
+    }
+
+    .gallery-outline {
+      grid-column: 2;
+      grid-row: 2;
+      position: sticky;
+      top: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    .gallery-outline ol {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+      border-inline-start: 0;
+      border-inline-end: 1px solid color-mix(in oklab, var(--site-ink) 18%, transparent);
+      padding-inline: 0 0.75rem;
+    }
+
+    .gallery-content {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .gallery-outline a[aria-current='location']::after {
+      position: absolute;
+      inset-block: 0.25rem;
+      inset-inline-end: -0.8125rem;
+      width: 2px;
+      background: var(--color-blue-700);
+      content: '';
+    }
   }
 
   @media (min-width: 40rem) and (max-width: 63.999rem) {
