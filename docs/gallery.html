@@ -5,315 +5,386 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A practical reference to the native HTML elements styled by Semanticwind.">
     <meta name="color-scheme" content="light">
-    <title>Native HTML reference — Semanticwind</title>
+    <title>Semanticwind reference</title>
     <link rel="icon" href="./assets/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="192x192" href="./assets/icon-192.png">
     <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
-    <link rel="stylesheet" href="./assets/site.css?v=outline-2">
+    <link rel="stylesheet" href="./assets/site.css?v=reference-1">
   </head>
-  <body class="gallery-page">
+  <body class="reference-page">
     <header class="site-header">
       <nav class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3" aria-label="Primary navigation">
         <a class="site-wordmark font-semibold text-inherit no-underline" href="./index.html">Semanticwind</a>
         <ul class="m-0 flex list-none flex-wrap items-center gap-5 p-0 text-sm">
           <li class="m-0"><a class="text-inherit" href="./index.html#start">Install</a></li>
-          <li class="m-0"><a class="text-inherit" href="./gallery.html" aria-current="page">Gallery</a></li>
+          <li class="m-0"><a class="text-inherit" href="./gallery.html" aria-current="page">Reference</a></li>
           <li class="m-0"><a class="text-inherit" href="https://github.com/iketiunn/semanticwind">GitHub</a></li>
         </ul>
       </nav>
     </header>
 
-    <main class="gallery-reference">
-      <header class="gallery-intro">
-        <p class="gallery-eyebrow">Native reference</p>
-        <hgroup>
-          <h1>The native HTML gallery</h1>
-          <p>Real elements, grouped by what you are trying to style.</p>
-        </hgroup>
-        <aside>
-          <p>Semanticwind supplies the baseline; the browser keeps the behavior.</p>
-        </aside>
+    <main class="reference-layout">
+      <header class="reference-intro">
+        <h1>Semanticwind reference</h1>
+        <p>A style reference, guidance for choosing the right element, and browser-native alternatives to common components.</p>
       </header>
 
-      <nav class="gallery-outline" aria-label="On this page">
-        <p class="gallery-eyebrow">Contents</p>
+      <details class="reference-mobile-outline">
+        <summary>Contents</summary>
+        <nav class="reference-outline" aria-label="Mobile contents" data-reference-outline>
+          <ol>
+            <li data-outline-topic="styled-elements" data-active>
+              <a href="#styled-elements" aria-current="location">Element reference</a>
+              <ol>
+                <li><a href="#text-and-structure">Text and structure</a></li>
+                <li><a href="#tables">Tables</a></li>
+                <li><a href="#forms">Forms</a></li>
+                <li><a href="#interactive-elements">Interactive elements</a></li>
+              </ol>
+            </li>
+            <li data-outline-topic="best-practice-patterns">
+              <a href="#best-practice-patterns">Use the right element</a>
+              <ol>
+                <li><a href="#standalone-content">Structure content</a></li>
+                <li><a href="#caption-content">Caption content</a></li>
+                <li><a href="#describe-values">Describe values</a></li>
+                <li><a href="#group-controls">Group controls</a></li>
+                <li><a href="#field-states">Choose field states</a></li>
+                <li><a href="#progress-or-meter">Progress or meter</a></li>
+              </ol>
+            </li>
+            <li data-outline-topic="native-before-custom">
+              <a href="#native-before-custom">Extra: Browser-native first</a>
+              <ol>
+                <li><a href="#inline-help">Inline help</a></li>
+                <li><a href="#exclusive-disclosure">FAQ accordion</a></li>
+                <li><a href="#native-popover">Optional help</a></li>
+                <li><a href="#native-dialog">Publish confirmation</a></li>
+                <li><a href="#specialized-inputs">Native form controls</a></li>
+                <li><a href="#native-suggestions">Project suggestions</a></li>
+              </ol>
+            </li>
+          </ol>
+        </nav>
+      </details>
+
+      <nav class="reference-outline reference-desktop-outline" aria-label="On this page" data-reference-outline>
+        <p class="reference-outline-title">Contents</p>
         <ol>
-          <li><a href="#text" aria-current="location">Text and structure</a></li>
-          <li><a href="#media">Media and data</a></li>
-          <li><a href="#forms">Forms</a></li>
-          <li><a href="#interaction">Native interaction</a></li>
+          <li data-outline-topic="styled-elements" data-active>
+            <a href="#styled-elements" aria-current="location">Element reference</a>
+            <ol>
+              <li><a href="#text-and-structure">Text and structure</a></li>
+              <li><a href="#tables">Tables</a></li>
+              <li><a href="#forms">Forms</a></li>
+              <li><a href="#interactive-elements">Interactive elements</a></li>
+            </ol>
+          </li>
+          <li data-outline-topic="best-practice-patterns">
+            <a href="#best-practice-patterns">Use the right element</a>
+            <ol>
+              <li><a href="#standalone-content">Structure content</a></li>
+              <li><a href="#caption-content">Caption content</a></li>
+              <li><a href="#describe-values">Describe values</a></li>
+              <li><a href="#group-controls">Group controls</a></li>
+              <li><a href="#field-states">Choose field states</a></li>
+              <li><a href="#progress-or-meter">Progress or meter</a></li>
+            </ol>
+          </li>
+          <li data-outline-topic="native-before-custom">
+            <a href="#native-before-custom">Extra: Browser-native first</a>
+            <ol>
+              <li><a href="#inline-help">Inline help</a></li>
+              <li><a href="#exclusive-disclosure">FAQ accordion</a></li>
+              <li><a href="#native-popover">Optional help</a></li>
+              <li><a href="#native-dialog">Publish confirmation</a></li>
+              <li><a href="#specialized-inputs">Native form controls</a></li>
+              <li><a href="#native-suggestions">Project suggestions</a></li>
+            </ol>
+          </li>
         </ol>
       </nav>
 
-      <div class="gallery-content">
-        <section id="text" class="gallery-section">
-          <hgroup>
-            <h2>Text and structure</h2>
-            <p>Document rhythm, typography, lists, code, and quotations.</p>
-          </hgroup>
+      <div class="reference-content">
+        <section id="styled-elements" class="reference-topic" data-outline-section data-topic="styled-elements">
+          <header class="reference-topic-header">
+            <h2>Element reference</h2>
+            <p>The native elements where Semanticwind supplies a visible baseline.</p>
+          </header>
+          <p class="reference-scope">The surrounding documentation shell owns its page layout. Specimens below remain classless so their content styling comes from Semanticwind itself.</p>
 
-          <h3>Document structure</h3>
-          <article>
-            <header>
-              <h4>A small article</h4>
-              <p><small>Published <time datetime="2026-08-12">August 12, 2026</time></small></p>
+          <section id="text-and-structure" class="reference-group" data-outline-section data-topic="styled-elements">
+            <header class="reference-group-header">
+              <h3>Text and structure</h3>
+              <p>Document rhythm, typography, lists, code, and quotations.</p>
             </header>
-            <p>An article remains document structure. It does not silently become a card.</p>
-            <footer><small>Filed under semantic HTML.</small></footer>
-          </article>
-          <aside>
-            <h4>Related note</h4>
-            <p>An aside stays visually quiet because its relationship depends on the surrounding document.</p>
-          </aside>
-          <address>Maintained by <a href="https://github.com/iketiunn">Ike Tiunn</a><br>Taipei, Taiwan</address>
 
-          <h3>Typography</h3>
-          <div class="gallery-heading-stack">
-            <h1>Heading level one</h1>
-            <h2>Heading level two</h2>
-            <h3>Heading level three</h3>
-            <h4>Heading level four</h4>
-            <h5>Heading level five</h5>
-            <h6>Heading level six</h6>
-          </div>
-          <p>A paragraph can contain a <a href="#text">link</a>, <strong>strong importance</strong>, <b>visual attention</b>, <em>emphasis</em>, <mark>highlighted text</mark>, and <small>small print</small>.</p>
+            <div id="document-structure" class="reference-entry">
+              <header class="reference-entry-copy">
+                <h4>Document structure</h4>
+                <p class="reference-tags"><code>&lt;article&gt;</code> <code>&lt;aside&gt;</code> <code>&lt;address&gt;</code> <code>&lt;search&gt;</code></p>
+                <p>Structure receives readable rhythm without becoming a product component.</p>
+              </header>
+              <div class="reference-specimen">
+                <article>
+                  <header><h5>A small release note</h5><p><small>Published <time datetime="2026-08-22">August 22, 2026</time></small></p></header>
+                  <p>The browser keeps the document meaning while Semanticwind supplies the baseline.</p>
+                  <footer><small>Filed under semantic HTML.</small></footer>
+                </article>
+                <aside><h5>Related note</h5><p>An aside remains visually quiet and dependent on its surrounding content.</p></aside>
+                <address>Maintained by <a href="https://github.com/iketiunn">Ike Tiunn</a><br>Taipei, Taiwan</address>
+                <search><form onsubmit="return false"><label>Search the reference <input type="search" placeholder="Try dialog"></label><p><button type="submit">Search</button></p></form></search>
+              </div>
+            </div>
 
-          <h3>Lists</h3>
-          <ul>
-            <li>Semantic markup first</li>
-            <li>Utilities for local decisions
-              <ul><li>Layout</li><li>Responsive behavior</li></ul>
-            </li>
-            <li>Components for repeated meaning</li>
-          </ul>
-          <ol>
-            <li>Link Semanticwind.</li>
-            <li>Write ordinary HTML.</li>
-            <li>Add Tailwind when the interface needs it.</li>
-          </ol>
-          <dl>
-            <div><dt>Baseline</dt><dd>Broadly useful native defaults.</dd></div>
-            <div><dt>Escape hatch</dt><dd>Tailwind utilities and explicit components.</dd></div>
-          </dl>
+            <div id="heading-hierarchy" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Heading hierarchy</h4><p class="reference-tags"><code>&lt;hgroup&gt;</code> <code>&lt;h1&gt;</code>–<code>&lt;h6&gt;</code></p><p>Balanced sizes establish hierarchy without requiring utility classes.</p></header>
+              <div class="reference-specimen">
+                <hgroup><h4>Grouped heading</h4><p>A heading and its supporting line.</p></hgroup>
+                <h1>Heading level one</h1><h2>Heading level two</h2><h3>Heading level three</h3><h4>Heading level four</h4><h5>Heading level five</h5><h6>Heading level six</h6>
+              </div>
+            </div>
 
-          <h3>Code and quotations</h3>
-          <p>Run <code>npm run build</code>, press <kbd>⌘</kbd> + <kbd>K</kbd>, and expect <samp>Done in 48ms</samp>. The variable <var>element</var> remains inline.</p>
-          <pre><code>@import "tailwindcss";
+            <div id="text-and-links" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Text and links</h4><p class="reference-tags"><code>&lt;p&gt;</code> <code>&lt;a&gt;</code> <code>&lt;strong&gt;</code> <code>&lt;mark&gt;</code></p><p>Select this text and interact with the links to exercise native states.</p></header>
+              <div class="reference-specimen">
+                <p>A paragraph can contain a <a href="#text-and-links">normal link</a>, an <a href="#text-and-links" aria-current="page">active link</a>, <strong>strong importance</strong>, <b>visual attention</b>, <mark>highlighted text</mark>, and <small>small print</small>.</p>
+                <p><abbr title="HyperText Markup Language">HTML</abbr> can show <del>removed copy</del>, <ins>inserted copy</ins>, H<sub>2</sub>O, x<sup>2</sup>, a <dfn>defined term</dfn>, <data value="0.1.0">version 0.1.0</data>, and <var>element</var>.</p>
+              </div>
+            </div>
+
+            <div id="native-lists" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Lists</h4><p class="reference-tags"><code>&lt;ul&gt;</code> <code>&lt;ol&gt;</code> <code>&lt;dl&gt;</code></p><p>Nested and descriptive lists retain useful spacing and hierarchy.</p></header>
+              <div class="reference-specimen">
+                <ul><li>Semantic markup first</li><li>Utilities for local decisions<ul><li>Layout</li><li>Responsive behavior</li></ul></li><li>Components for repeated product meaning</li></ul>
+                <ol><li>Link Semanticwind.</li><li>Write ordinary HTML.</li><li>Add utilities when needed.</li></ol>
+                <dl><div><dt>Baseline</dt><dd>Broadly useful native defaults.</dd></div><div><dt>Escape hatch</dt><dd>Tailwind utilities and explicit components.</dd></div></dl>
+              </div>
+            </div>
+
+            <div id="code-and-quotations" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Code and quotations</h4><p class="reference-tags"><code>&lt;code&gt;</code> <code>&lt;kbd&gt;</code> <code>&lt;samp&gt;</code> <code>&lt;blockquote&gt;</code></p><p>Inline and block code remain readable without a syntax-highlighting dependency.</p></header>
+              <div class="reference-specimen">
+                <p>Run <code>npm run build</code>, press <kbd>⌘</kbd> + <kbd>K</kbd>, and expect <samp>Done in 48ms</samp>.</p>
+                <pre><code>@import "tailwindcss";
 @import "semanticwind";</code></pre>
-          <blockquote>
-            <p>Would this style make sense for almost every correct use of this element?</p>
-            <cite>Semanticwind’s boundary test</cite>
-          </blockquote>
-
-          <details class="gallery-appendix">
-            <summary>More inline semantics</summary>
-            <p><abbr title="HyperText Markup Language">HTML</abbr> carries meaning. <del>Removed copy</del> can sit beside <ins>inserted copy</ins>, while <s>outdated information</s> remains visible.</p>
-            <p>Formulas can show H<sub>2</sub>O and x<sup>2</sup>. A short inline quotation such as <q>start with the platform</q> keeps native punctuation.</p>
-            <p>A <dfn>semantic baseline</dfn> describes meaning before appearance, while <data value="0.1.0">version 0.1.0</data> keeps a machine-readable value.</p>
-          </details>
-        </section>
-
-        <section id="media" class="gallery-section">
-          <hgroup>
-            <h2>Media and data</h2>
-            <p>Responsive images, native playback, embedded media, and tables.</p>
-          </hgroup>
-
-          <figure>
-            <picture>
-              <source media="(max-width: 30rem)" srcset="./assets/icon-192.png">
-              <img src="./assets/icon-512.png" width="256" height="256" alt="Semanticwind’s blue HTML-and-wind mark">
-            </picture>
-            <figcaption>The Semanticwind project icon inside a native figure.</figcaption>
-          </figure>
-          <h3>Audio</h3>
-          <audio controls><source src="./assets/sample-tone.wav" type="audio/wav">Your browser does not support the audio element.</audio>
-          <h3>Video</h3>
-          <video controls width="480" height="270" poster="./assets/icon-512.png"><source src="./assets/sample-video.mp4" type="video/mp4">Your browser does not support the video element.</video>
-
-          <h3>Table</h3>
-          <table>
-            <caption>Recent package checks</caption>
-            <thead><tr><th scope="col">Check</th><th scope="col">Status</th><th scope="col">Duration</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Build</th><td>Passed</td><td>48 ms</td></tr>
-              <tr><th scope="row">Browser</th><td>Passed</td><td>1.2 s</td></tr>
-              <tr><th scope="row">Package</th><td>Passed</td><td>320 ms</td></tr>
-            </tbody>
-            <tfoot><tr><th scope="row">Total</th><td>3 passed</td><td>1.568 s</td></tr></tfoot>
-          </table>
-
-          <details class="gallery-appendix">
-            <summary>More embedded media</summary>
-            <div class="gallery-demo-grid">
-              <div class="gallery-demo gallery-demo-wide">
-                <h3>Canvas</h3>
-                <canvas id="gallery-canvas" width="640" height="160">A blue gradient canvas sample.</canvas>
+                <blockquote><p>Would this style make sense for almost every correct use of this element?</p><cite>Semanticwind’s boundary test</cite></blockquote>
               </div>
-              <figure class="gallery-demo">
-                <svg viewBox="0 0 320 120" width="320" height="120" role="img" aria-labelledby="gallery-svg-title">
-                  <title id="gallery-svg-title">A blue circle crossing a horizontal line</title>
-                  <line x1="20" y1="60" x2="300" y2="60" stroke="#93c5fd" stroke-width="8"></line>
-                  <circle cx="160" cy="60" r="42" fill="#2563eb"></circle>
-                </svg>
-                <figcaption>An inline SVG remains responsive.</figcaption>
-              </figure>
-              <figure class="gallery-demo"><iframe title="Embedded document sample" srcdoc="&lt;p&gt;Embedded document&lt;/p&gt;" width="320" height="120"></iframe><figcaption>A native inline frame.</figcaption></figure>
-              <figure class="gallery-demo"><embed src="./assets/icon-192.png" type="image/png" width="160" height="160" title="Embedded Semanticwind icon"><figcaption>A native embedded resource.</figcaption></figure>
-              <figure class="gallery-demo"><object data="./assets/icon-192.png" type="image/png" width="160" height="160" title="Semanticwind icon object">Semanticwind icon object.</object><figcaption>A native object with fallback content.</figcaption></figure>
             </div>
-          </details>
-        </section>
 
-        <section id="forms" class="gallery-section">
-          <hgroup>
-            <h2>Forms</h2>
-            <p>Common fields, choices, validation, control states, pickers, and actions.</p>
-          </hgroup>
-          <form>
-            <fieldset>
-              <legend>Text inputs</legend>
-              <div class="gallery-field-grid">
-                <label>Untyped input <input value="Uses the default text behavior"></label>
-                <label>Text <input type="text" value="Semanticwind"></label>
-                <label>Email <input type="email" value="hello@example.com" aria-invalid="false"><small>This address is valid.</small></label>
-                <label>Invalid example <input type="text" value="Needs attention" aria-invalid="true"><small>Validation remains visible without a component.</small></label>
-                <label>Password <input type="password" value="semanticwind"></label>
-                <label>Search <input type="search" placeholder="Search native elements"></label>
-                <label>Telephone <input type="tel" placeholder="+886 912 345 678"></label>
-                <label>URL <input type="url" value="https://example.com"></label>
-                <label>Number <input type="number" value="42" min="0" max="100"></label>
-              </div>
-            </fieldset>
-            <fieldset>
-              <legend>Choice and long-form controls</legend>
-              <div class="gallery-field-grid">
-                <label>Framework <select><optgroup label="Server rendered"><option>Plain HTML</option><option>Phoenix LiveView</option></optgroup><optgroup label="Client rendered"><option>React</option><option>Vue</option></optgroup></select></label>
-                <label>Notes <textarea placeholder="Add a short note"></textarea></label>
-              </div>
-            </fieldset>
-            <fieldset>
-              <legend>Control states</legend>
-              <div class="gallery-field-grid">
-                <label>Disabled field <input type="text" value="Unavailable" disabled></label>
-                <label>Read-only field <input type="text" value="Focusable and submitted" readonly><small>Read-only values remain focusable and are still submitted.</small></label>
-              </div>
-              <details class="gallery-source"><summary>View read-only markup</summary><pre><code>&lt;label&gt;
-  Account ID
-  &lt;input value="SW-1042" readonly&gt;
-  &lt;small&gt;Focusable and submitted with the form.&lt;/small&gt;
-&lt;/label&gt;</code></pre></details>
-            </fieldset>
-            <fieldset>
-              <legend>Notifications</legend>
-              <label><input type="checkbox" checked> Product updates</label>
-              <label><input type="checkbox"> Weekly digest</label>
-              <label><input type="radio" name="frequency" checked> Immediately</label>
-              <label><input type="radio" name="frequency"> Daily</label>
-            </fieldset>
-            <fieldset disabled><legend>Unavailable plan</legend><label><input type="checkbox"> Enterprise audit log</label><label>Seats <input type="number" value="10"></label></fieldset>
-            <fieldset>
-              <legend>Actions</legend>
-              <p class="gallery-actions"><button type="button">Primary action</button><input type="button" value="Input button"><input type="submit" value="Submit" onclick="return false"><input type="reset" value="Reset"><button type="button" disabled>Disabled</button></p>
-            </fieldset>
+            <div id="divider-and-figure" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Divider and captioned content</h4><p class="reference-tags"><code>&lt;hr&gt;</code> <code>&lt;figure&gt;</code> <code>&lt;figcaption&gt;</code></p><p>A figure can caption code, quotations, or data—not only images.</p></header>
+              <div class="reference-specimen"><p>Before the thematic break.</p><hr><figure><pre><code>&lt;button&gt;Publish&lt;/button&gt;</code></pre><figcaption>A native button needs no component wrapper to receive the baseline.</figcaption></figure></div>
+            </div>
+          </section>
 
-            <details class="gallery-appendix">
-              <summary>More specialized controls</summary>
-              <search><label>Search with suggestions <input type="search" placeholder="Search native elements" list="project-suggestions"></label><datalist id="project-suggestions"><option value="Customer portal"></option><option value="Admin dashboard"></option><option value="Waitlist"></option></datalist></search>
-              <fieldset><legend>Multiple selection</legend><label>Deployment targets <select multiple size="3"><option selected>Web</option><option>Internal admin</option><option>Customer portal</option></select></label></fieldset>
-              <fieldset>
-                <legend>Date and time</legend>
-                <div class="gallery-field-grid"><label>Date <input type="date"></label><label>Date and time <input type="datetime-local"></label><label>Month <input type="month"></label><label>Week <input type="week"></label><label>Time <input type="time"></label></div>
-              </fieldset>
-              <fieldset>
-                <legend>Pickers and range</legend>
-                <div class="gallery-field-grid"><label>Attachment <input type="file"></label><label>Accent color <input type="color" value="#2563eb"></label><label>Confidence <input id="confidence-input" type="range" min="0" max="100" value="72" oninput="this.nextElementSibling.value = this.value"><output id="confidence" for="confidence-input">72</output></label></div>
-              </fieldset>
-              <h3>Image input</h3>
-              <input type="image" src="./assets/icon-192.png" width="64" height="64" alt="Semanticwind icon input">
+          <section id="tables" class="reference-group" data-outline-section data-topic="styled-elements">
+            <header class="reference-group-header"><h3>Tables</h3><p>One complete specimen covers the table baseline and its responsive overflow.</p></header>
+            <div id="complete-table" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Structured data</h4><p class="reference-tags"><code>&lt;table&gt;</code> <code>&lt;caption&gt;</code> <code>&lt;thead&gt;</code> <code>&lt;tfoot&gt;</code></p><p>Resize the viewport and hover rows to exercise responsive and interactive states.</p></header>
+              <div class="reference-specimen">
+                <table>
+                  <caption>Recent package checks</caption>
+                  <thead><tr><th scope="col">Check</th><th scope="col">Result</th><th scope="col">Duration</th></tr></thead>
+                  <tbody><tr><th scope="row">Build</th><td>Passed</td><td>48 ms</td></tr><tr><th scope="row">Browser</th><td>Passed</td><td>1.2 s</td></tr><tr><th scope="row">Package</th><td>Passed</td><td>320 ms</td></tr></tbody>
+                  <tfoot><tr><th scope="row">Total</th><td>3 passed</td><td>1.568 s</td></tr></tfoot>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section id="forms" class="reference-group" data-outline-section data-topic="styled-elements">
+            <header class="reference-group-header"><h3>Forms</h3><p>Classless flow, native controls, states, choices, and actions.</p></header>
+
+            <div id="classless-form-flow" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Classless form flow</h4><p class="reference-tags"><code>&lt;form&gt;</code> <code>&lt;label&gt;</code> <code>&lt;button&gt;</code></p><p>A form without a class gets useful prototype spacing and full-width controls.</p></header>
+              <div class="reference-specimen"><form onsubmit="return false"><label>Project name <input value="Semanticwind"></label><label>Contact email <input type="email" value="ike@example.com"></label><p><button type="submit">Save project</button><input type="reset" value="Reset"></p></form></div>
+            </div>
+
+            <div id="text-controls" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Text-like controls</h4><p class="reference-tags"><code>&lt;input&gt;</code></p><p>Common text inputs share one neutral, focusable baseline.</p></header>
+              <div class="reference-specimen"><form onsubmit="return false"><fieldset><legend>Text inputs</legend><label>Untyped <input value="Default text behavior"></label><label>Email <input type="email" value="hello@example.com"></label><label>Password <input type="password" value="semanticwind"></label><label>Search <input type="search" placeholder="Search native elements"></label><label>Telephone <input type="tel" placeholder="+886 912 345 678"></label><label>URL <input type="url" value="https://example.com"></label><label>Number <input type="number" value="42" min="0" max="100"></label></fieldset></form></div>
+            </div>
+
+            <div id="long-form-controls" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Long-form and selection</h4><p class="reference-tags"><code>&lt;textarea&gt;</code> <code>&lt;select&gt;</code> <code>&lt;optgroup&gt;</code></p><p>Text areas and native selection remain browser-owned and responsive.</p></header>
+              <div class="reference-specimen"><form onsubmit="return false"><label>Notes <textarea placeholder="Add a short note"></textarea></label><label>Framework <select><optgroup label="Server rendered"><option>Plain HTML</option><option>Phoenix LiveView</option></optgroup><optgroup label="Client rendered"><option>React</option><option>Vue</option></optgroup></select></label></form></div>
+            </div>
+
+            <div id="choice-controls" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Choices</h4><p class="reference-tags"><code>checkbox</code> <code>radio</code></p><p>Checked, unchecked, focused, and disabled states remain native.</p></header>
+              <div class="reference-specimen"><fieldset><legend>Notifications</legend><label><input type="checkbox" checked> Product updates</label><label><input type="checkbox"> Weekly digest</label><label><input type="checkbox" disabled> Enterprise audit log</label><label><input type="radio" name="reference-frequency" checked> Immediately</label><label><input type="radio" name="reference-frequency"> Daily</label><label><input type="radio" name="reference-frequency" disabled> Monthly</label></fieldset></div>
+            </div>
+
+            <div id="control-states" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Control states</h4><p class="reference-tags"><code>readonly</code> <code>disabled</code> <code>aria-invalid</code></p><p>State colors reinforce behavior without replacing labels or help text.</p></header>
+              <div class="reference-specimen"><form onsubmit="return false"><label>Read-only value <input value="Focusable and submitted" readonly><small>Read-only values remain focusable and are submitted.</small></label><label>Disabled value <input value="Unavailable" disabled><small>Disabled values are unavailable and not submitted.</small></label><label>Valid email <input type="email" value="valid@example.com" aria-invalid="false"><small>This value is ready to submit.</small></label><label>Invalid email <input type="email" value="not-an-email" aria-invalid="true"><small>Enter a complete email address.</small></label></form></div>
+            </div>
+
+            <div id="form-actions" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Actions</h4><p class="reference-tags"><code>&lt;button&gt;</code> <code>submit</code> <code>reset</code></p><p>Native buttons share clear targets, focus, active, and disabled states.</p></header>
+              <div class="reference-specimen"><form onsubmit="return false"><p><button type="button">Button</button> <input type="button" value="Input button"> <input type="submit" value="Submit"> <input type="reset" value="Reset"> <button type="button" disabled>Disabled</button></p></form></div>
+            </div>
+
+            <details class="reference-appendix">
+              <summary>Specialized controls</summary>
+              <form onsubmit="return false">
+                <fieldset><legend>Date and time</legend><label>Date <input type="date"></label><label>Date and time <input type="datetime-local"></label><label>Month <input type="month"></label><label>Week <input type="week"></label><label>Time <input type="time"></label></fieldset>
+                <fieldset><legend>Selection and pickers</legend><label>Deployment targets <select multiple size="3"><option selected>Web</option><option>Internal admin</option><option>Customer portal</option></select></label><label>Attachment <input type="file"></label><label>Accent color <input type="color" value="#2563eb"></label><label>Confidence <input id="styled-confidence" type="range" min="0" max="100" value="72" oninput="document.querySelector('#styled-confidence-output').value = this.value"> <output id="styled-confidence-output" for="styled-confidence">72</output></label></fieldset>
+              </form>
             </details>
-          </form>
+          </section>
+
+          <section id="interactive-elements" class="reference-group" data-outline-section data-topic="styled-elements">
+            <header class="reference-group-header"><h3>Interactive elements</h3><p>Disclosure, top-layer surfaces, progress, measurement, and commands.</p></header>
+
+            <div id="styled-disclosure" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Disclosure</h4><p class="reference-tags"><code>&lt;details&gt;</code> <code>&lt;summary&gt;</code></p><p>Open and closed states remain understandable without scripting.</p></header>
+              <div class="reference-specimen"><details><summary>Closed disclosure</summary><p>This content appears when the summary is activated.</p></details><details open><summary>Open disclosure</summary><p>The browser owns activation, keyboard handling, and state.</p></details></div>
+            </div>
+
+            <div id="styled-popover" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Popover</h4><p class="reference-tags"><code>popover</code> <code>popovertarget</code></p><p>A non-modal top-layer surface without the dialog backdrop.</p></header>
+              <div class="reference-specimen"><button type="button" popovertarget="styled-popover-panel">Open popover</button><div id="styled-popover-panel" popover><h5>Native popover</h5><p>The browser owns light dismissal and Escape.</p><button type="button" popovertarget="styled-popover-panel" popovertargetaction="hide">Close</button></div></div>
+            </div>
+
+            <div id="styled-dialog" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Dialog</h4><p class="reference-tags"><code>&lt;dialog&gt;</code></p><p>Modal dialogs receive a strong backdrop and constrained surface.</p></header>
+              <div class="reference-specimen"><button type="button" onclick="document.querySelector('#styled-dialog-panel').showModal()">Open dialog</button><dialog id="styled-dialog-panel"><h5>Native dialog</h5><p>The browser owns focus, Escape, and modal behavior.</p><form method="dialog"><button>Close</button></form></dialog></div>
+            </div>
+
+            <div id="styled-progress-meter" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Progress and measurement</h4><p class="reference-tags"><code>&lt;progress&gt;</code> <code>&lt;meter&gt;</code></p><p>Progress shows completion; meter evaluates a value within a known range.</p></header>
+              <div class="reference-specimen"><label for="gallery-progress">Build progress</label><progress id="gallery-progress" value="72" max="100">72%</progress><label for="gallery-progress-indeterminate">Checking dependencies</label><progress id="gallery-progress-indeterminate">Checking dependencies…</progress><label for="gallery-meter-optimum">Quality score · 86 / 100</label><meter id="gallery-meter-optimum" min="0" max="100" low="40" high="80" optimum="90" value="86">86%</meter><label for="gallery-meter-suboptimum">Review score · 62 / 100</label><meter id="gallery-meter-suboptimum" min="0" max="100" low="40" high="80" optimum="90" value="62">62%</meter><label for="gallery-meter-poor">Coverage score · 28 / 100</label><meter id="gallery-meter-poor" min="0" max="100" low="40" high="80" optimum="90" value="28">28%</meter></div>
+            </div>
+
+            <details class="reference-appendix"><summary>Command menu</summary><menu aria-label="Editor actions"><li><button type="button">Copy</button></li><li><button type="button">Cut</button></li><li><button type="button">Paste</button></li></menu></details>
+          </section>
         </section>
 
-        <section id="interaction" class="gallery-section">
-          <hgroup>
-            <h2>Native interaction</h2>
-            <p>Disclosure, popovers, dialogs, progress, measurement, and optional hints.</p>
-          </hgroup>
-          <div class="gallery-demo-grid">
-            <div class="gallery-demo">
-              <h3>Exclusive disclosure</h3>
-              <details name="gallery-disclosure"><summary>Closed disclosure</summary><p>This content appears when the summary is activated.</p></details>
-              <details name="gallery-disclosure" open><summary>Open disclosure</summary><p>The shared <code>name</code> keeps only one disclosure open.</p></details>
-              <details class="gallery-source"><summary>View disclosure markup</summary><pre><code>&lt;details name="faq"&gt;
-  &lt;summary&gt;First answer&lt;/summary&gt;
-  &lt;p&gt;Only one named disclosure stays open.&lt;/p&gt;
-&lt;/details&gt;</code></pre></details>
-            </div>
-            <div class="gallery-demo">
-              <h3>Native title hint</h3>
-              <p>Release status <span title="Ready to publish after the final review.">ⓘ</span></p>
-              <small>Use <code>title</code> only for optional hints because touch and keyboard access varies.</small>
-              <details class="gallery-source"><summary>View title markup</summary><pre><code>&lt;span title="Ready to publish."&gt;ⓘ&lt;/span&gt;</code></pre></details>
-            </div>
-            <div class="gallery-demo gallery-demo-wide">
-              <h3>Popover</h3>
-              <p><button type="button" popovertarget="gallery-popover">Open popover</button></p>
-              <small><code>popovertarget</code> provides open, close, and light-dismiss behavior without JavaScript.</small>
-              <div id="gallery-popover" popover><h2>Native popover</h2><p>No JavaScript is required for its open and close behavior.</p><button type="button" popovertarget="gallery-popover" popovertargetaction="hide">Close</button></div>
-              <details class="gallery-source"><summary>View popover markup</summary><pre><code>&lt;button popovertarget="help"&gt;Open help&lt;/button&gt;
-&lt;div id="help" popover&gt;Optional supporting content.&lt;/div&gt;</code></pre></details>
-            </div>
-            <div class="gallery-demo gallery-demo-wide">
-              <h3>Progress and measurement</h3>
-              <label for="gallery-progress">Build progress</label><progress id="gallery-progress" value="72" max="100">72%</progress>
-              <label for="gallery-progress-indeterminate">Checking dependencies</label><progress id="gallery-progress-indeterminate">Checking dependencies…</progress>
-              <label for="gallery-meter-optimum">Quality score · 86 / 100</label><meter id="gallery-meter-optimum" min="0" max="100" low="40" high="80" optimum="90" value="86">86%</meter>
-              <label for="gallery-meter-suboptimum">Review score · 62 / 100</label><meter id="gallery-meter-suboptimum" min="0" max="100" low="40" high="80" optimum="90" value="62">62%</meter>
-              <label for="gallery-meter-poor">Coverage score · 28 / 100</label><meter id="gallery-meter-poor" min="0" max="100" low="40" high="80" optimum="90" value="28">28%</meter>
-              <details class="gallery-source"><summary>View progress and meter markup</summary><pre><code>&lt;progress value="72" max="100"&gt;72%&lt;/progress&gt;
-&lt;meter min="0" max="100" low="40" high="80" optimum="90" value="86"&gt;86%&lt;/meter&gt;</code></pre></details>
-            </div>
-            <div class="gallery-demo gallery-demo-wide">
-              <h3>Dialog</h3>
-              <p><button type="button" onclick="document.querySelector('#gallery-dialog').showModal()">Open dialog</button></p>
-              <small>The browser owns focus, <kbd>Esc</kbd>, and modal behavior.</small>
-              <dialog id="gallery-dialog"><h2>Native dialog</h2><p>The browser owns focus, escape handling, and modal behavior.</p><form method="dialog"><button>Close</button></form></dialog>
-              <details class="gallery-source"><summary>View dialog markup</summary><pre><code>&lt;dialog id="help"&gt;
-  &lt;p&gt;Dialog content.&lt;/p&gt;
-  &lt;form method="dialog"&gt;&lt;button&gt;Close&lt;/button&gt;&lt;/form&gt;
-&lt;/dialog&gt;</code></pre></details>
-            </div>
+        <section id="best-practice-patterns" class="reference-topic" data-outline-section data-topic="best-practice-patterns">
+          <header class="reference-topic-header"><h2>Use the right element</h2><p>Choose HTML by its meaning and relationships, not its default appearance.</p></header>
+
+          <div id="standalone-content" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
+            <header class="reference-entry-copy"><h3>Structure standalone content</h3><p class="reference-tags"><code>&lt;article&gt;</code> <code>&lt;header&gt;</code> <code>&lt;footer&gt;</code> <code>&lt;aside&gt;</code></p><p>Use an article for content that can stand on its own; use an aside only when its meaning depends on nearby content.</p></header>
+            <div class="reference-specimen"><article><header><h4>Release notes</h4><p><small>Version 0.1.0</small></p></header><p>Semanticwind now styles native progress and meter elements.</p><footer><small>Published by the maintainers.</small></footer></article><details class="reference-source"><summary>View markup</summary><pre><code>&lt;article&gt;
+  &lt;header&gt;&lt;h2&gt;Release notes&lt;/h2&gt;&lt;/header&gt;
+  &lt;p&gt;Standalone content.&lt;/p&gt;
+  &lt;footer&gt;Publication details.&lt;/footer&gt;
+&lt;/article&gt;</code></pre></details></div>
           </div>
-          <details class="gallery-appendix"><summary>Command menu</summary><p>Use <code>menu</code> for a list of commands, not site navigation.</p><menu aria-label="Editor actions"><li><button type="button">Copy</button></li><li><button type="button">Cut</button></li><li><button type="button">Paste</button></li></menu></details>
+
+          <div id="caption-content" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
+            <header class="reference-entry-copy"><h3>Caption related content</h3><p class="reference-tags"><code>&lt;figure&gt;</code> <code>&lt;figcaption&gt;</code> <code>&lt;caption&gt;</code></p><p>Use captions when content needs a name or explanation that remains attached to it.</p></header>
+            <div class="reference-specimen"><figure><blockquote><p>Start with the platform.</p></blockquote><figcaption>A principle quoted from the Semanticwind guide.</figcaption></figure><details class="reference-source"><summary>View markup</summary><pre><code>&lt;figure&gt;
+  &lt;blockquote&gt;Start with the platform.&lt;/blockquote&gt;
+  &lt;figcaption&gt;Source and context.&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre></details></div>
+          </div>
+
+          <div id="describe-values" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
+            <header class="reference-entry-copy"><h3>Describe terms and values</h3><p class="reference-tags"><code>&lt;dl&gt;</code> <code>&lt;time&gt;</code> <code>&lt;data&gt;</code></p><p>Prefer machine-readable values when a date, identifier, or definition has meaning beyond its display text.</p></header>
+            <div class="reference-specimen"><dl><div><dt>Released</dt><dd><time datetime="2026-08-22">August 22, 2026</time></dd></div><div><dt>Version</dt><dd><data value="0.1.0">Semanticwind 0.1.0</data></dd></div></dl><details class="reference-source"><summary>View markup</summary><pre><code>&lt;dl&gt;
+  &lt;div&gt;&lt;dt&gt;Released&lt;/dt&gt;&lt;dd&gt;&lt;time datetime="2026-08-22"&gt;August 22&lt;/time&gt;&lt;/dd&gt;&lt;/div&gt;
+&lt;/dl&gt;</code></pre></details></div>
+          </div>
+
+          <div id="group-controls" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
+            <header class="reference-entry-copy"><h3>Label and group controls</h3><p class="reference-tags"><code>&lt;label&gt;</code> <code>&lt;fieldset&gt;</code> <code>&lt;legend&gt;</code> <code>&lt;output&gt;</code></p><p>Labels name individual controls; a fieldset and legend name the relationship between them.</p></header>
+            <div class="reference-specimen"><form onsubmit="return false"><fieldset><legend>Delivery speed</legend><label><input type="radio" name="delivery" checked> Standard</label><label><input type="radio" name="delivery"> Express</label></fieldset><label>Quantity <input id="pattern-quantity" type="number" value="2" min="1" oninput="document.querySelector('#pattern-total').value = this.value * 12"></label><p>Total: $<output id="pattern-total" for="pattern-quantity">24</output></p></form><details class="reference-source"><summary>View markup</summary><pre><code>&lt;fieldset&gt;
+  &lt;legend&gt;Delivery speed&lt;/legend&gt;
+  &lt;label&gt;&lt;input type="radio" name="delivery"&gt; Standard&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre></details></div>
+          </div>
+
+          <div id="field-states" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
+            <header class="reference-entry-copy"><h3>Choose the correct field state</h3><p class="reference-tags"><code>readonly</code> <code>disabled</code> <code>required</code></p><p>Read-only values remain focusable and submitted; disabled values do neither. Explain invalid input in visible text.</p></header>
+            <div class="reference-specimen"><form onsubmit="return false"><label>Account ID <input value="SW-1042" readonly><small>Focusable and submitted with the form.</small></label><label>Legacy ID <input value="Unavailable" disabled><small>Excluded from interaction and submission.</small></label><label>Email <input type="email" value="missing-domain" required aria-invalid="true"><small>Enter a complete email address.</small></label></form><details class="reference-source"><summary>View comparison markup</summary><pre><code>&lt;input value="SW-1042" readonly&gt;
+&lt;input value="Unavailable" disabled&gt;
+&lt;input type="email" required aria-invalid="true"&gt;</code></pre></details></div>
+          </div>
+
+          <div id="progress-or-meter" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
+            <header class="reference-entry-copy"><h3>Distinguish progress from measurement</h3><p class="reference-tags"><code>&lt;progress&gt;</code> <code>&lt;meter&gt;</code></p><p>Progress reports task completion. Meter evaluates a scalar value against a known range.</p></header>
+            <div class="reference-specimen"><label for="pattern-progress">Upload progress</label><progress id="pattern-progress" value="65" max="100">65%</progress><label for="pattern-meter">Storage usage · 65 / 100</label><meter id="pattern-meter" min="0" max="100" low="50" high="85" optimum="20" value="65">65%</meter><details class="reference-source"><summary>View comparison markup</summary><pre><code>&lt;progress value="65" max="100"&gt;65%&lt;/progress&gt;
+&lt;meter min="0" max="100" low="50" high="85" value="65"&gt;65%&lt;/meter&gt;</code></pre></details></div>
+          </div>
+        </section>
+
+        <section id="native-before-custom" class="reference-topic" data-outline-section data-topic="native-before-custom">
+          <header class="reference-topic-header"><h2>Extra: Browser-native first</h2><p>Before installing a component, check what the browser already owns. Add custom UI only when a real requirement outgrows the native behavior.</p></header>
+
+          <div id="inline-help" class="reference-entry" data-outline-section data-topic="native-before-custom">
+            <header class="reference-entry-copy"><h3>Inline help</h3><p class="reference-tags"><code>aria-describedby</code> <code>&lt;small&gt;</code></p><p>Keep instructions visible when people need them to finish the task. Use a user-invoked popover only when the detail is genuinely optional.</p></header>
+            <div class="reference-specimen"><label for="release-name">Release name <input id="release-name" aria-describedby="release-name-help" placeholder="August update"><small id="release-name-help">Available to pointer, keyboard, touch, and assistive-technology users.</small></label><details class="reference-source"><summary>View markup</summary><pre><code>&lt;label for="release-name"&gt;Release name&lt;/label&gt;
+&lt;input id="release-name" aria-describedby="release-name-help"&gt;
+&lt;small id="release-name-help"&gt;Visible instructions.&lt;/small&gt;</code></pre></details></div>
+          </div>
+
+          <div id="exclusive-disclosure" class="reference-entry" data-outline-section data-topic="native-before-custom">
+            <header class="reference-entry-copy"><h3>FAQ accordion</h3><p class="reference-tags"><code>&lt;details name&gt;</code></p><p class="reference-support">Broad support · <a href="https://caniuse.com/mdn-html_elements_details_name">Can I Use</a></p><p>Use a shared name when only one answer should stay open. Add a component when routing, controlled state, or custom animation is required.</p></header>
+            <div class="reference-specimen"><details name="reference-faq" open><summary>What does Semanticwind style?</summary><p>Native HTML elements with broadly useful defaults.</p></details><details name="reference-faq"><summary>When should I add a component?</summary><p>When repeated product meaning or custom behavior appears.</p></details><details class="reference-source"><summary>View markup</summary><pre><code>&lt;details name="faq" open&gt;...&lt;/details&gt;
+&lt;details name="faq"&gt;...&lt;/details&gt;</code></pre></details></div>
+          </div>
+
+          <div id="native-popover" class="reference-entry" data-outline-section data-topic="native-before-custom">
+            <header class="reference-entry-copy"><h3>Optional help</h3><p class="reference-tags"><code>popover</code> <code>popovertarget</code></p><p class="reference-support">Broad support · <a href="https://caniuse.com/mdn-html_global_attributes_popover">Can I Use</a></p><p>Use a regular popover for optional information people deliberately request; the browser owns activation, the top layer, light dismissal, and Escape. Use a dialog when the user must respond.</p></header>
+            <div class="reference-specimen"><button type="button" popovertarget="shortcut-help">Keyboard shortcut</button><div id="shortcut-help" popover>Press <kbd>⌘</kbd> + <kbd>Enter</kbd> to publish.</div><details class="reference-source"><summary>View markup</summary><pre><code>&lt;button popovertarget="shortcut-help"&gt;Keyboard shortcut&lt;/button&gt;
+&lt;div id="shortcut-help" popover&gt;Press ⌘ + Enter to publish.&lt;/div&gt;</code></pre></details></div>
+          </div>
+
+          <div id="native-dialog" class="reference-entry" data-outline-section data-topic="native-before-custom">
+            <header class="reference-entry-copy"><h3>Publish confirmation</h3><p class="reference-tags"><code>&lt;dialog&gt;</code> <code>commandfor</code></p><p class="reference-support">Broad support: <a href="https://caniuse.com/dialog">dialog</a> · Newer support: <a href="https://caniuse.com/mdn-html_elements_button_commandfor">commands</a></p><p>Use a modal dialog when the user must respond before returning to the page; the browser manages focus and the inert background.</p></header>
+            <div class="reference-specimen"><button type="button" commandfor="native-command-dialog" command="show-modal">Open confirmation</button><dialog id="native-command-dialog"><h4>Publish release?</h4><p>This action makes the release visible.</p><button type="button" commandfor="native-command-dialog" command="close">Cancel</button></dialog><details class="reference-source"><summary>View markup</summary><pre><code>&lt;button commandfor="confirm" command="show-modal"&gt;Open&lt;/button&gt;
+&lt;dialog id="confirm"&gt;
+  &lt;button commandfor="confirm" command="close"&gt;Close&lt;/button&gt;
+&lt;/dialog&gt;</code></pre></details></div>
+          </div>
+
+          <div id="specialized-inputs" class="reference-entry" data-outline-section data-topic="native-before-custom">
+            <header class="reference-entry-copy"><h3>Native form controls</h3><p class="reference-tags"><code>date</code> <code>color</code> <code>range</code> <code>&lt;output&gt;</code></p><p class="reference-support">Mixed support · <a href="https://caniuse.com/input-datetime">Date and time</a> · <a href="https://caniuse.com/input-color">Color</a> · <a href="https://caniuse.com/input-range">Range</a></p><p>Use platform pickers when native appearance and graceful fallback are acceptable. Go custom only when a required interaction is unavailable.</p></header>
+            <div class="reference-specimen"><form onsubmit="return false"><label>Due date <input type="date"></label><label>Accent color <input type="color" value="#2563eb"></label><label>Confidence <input id="native-confidence" type="range" min="0" max="100" value="72" oninput="document.querySelector('#native-confidence-output').value = this.value"> <output id="native-confidence-output" for="native-confidence">72</output></label></form><details class="reference-source"><summary>View markup</summary><pre><code>&lt;input type="date"&gt;
+&lt;input type="color"&gt;
+&lt;input id="confidence" type="range"&gt;
+&lt;output for="confidence"&gt;72&lt;/output&gt;</code></pre></details></div>
+          </div>
+
+          <div id="native-suggestions" class="reference-entry" data-outline-section data-topic="native-before-custom">
+            <header class="reference-entry-copy"><h3>Project suggestions</h3><p class="reference-tags"><code>&lt;datalist&gt;</code></p><p class="reference-support">Limited support · <a href="https://caniuse.com/datalist">Can I Use</a></p><p>Use datalist for lightweight suggestions that still allow free text. Choose a custom combobox for large data, reliable styling, or stronger assistive behavior.</p></header>
+            <div class="reference-specimen"><label>Project <input list="project-suggestions" placeholder="Start typing"></label><datalist id="project-suggestions"><option value="Customer portal"></option><option value="Admin dashboard"></option><option value="Waitlist"></option></datalist><details class="reference-source"><summary>View markup</summary><pre><code>&lt;input list="projects"&gt;
+&lt;datalist id="projects"&gt;
+  &lt;option value="Customer portal"&gt;
+&lt;/datalist&gt;</code></pre></details></div>
+          </div>
+
         </section>
       </div>
     </main>
 
-    <footer>
-      <p><a href="./index.html">← Back to Semanticwind</a></p>
-      <p>Native HTML first. Utilities and components only when the interface asks for them.</p>
-    </footer>
+    <footer class="site-footer"><p><a href="./index.html">← Back to Semanticwind</a></p></footer>
 
     <script>
-      const canvas = document.querySelector('#gallery-canvas');
-      const context = canvas.getContext('2d');
-      const gradient = context.createLinearGradient(0, 0, canvas.width, 0);
-      gradient.addColorStop(0, '#2563eb');
-      gradient.addColorStop(1, '#60a5fa');
-      context.fillStyle = gradient;
-      context.fillRect(0, 0, canvas.width, canvas.height);
+      const outlineItems = [...document.querySelectorAll('[data-outline-topic]')];
+      const outlineLinks = [...document.querySelectorAll('[data-reference-outline] a[href^="#"]')];
+      const outlineSections = [...document.querySelectorAll('[data-outline-section]')];
 
-      const outlineLinks = [...document.querySelectorAll('.gallery-outline a')];
-      const observer = new IntersectionObserver((entries) => {
-        const current = entries.find((entry) => entry.isIntersecting);
-        if (!current) return;
+      const updateOutline = () => {
+        let current = outlineSections[0];
+        for (const section of outlineSections) {
+          if (section.getBoundingClientRect().top <= window.innerHeight * 0.28) current = section;
+          else break;
+        }
+
+        outlineItems.forEach((item) => item.toggleAttribute('data-active', item.dataset.outlineTopic === current.dataset.topic));
         outlineLinks.forEach((link) => {
-          if (link.hash === `#${current.target.id}`) link.setAttribute('aria-current', 'location');
+          if (link.hash === `#${current.id}`) link.setAttribute('aria-current', 'location');
           else link.removeAttribute('aria-current');
         });
-      }, { rootMargin: '-15% 0% -75%' });
-      outlineLinks.forEach((link) => observer.observe(document.querySelector(link.hash)));
+      };
+
+      const outlineObserver = new IntersectionObserver(updateOutline, { rootMargin: '-28% 0% -72%' });
+      outlineSections.forEach((section) => outlineObserver.observe(section));
+      updateOutline();
     </script>
   </body>
 </html>

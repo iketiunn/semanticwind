@@ -546,6 +546,12 @@
     @apply m-auto max-w-[min(32rem,calc(100vw-2rem))] rounded-2xl border border-zinc-200 bg-white p-6 text-zinc-950 shadow-2xl;
   }
 
+  :is([popover]) {
+    margin: initial;
+    position-area: block-end span-all;
+    position-try-fallbacks: flip-block;
+  }
+
   :is(dialog)::backdrop {
     @apply bg-black/55 backdrop-blur-[2px];
   }
