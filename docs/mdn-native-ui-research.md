@@ -5,6 +5,9 @@ Researched 2026-08-21 against the current `README.md` boundary and
 popover surfaces, most form controls, validation, `progress`, `meter`, and
 responsive media. The useful remaining work is small.
 
+> Status: This is a dated pre-implementation audit. Current source and contract
+> checks are authoritative; implemented recommendations remain below as rationale.
+
 ## Ship now
 
 ### 1. Give read-only controls a visible state

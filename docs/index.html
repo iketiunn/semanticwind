@@ -40,23 +40,23 @@
     </header>
 
     <main id="top">
-      <section class="hero py-10 sm:py-16">
+      <section class="hero py-8 sm:py-12">
         <div class="hero-copy">
           <p class="mb-5 text-sm font-semibold text-blue-700">CSS for semantic HTML</p>
           <h1 class="hero-title">
             <span class="hero-line">Start with HTML.</span>
             <span class="hero-line">Grow into <em>Tailwind.</em></span>
           </h1>
-          <p class="hero-summary max-w-2xl text-lg leading-8 text-zinc-700 sm:text-xl">
-            Link one stylesheet to style headings, forms, tables, and native controls. When you need custom layouts and components, add Tailwind without rewriting your markup.
+          <p class="hero-summary max-w-2xl text-base leading-7 text-zinc-700 sm:text-xl sm:leading-8">
+            Give semantic HTML a polished baseline with one stylesheet. Add Tailwind when the interface grows—without rewriting the markup.
           </p>
-          <div class="mt-8 flex flex-wrap items-center gap-4">
-            <a class="inline-flex min-h-11 items-center justify-center border border-blue-700 bg-blue-700 px-5 py-2.5 font-semibold text-white no-underline hover:bg-blue-800" href="#cdn">
-              Link the stylesheet ↓
+          <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <a class="inline-flex min-h-11 items-center justify-center border border-blue-700 bg-blue-700 px-5 py-2.5 font-semibold text-white no-underline hover:bg-blue-800" href="#samples">
+              See it styled ↓
             </a>
-            <a class="inline-flex min-h-11 items-center px-1 font-semibold" href="#npm">Install for Tailwind v4 ↓</a>
+            <a class="inline-flex min-h-11 items-center px-1 font-semibold" href="#start">Install Semanticwind ↓</a>
           </div>
-          <p class="mt-6 text-sm text-zinc-500">No build step · No JavaScript</p>
+          <p class="mt-4 mb-0 text-sm text-zinc-500">No build step · No JavaScript</p>
         </div>
 
         <figure class="hero-art">
@@ -67,6 +67,88 @@
             alt=""
           >
         </figure>
+      </section>
+
+      <section id="samples" class="landing-section" aria-labelledby="samples-title">
+        <hgroup>
+          <p class="mb-3 text-sm font-semibold text-blue-700">Native HTML</p>
+          <h2 id="samples-title" class="mt-0 text-4xl sm:text-5xl">Native elements, styled.</h2>
+          <p>Typography, forms, validation, disclosure, and popovers—without replacing the elements the browser provides.</p>
+        </hgroup>
+
+        <div class="reference-entry">
+          <header class="reference-entry-copy">
+            <h3>Readable by default</h3>
+            <p>Headings, paragraphs, quotations, code, and keyboard hints share a deliberate rhythm before you write a utility class.</p>
+          </header>
+          <div class="reference-specimen">
+            <article>
+              <header>
+                <h4>A small release note</h4>
+                <p><small>Planned version 0.1.0</small></p>
+              </header>
+              <p>Semantic HTML arrives with <mark>polished defaults</mark> while its meaning stays intact.</p>
+              <blockquote>
+                <p>Style only choices that make sense for almost every correct use of an element.</p>
+                <cite>Contributor contract</cite>
+              </blockquote>
+              <p class="mb-0">Element names render as <code>&lt;main&gt;</code>; shortcuts render as <kbd>⌘</kbd> + <kbd>K</kbd>.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="reference-entry">
+          <header class="reference-entry-copy">
+            <h3>Forms communicate state</h3>
+            <p>Labels, controls, validation, and feedback remain connected and readable without a form component.</p>
+          </header>
+          <div class="reference-specimen">
+            <form>
+              <label>
+                Email address
+                <input type="email" value="developer@example.com">
+              </label>
+              <label>
+                Project setup
+                <select>
+                  <option>Plain HTML</option>
+                  <option>Tailwind CSS v4</option>
+                </select>
+              </label>
+              <label>
+                Package name
+                <input id="sample-package" type="text" value="My Package" aria-invalid="true" aria-describedby="sample-package-error">
+                <small id="sample-package-error">Use lowercase letters and hyphens.</small>
+              </label>
+              <button type="button">Save settings</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="reference-entry">
+          <header class="reference-entry-copy">
+            <h3>Native interaction stays native</h3>
+            <p>The browser owns disclosure and popover behavior; Semanticwind supplies the visual baseline and state feedback.</p>
+          </header>
+          <div class="reference-specimen">
+            <details open>
+              <summary>What changes when Tailwind is added?</summary>
+              <p>The stylesheet imports. The HTML stays.</p>
+            </details>
+            <label class="mt-6 block" for="sample-progress">Build progress</label>
+            <progress id="sample-progress" value="72" max="100">72%</progress>
+            <label class="mt-4 block" for="sample-meter">Quality score · 86 / 100</label>
+            <meter id="sample-meter" min="0" max="100" low="40" high="80" optimum="90" value="86">86%</meter>
+            <p class="mt-6 mb-0"><button type="button" popovertarget="sample-popover">Open popover</button></p>
+            <div id="sample-popover" popover>
+              <h3 class="mt-0">Native popover</h3>
+              <p>The browser opens and closes it; Semanticwind styles the surface while applications own placement.</p>
+              <button type="button" popovertarget="sample-popover" popovertargetaction="hide">Close</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-6 mb-0"><a class="font-semibold" href="./gallery.html">Explore the complete reference →</a></p>
       </section>
 
       <section id="start" class="landing-section" aria-labelledby="start-title">
@@ -135,113 +217,6 @@
           <a href="https://github.com/highlightjs/highlight.js#in-the-browser">Highlight.js</a>
           colors the tokens.
         </p>
-      </section>
-
-      <section id="samples" class="landing-section" aria-labelledby="samples-title">
-        <hgroup>
-          <p class="mb-3 text-sm font-semibold text-blue-700">Native HTML</p>
-          <h2 id="samples-title" class="mt-0 text-4xl sm:text-5xl">Native elements, styled.</h2>
-          <p>Typography, forms, tables, validation, disclosure, and popovers—without replacing the elements the browser provides.</p>
-        </hgroup>
-
-        <div class="sample-grid">
-          <div>
-            <p class="sample-label">01 · Text</p>
-            <h3 class="mt-0">Native elements stay native</h3>
-            <p>Semanticwind sets type, spacing, and color for headings, paragraphs, links, and <mark>marked text</mark>.</p>
-            <blockquote>
-              <p>Style only choices that make sense for almost every correct use of an element.</p>
-              <cite>Contributor contract</cite>
-            </blockquote>
-            <p class="mb-0">Element names render as <code>&lt;main&gt;</code>; shortcuts render as <kbd>⌘</kbd> + <kbd>K</kbd>.</p>
-          </div>
-
-          <div>
-            <p class="sample-label">02 · Form</p>
-            <form>
-              <label>
-                Email address
-                <input type="email" value="developer@example.com">
-              </label>
-              <label>
-                Project setup
-                <select>
-                  <option>Plain HTML</option>
-                  <option>Tailwind CSS v4</option>
-                </select>
-              </label>
-              <button type="button">Save settings</button>
-            </form>
-          </div>
-
-          <div>
-            <p class="sample-label">03 · Choices</p>
-            <fieldset class="m-0">
-              <legend>Playback</legend>
-              <label><input type="checkbox" checked> Show captions</label>
-              <label><input type="checkbox"> Play next episode</label>
-            </fieldset>
-            <fieldset class="mt-6">
-              <legend>Speed</legend>
-              <label><input type="radio" name="sample-speed" checked> Normal</label>
-              <label><input type="radio" name="sample-speed"> 1.5×</label>
-            </fieldset>
-            <label class="mt-6 block">
-              Volume
-              <input type="range" min="0" max="100" value="72">
-            </label>
-          </div>
-
-          <div>
-            <p class="sample-label">04 · Data</p>
-            <table>
-              <caption>Stylesheet files</caption>
-              <thead>
-                <tr><th scope="col">Use</th><th scope="col">File</th></tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">Standalone</th><td><code>dist/semanticwind.min.css</code></td></tr>
-                <tr><th scope="row">Tailwind</th><td><code>src/semanticwind.css</code></td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div>
-            <p class="sample-label">05 · Feedback</p>
-            <label class="block">
-              Package name
-              <input type="text" value="My Package" aria-invalid="true">
-              <small>Use lowercase letters and hyphens.</small>
-            </label>
-            <label class="mt-6 block" for="sample-progress">Build progress</label>
-            <progress id="sample-progress" value="72" max="100">72%</progress>
-            <label class="mt-4 block" for="sample-meter">Storage used · 86 GB of 100 GB</label>
-            <meter id="sample-meter" min="0" max="100" low="60" high="80" optimum="0" value="86">86%</meter>
-          </div>
-
-          <div>
-            <p class="sample-label">06 · Interaction</p>
-            <details open>
-              <summary>What changes when Tailwind is added?</summary>
-              <p>The stylesheet imports. The HTML stays.</p>
-            </details>
-            <p class="mt-6 mb-0"><button type="button" popovertarget="sample-popover">Open popover</button></p>
-            <div id="sample-popover" popover>
-              <h3 class="mt-0">Native popover</h3>
-              <p>The browser opens and closes it; Semanticwind supplies the border, spacing, colors, and backdrop.</p>
-              <button type="button" popovertarget="sample-popover" popovertargetaction="hide">Close</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="landing-section closing-statement" aria-labelledby="closing-title">
-        <p class="mb-3 font-mono text-xs font-semibold tracking-wider text-blue-700 uppercase">HTML is the constant</p>
-        <h2 id="closing-title" class="m-0">
-          Start plain.
-          <em>Stay flexible.</em>
-        </h2>
-        <p class="mt-6 mb-0 text-lg">One link today. Tailwind when the interface earns it.</p>
       </section>
     </main>
 

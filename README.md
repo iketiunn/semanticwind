@@ -138,6 +138,8 @@ Semanticwind does not turn `section` or `nav` into components. Make a direct pag
 - `details`, `dialog`, popover, `progress`, and `meter`
 - a responsive light color scheme, focus states, and reduced motion
 
+Semanticwind styles popover surfaces; browsers own their behavior, and applications own placement.
+
 Semanticwind stays in Tailwind’s `base` layer and uses low-specificity selectors that override Preflight. Component styles and utilities override it normally.
 
 It does not provide navigation layout, cards, heroes, button variants, application states, or product-specific UI.

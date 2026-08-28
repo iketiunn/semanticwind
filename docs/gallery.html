@@ -31,7 +31,7 @@
 
       <details class="reference-mobile-outline">
         <summary>Contents</summary>
-        <nav class="reference-outline" aria-label="Mobile contents" data-reference-outline>
+        <nav class="reference-outline" aria-label="Mobile contents" data-reference-outline onclick="this.parentElement.open = false">
           <ol>
             <li data-outline-topic="styled-elements" data-active>
               <a href="#styled-elements" aria-current="location">Element reference</a>
@@ -43,14 +43,18 @@
               </ol>
             </li>
             <li data-outline-topic="best-practice-patterns">
-              <a href="#best-practice-patterns">Use the right element</a>
+              <a href="#best-practice-patterns">Extra: Use the right element</a>
               <ol>
+                <li><a href="#document-foundation">Start a document</a></li>
                 <li><a href="#standalone-content">Structure content</a></li>
                 <li><a href="#caption-content">Caption content</a></li>
+                <li><a href="#responsive-image">Author an image</a></li>
                 <li><a href="#describe-values">Describe values</a></li>
                 <li><a href="#group-controls">Group controls</a></li>
+                <li><a href="#complete-field">Complete a field</a></li>
                 <li><a href="#field-states">Choose field states</a></li>
                 <li><a href="#progress-or-meter">Progress or meter</a></li>
+                <li><a href="#baseline-checklist">Test the baseline</a></li>
               </ol>
             </li>
             <li data-outline-topic="native-before-custom">
@@ -81,14 +85,18 @@
             </ol>
           </li>
           <li data-outline-topic="best-practice-patterns">
-            <a href="#best-practice-patterns">Use the right element</a>
+            <a href="#best-practice-patterns">Extra: Use the right element</a>
             <ol>
+              <li><a href="#document-foundation">Start a document</a></li>
               <li><a href="#standalone-content">Structure content</a></li>
               <li><a href="#caption-content">Caption content</a></li>
+              <li><a href="#responsive-image">Author an image</a></li>
               <li><a href="#describe-values">Describe values</a></li>
               <li><a href="#group-controls">Group controls</a></li>
+              <li><a href="#complete-field">Complete a field</a></li>
               <li><a href="#field-states">Choose field states</a></li>
               <li><a href="#progress-or-meter">Progress or meter</a></li>
+              <li><a href="#baseline-checklist">Test the baseline</a></li>
             </ol>
           </li>
           <li data-outline-topic="native-before-custom">
@@ -133,7 +141,7 @@
                 </article>
                 <aside><h5>Related note</h5><p>An aside remains visually quiet and dependent on its surrounding content.</p></aside>
                 <address>Maintained by <a href="https://github.com/iketiunn">Ike Tiunn</a><br>Taipei, Taiwan</address>
-                <search><form onsubmit="return false"><label>Search the reference <input type="search" placeholder="Try dialog"></label><p><button type="submit">Search</button></p></form></search>
+                <search><label>Search field example <input type="search" placeholder="Search terms"></label></search>
               </div>
             </div>
 
@@ -149,7 +157,7 @@
               <header class="reference-entry-copy"><h4>Text and links</h4><p class="reference-tags"><code>&lt;p&gt;</code> <code>&lt;a&gt;</code> <code>&lt;strong&gt;</code> <code>&lt;mark&gt;</code></p><p>Select this text and interact with the links to exercise native states.</p></header>
               <div class="reference-specimen">
                 <p>A paragraph can contain a <a href="#text-and-links">normal link</a>, an <a href="#text-and-links" aria-current="page">active link</a>, <strong>strong importance</strong>, <b>visual attention</b>, <mark>highlighted text</mark>, and <small>small print</small>.</p>
-                <p><abbr title="HyperText Markup Language">HTML</abbr> can show <del>removed copy</del>, <ins>inserted copy</ins>, H<sub>2</sub>O, x<sup>2</sup>, a <dfn>defined term</dfn>, <data value="0.1.0">version 0.1.0</data>, and <var>element</var>.</p>
+                <p><abbr title="HyperText Markup Language">HTML</abbr> can show <del>removed copy</del>, <ins>inserted copy</ins>, H<sub>2</sub>O, x<sup>2</sup>, a <dfn>defined term</dfn>, <data value="0.1.0">planned version 0.1.0</data>, and <var>element</var>.</p>
               </div>
             </div>
 
@@ -181,7 +189,7 @@
           <section id="tables" class="reference-group" data-outline-section data-topic="styled-elements">
             <header class="reference-group-header"><h3>Tables</h3><p>One complete specimen covers the table baseline and its responsive overflow.</p></header>
             <div id="complete-table" class="reference-entry">
-              <header class="reference-entry-copy"><h4>Structured data</h4><p class="reference-tags"><code>&lt;table&gt;</code> <code>&lt;caption&gt;</code> <code>&lt;thead&gt;</code> <code>&lt;tfoot&gt;</code></p><p>Resize the viewport and hover rows to exercise responsive and interactive states.</p></header>
+              <header class="reference-entry-copy"><h4>Structured data</h4><p class="reference-tags"><code>&lt;table&gt;</code> <code>&lt;caption&gt;</code> <code>scope</code></p><p>A caption names the table and scope connects its headers. Keep the structure simple; if an app adds a separate scroll region, give that region an accessible name.</p></header>
               <div class="reference-specimen">
                 <table>
                   <caption>Recent package checks</caption>
@@ -218,7 +226,7 @@
 
             <div id="control-states" class="reference-entry">
               <header class="reference-entry-copy"><h4>Control states</h4><p class="reference-tags"><code>readonly</code> <code>disabled</code> <code>aria-invalid</code></p><p>State colors reinforce behavior without replacing labels or help text.</p></header>
-              <div class="reference-specimen"><form onsubmit="return false"><label>Read-only value <input value="Focusable and submitted" readonly><small>Read-only values remain focusable and are submitted.</small></label><label>Disabled value <input value="Unavailable" disabled><small>Disabled values are unavailable and not submitted.</small></label><label>Valid email <input type="email" value="valid@example.com" aria-invalid="false"><small>This value is ready to submit.</small></label><label>Invalid email <input type="email" value="not-an-email" aria-invalid="true"><small>Enter a complete email address.</small></label></form></div>
+              <div class="reference-specimen"><form onsubmit="return false"><label>Read-only value <input name="readonly-value" value="Focusable and submitted" readonly><small>Read-only values remain focusable and are submitted.</small></label><label>Disabled value <input name="disabled-value" value="Unavailable" disabled><small>Disabled values are unavailable and not submitted.</small></label><label>Valid email <input type="email" value="valid@example.com" aria-invalid="false"><small>This value is ready to submit.</small></label><label>Invalid email <input type="email" value="not-an-email" aria-invalid="true"><small>Enter a complete email address.</small></label></form></div>
             </div>
 
             <div id="form-actions" class="reference-entry">
@@ -244,7 +252,7 @@
             </div>
 
             <div id="styled-popover" class="reference-entry">
-              <header class="reference-entry-copy"><h4>Popover</h4><p class="reference-tags"><code>popover</code> <code>popovertarget</code></p><p>A non-modal top-layer surface without the dialog backdrop.</p></header>
+              <header class="reference-entry-copy"><h4>Popover</h4><p class="reference-tags"><code>popover</code> <code>popovertarget</code></p><p>A non-modal top-layer surface whose behavior stays browser-owned and whose placement stays application-owned.</p></header>
               <div class="reference-specimen"><button type="button" popovertarget="styled-popover-panel">Open popover</button><div id="styled-popover-panel" popover><h5>Native popover</h5><p>The browser owns light dismissal and Escape.</p><button type="button" popovertarget="styled-popover-panel" popovertargetaction="hide">Close</button></div></div>
             </div>
 
@@ -258,16 +266,36 @@
               <div class="reference-specimen"><label for="gallery-progress">Build progress</label><progress id="gallery-progress" value="72" max="100">72%</progress><label for="gallery-progress-indeterminate">Checking dependencies</label><progress id="gallery-progress-indeterminate">Checking dependencies…</progress><label for="gallery-meter-optimum">Quality score · 86 / 100</label><meter id="gallery-meter-optimum" min="0" max="100" low="40" high="80" optimum="90" value="86">86%</meter><label for="gallery-meter-suboptimum">Review score · 62 / 100</label><meter id="gallery-meter-suboptimum" min="0" max="100" low="40" high="80" optimum="90" value="62">62%</meter><label for="gallery-meter-poor">Coverage score · 28 / 100</label><meter id="gallery-meter-poor" min="0" max="100" low="40" high="80" optimum="90" value="28">28%</meter></div>
             </div>
 
-            <details class="reference-appendix"><summary>Command menu</summary><menu aria-label="Editor actions"><li><button type="button">Copy</button></li><li><button type="button">Cut</button></li><li><button type="button">Paste</button></li></menu></details>
+            <div id="command-menu" class="reference-entry">
+              <header class="reference-entry-copy"><h4>Command menu</h4><p class="reference-tags"><code>&lt;menu&gt;</code> <code>&lt;button&gt;</code></p><p>Related commands receive a compact wrapping layout.</p></header>
+              <div class="reference-specimen"><menu aria-label="Editor actions"><li><button type="button">Copy</button></li><li><button type="button">Cut</button></li><li><button type="button">Paste</button></li></menu></div>
+            </div>
           </section>
         </section>
 
         <section id="best-practice-patterns" class="reference-topic" data-outline-section data-topic="best-practice-patterns">
-          <header class="reference-topic-header"><h2>Use the right element</h2><p>Choose HTML by its meaning and relationships, not its default appearance.</p></header>
+          <header class="reference-topic-header"><h2>Extra: Use the right element</h2><p>Choose HTML by its meaning and relationships, not its default appearance.</p></header>
+
+          <div id="document-foundation" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
+            <header class="reference-entry-copy"><h3>Start with a complete document</h3><p class="reference-tags"><code>&lt;!doctype&gt;</code> <code>lang</code> <code>&lt;meta&gt;</code> <code>&lt;title&gt;</code></p><p>Start in standards mode, declare the language and encoding, allow responsive rendering and zoom, give every page a useful title, and keep one main landmark with a real heading hierarchy.</p><p class="reference-support"><a href="https://web.dev/learn/html/document-structure">web.dev: Document structure</a> · <a href="https://web.dev/learn/html/headings-and-sections">Headings and sections</a></p></header>
+            <div class="reference-specimen"><pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;title&gt;Unique page title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main&gt;
+      &lt;h1&gt;Unique page heading&lt;/h1&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+          </div>
 
           <div id="standalone-content" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
             <header class="reference-entry-copy"><h3>Structure standalone content</h3><p class="reference-tags"><code>&lt;article&gt;</code> <code>&lt;header&gt;</code> <code>&lt;footer&gt;</code> <code>&lt;aside&gt;</code></p><p>Use an article for content that can stand on its own; use an aside only when its meaning depends on nearby content.</p></header>
-            <div class="reference-specimen"><article><header><h4>Release notes</h4><p><small>Version 0.1.0</small></p></header><p>Semanticwind now styles native progress and meter elements.</p><footer><small>Published by the maintainers.</small></footer></article><details class="reference-source"><summary>View markup</summary><pre><code>&lt;article&gt;
+            <div class="reference-specimen"><article><header><h4>Draft release notes</h4><p><small>Planned version 0.1.0</small></p></header><p>Semanticwind now styles native progress and meter elements.</p><footer><small>Preview for the first release.</small></footer></article><details class="reference-source"><summary>View markup</summary><pre><code>&lt;article&gt;
   &lt;header&gt;&lt;h2&gt;Release notes&lt;/h2&gt;&lt;/header&gt;
   &lt;p&gt;Standalone content.&lt;/p&gt;
   &lt;footer&gt;Publication details.&lt;/footer&gt;
@@ -282,9 +310,22 @@
 &lt;/figure&gt;</code></pre></details></div>
           </div>
 
+          <div id="responsive-image" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
+            <header class="reference-entry-copy"><h3>Author a responsive image</h3><p class="reference-tags"><code>&lt;img&gt;</code> <code>alt</code> <code>srcset</code> <code>sizes</code></p><p>Let the browser choose an appropriate source. Intrinsic dimensions reserve space; meaningful alternative text explains purpose; lazy loading belongs only on images below the fold.</p><p class="reference-support"><a href="https://web.dev/learn/html/images">web.dev: Images</a> · <a href="https://web.dev/learn/design/responsive-images">Responsive images</a></p></header>
+            <div class="reference-specimen"><pre><code>&lt;img
+  src="report-800.webp"
+  srcset="report-400.webp 400w, report-800.webp 800w"
+  sizes="(max-width: 40rem) 100vw, 40rem"
+  width="800"
+  height="500"
+  alt="Quarterly revenue by region"
+  loading="lazy"
+&gt;</code></pre><p><small>Use <code>alt=""</code> for a decorative image. Use <code>&lt;picture&gt;</code> only for alternate formats or art direction, with a fallback <code>&lt;img&gt;</code>.</small></p></div>
+          </div>
+
           <div id="describe-values" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
             <header class="reference-entry-copy"><h3>Describe terms and values</h3><p class="reference-tags"><code>&lt;dl&gt;</code> <code>&lt;time&gt;</code> <code>&lt;data&gt;</code></p><p>Prefer machine-readable values when a date, identifier, or definition has meaning beyond its display text.</p></header>
-            <div class="reference-specimen"><dl><div><dt>Released</dt><dd><time datetime="2026-08-22">August 22, 2026</time></dd></div><div><dt>Version</dt><dd><data value="0.1.0">Semanticwind 0.1.0</data></dd></div></dl><details class="reference-source"><summary>View markup</summary><pre><code>&lt;dl&gt;
+            <div class="reference-specimen"><dl><div><dt>Released</dt><dd><time datetime="2026-08-22">August 22, 2026</time></dd></div><div><dt>Planned version</dt><dd><data value="0.1.0">Semanticwind 0.1.0</data></dd></div></dl><details class="reference-source"><summary>View markup</summary><pre><code>&lt;dl&gt;
   &lt;div&gt;&lt;dt&gt;Released&lt;/dt&gt;&lt;dd&gt;&lt;time datetime="2026-08-22"&gt;August 22&lt;/time&gt;&lt;/dd&gt;&lt;/div&gt;
 &lt;/dl&gt;</code></pre></details></div>
           </div>
@@ -297,11 +338,25 @@
 &lt;/fieldset&gt;</code></pre></details></div>
           </div>
 
+          <div id="complete-field" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
+            <header class="reference-entry-copy"><h3>Author a complete field</h3><p class="reference-tags"><code>&lt;label&gt;</code> <code>name</code> <code>type</code> <code>autocomplete</code> <code>aria-describedby</code></p><p>A label names the control, name identifies submitted data, type and autocomplete unlock browser behavior, and visible help stays connected. A placeholder is never the label.</p><p class="reference-support"><a href="https://web.dev/learn/forms/form-fields">web.dev: Form fields</a> · <a href="https://web.dev/learn/forms/autofill">Autofill</a> · <a href="https://web.dev/learn/forms/accessibility">Accessibility</a></p></header>
+            <div class="reference-specimen"><form><label for="pattern-email">Email address <input id="pattern-email" name="email" type="email" autocomplete="email" aria-describedby="pattern-email-help"><small id="pattern-email-help">We will send the receipt here.</small></label></form><details class="reference-source"><summary>View markup</summary><pre><code>&lt;label for="email"&gt;Email address&lt;/label&gt;
+&lt;input
+  id="email"
+  name="email"
+  type="email"
+  autocomplete="email"
+  aria-describedby="email-help"
+&gt;
+&lt;small id="email-help"&gt;We will send the receipt here.&lt;/small&gt;</code></pre></details></div>
+          </div>
+
           <div id="field-states" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
             <header class="reference-entry-copy"><h3>Choose the correct field state</h3><p class="reference-tags"><code>readonly</code> <code>disabled</code> <code>required</code></p><p>Read-only values remain focusable and submitted; disabled values do neither. Explain invalid input in visible text.</p></header>
-            <div class="reference-specimen"><form onsubmit="return false"><label>Account ID <input value="SW-1042" readonly><small>Focusable and submitted with the form.</small></label><label>Legacy ID <input value="Unavailable" disabled><small>Excluded from interaction and submission.</small></label><label>Email <input type="email" value="missing-domain" required aria-invalid="true"><small>Enter a complete email address.</small></label></form><details class="reference-source"><summary>View comparison markup</summary><pre><code>&lt;input value="SW-1042" readonly&gt;
-&lt;input value="Unavailable" disabled&gt;
-&lt;input type="email" required aria-invalid="true"&gt;</code></pre></details></div>
+            <div class="reference-specimen"><form onsubmit="return false"><label>Account ID <input name="account-id" value="SW-1042" readonly><small>Focusable and submitted with the form.</small></label><label>Legacy ID <input name="legacy-id" value="Unavailable" disabled><small>Excluded from interaction and submission.</small></label><label>Email <input id="pattern-invalid-email" type="email" value="missing-domain" required aria-invalid="true" aria-describedby="pattern-invalid-email-error"><small id="pattern-invalid-email-error"><strong>Error:</strong> Enter a complete email address.</small></label></form><details class="reference-source"><summary>View comparison markup</summary><pre><code>&lt;input name="account-id" value="SW-1042" readonly&gt;
+&lt;input name="legacy-id" value="Unavailable" disabled&gt;
+&lt;input type="email" required aria-invalid="true" aria-describedby="email-error"&gt;
+&lt;small id="email-error"&gt;Error: Enter a complete email address.&lt;/small&gt;</code></pre></details></div>
           </div>
 
           <div id="progress-or-meter" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
@@ -309,10 +364,15 @@
             <div class="reference-specimen"><label for="pattern-progress">Upload progress</label><progress id="pattern-progress" value="65" max="100">65%</progress><label for="pattern-meter">Storage usage · 65 / 100</label><meter id="pattern-meter" min="0" max="100" low="50" high="85" optimum="20" value="65">65%</meter><details class="reference-source"><summary>View comparison markup</summary><pre><code>&lt;progress value="65" max="100"&gt;65%&lt;/progress&gt;
 &lt;meter min="0" max="100" low="50" high="85" value="65"&gt;65%&lt;/meter&gt;</code></pre></details></div>
           </div>
+
+          <div id="baseline-checklist" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
+            <header class="reference-entry-copy"><h3>Test the baseline before adding a dependency</h3><p class="reference-tags"><code>keyboard</code> <code>zoom</code> <code>dir</code> <code>pointer</code></p><p>Native HTML removes work, but authors still need to test their content and composition.</p><p class="reference-support"><a href="https://web.dev/learn/design/accessibility">web.dev: Accessibility</a> · <a href="https://web.dev/learn/design/internationalization">Internationalization</a> · <a href="https://web.dev/learn/design/interaction">Interaction</a></p></header>
+            <div class="reference-specimen"><ol><li><strong>Keyboard:</strong> keep DOM, visual, and tab order aligned; avoid positive <code>tabindex</code>.</li><li><strong>Zoom:</strong> check 200% and 400%; content should reflow instead of clip.</li><li><strong>Language:</strong> set <code>lang</code>, test <code>dir="rtl"</code>, and allow translated labels to grow.</li><li><strong>Input:</strong> pair hover with focus and test keyboard, touch, coarse, and fine pointers.</li><li><strong>Layout:</strong> choose breakpoints where content stops working, not from a device catalog.</li></ol></div>
+          </div>
         </section>
 
         <section id="native-before-custom" class="reference-topic" data-outline-section data-topic="native-before-custom">
-          <header class="reference-topic-header"><h2>Extra: Browser-native first</h2><p>Before installing a component, check what the browser already owns. Add custom UI only when a real requirement outgrows the native behavior.</p></header>
+          <header class="reference-topic-header"><h2>Extra: Browser-native first</h2><p>Before installing a dependency, use browser-owned semantics and behavior. Add custom UI only when a proven requirement outgrows native capability, support, or control.</p></header>
 
           <div id="inline-help" class="reference-entry" data-outline-section data-topic="native-before-custom">
             <header class="reference-entry-copy"><h3>Inline help</h3><p class="reference-tags"><code>aria-describedby</code> <code>&lt;small&gt;</code></p><p>Keep instructions visible when people need them to finish the task. Use a user-invoked popover only when the detail is genuinely optional.</p></header>
@@ -322,22 +382,26 @@
           </div>
 
           <div id="exclusive-disclosure" class="reference-entry" data-outline-section data-topic="native-before-custom">
-            <header class="reference-entry-copy"><h3>FAQ accordion</h3><p class="reference-tags"><code>&lt;details name&gt;</code></p><p class="reference-support">Broad support · <a href="https://caniuse.com/mdn-html_elements_details_name">Can I Use</a></p><p>Use a shared name when only one answer should stay open. Add a component when routing, controlled state, or custom animation is required.</p></header>
+            <header class="reference-entry-copy"><h3>FAQ accordion</h3><p class="reference-tags"><code>&lt;details name&gt;</code></p><p class="reference-support">Newer support · <a href="https://caniuse.com/mdn-html_elements_details_name">Can I Use</a></p><p>Use a shared name when only one answer should stay open. Older supported browsers keep both disclosures independently usable. Add a component when routing, controlled state, or custom animation is required.</p></header>
             <div class="reference-specimen"><details name="reference-faq" open><summary>What does Semanticwind style?</summary><p>Native HTML elements with broadly useful defaults.</p></details><details name="reference-faq"><summary>When should I add a component?</summary><p>When repeated product meaning or custom behavior appears.</p></details><details class="reference-source"><summary>View markup</summary><pre><code>&lt;details name="faq" open&gt;...&lt;/details&gt;
 &lt;details name="faq"&gt;...&lt;/details&gt;</code></pre></details></div>
           </div>
 
           <div id="native-popover" class="reference-entry" data-outline-section data-topic="native-before-custom">
-            <header class="reference-entry-copy"><h3>Optional help</h3><p class="reference-tags"><code>popover</code> <code>popovertarget</code></p><p class="reference-support">Broad support · <a href="https://caniuse.com/mdn-html_global_attributes_popover">Can I Use</a></p><p>Use a regular popover for optional information people deliberately request; the browser owns activation, the top layer, light dismissal, and Escape. Use a dialog when the user must respond.</p></header>
+            <header class="reference-entry-copy"><h3>Optional help</h3><p class="reference-tags"><code>popover</code> <code>popovertarget</code></p><p class="reference-support">Broad support · <a href="https://caniuse.com/mdn-html_global_attributes_popover">Can I Use</a></p><p>Use a regular popover for optional information people deliberately request; the browser owns activation, the top layer, light dismissal, and Escape, while the application owns placement. Use a dialog when the user must respond.</p></header>
             <div class="reference-specimen"><button type="button" popovertarget="shortcut-help">Keyboard shortcut</button><div id="shortcut-help" popover>Press <kbd>⌘</kbd> + <kbd>Enter</kbd> to publish.</div><details class="reference-source"><summary>View markup</summary><pre><code>&lt;button popovertarget="shortcut-help"&gt;Keyboard shortcut&lt;/button&gt;
 &lt;div id="shortcut-help" popover&gt;Press ⌘ + Enter to publish.&lt;/div&gt;</code></pre></details></div>
           </div>
 
           <div id="native-dialog" class="reference-entry" data-outline-section data-topic="native-before-custom">
             <header class="reference-entry-copy"><h3>Publish confirmation</h3><p class="reference-tags"><code>&lt;dialog&gt;</code> <code>commandfor</code></p><p class="reference-support">Broad support: <a href="https://caniuse.com/dialog">dialog</a> · Newer support: <a href="https://caniuse.com/mdn-html_elements_button_commandfor">commands</a></p><p>Use a modal dialog when the user must respond before returning to the page; the browser manages focus and the inert background.</p></header>
-            <div class="reference-specimen"><button type="button" commandfor="native-command-dialog" command="show-modal">Open confirmation</button><dialog id="native-command-dialog"><h4>Publish release?</h4><p>This action makes the release visible.</p><button type="button" commandfor="native-command-dialog" command="close">Cancel</button></dialog><details class="reference-source"><summary>View markup</summary><pre><code>&lt;button commandfor="confirm" command="show-modal"&gt;Open&lt;/button&gt;
+            <div class="reference-specimen"><button type="button" commandfor="native-command-dialog" command="show-modal">Open confirmation</button><dialog id="native-command-dialog"><h4>Publish release?</h4><p>This action makes the release visible.</p><form method="dialog"><p><button value="cancel">Cancel</button> <button value="publish">Publish</button></p></form></dialog><details class="reference-source"><summary>View markup</summary><pre><code>&lt;button commandfor="confirm" command="show-modal"&gt;Open&lt;/button&gt;
 &lt;dialog id="confirm"&gt;
-  &lt;button commandfor="confirm" command="close"&gt;Close&lt;/button&gt;
+  &lt;h4&gt;Publish release?&lt;/h4&gt;
+  &lt;form method="dialog"&gt;
+    &lt;button value="cancel"&gt;Cancel&lt;/button&gt;
+    &lt;button value="publish"&gt;Publish&lt;/button&gt;
+  &lt;/form&gt;
 &lt;/dialog&gt;</code></pre></details></div>
           </div>
 
