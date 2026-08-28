@@ -157,7 +157,7 @@
               <header class="reference-entry-copy"><h4>Text and links</h4><p class="reference-tags"><code>&lt;p&gt;</code> <code>&lt;a&gt;</code> <code>&lt;strong&gt;</code> <code>&lt;mark&gt;</code></p><p>Select this text and interact with the links to exercise native states.</p></header>
               <div class="reference-specimen">
                 <p>A paragraph can contain a <a href="#text-and-links">normal link</a>, an <a href="#text-and-links" aria-current="page">active link</a>, <strong>strong importance</strong>, <b>visual attention</b>, <mark>highlighted text</mark>, and <small>small print</small>.</p>
-                <p><abbr title="HyperText Markup Language">HTML</abbr> can show <del>removed copy</del>, <ins>inserted copy</ins>, H<sub>2</sub>O, x<sup>2</sup>, a <dfn>defined term</dfn>, <data value="0.1.0">planned version 0.1.0</data>, and <var>element</var>.</p>
+                <p><abbr title="HyperText Markup Language">HTML</abbr> can show <del>removed copy</del>, <ins>inserted copy</ins>, H<sub>2</sub>O, x<sup>2</sup>, a <dfn>defined term</dfn>, <data value="0.1.0">version 0.1.0</data>, and <var>element</var>.</p>
               </div>
             </div>
 
@@ -295,7 +295,7 @@
 
           <div id="standalone-content" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
             <header class="reference-entry-copy"><h3>Structure standalone content</h3><p class="reference-tags"><code>&lt;article&gt;</code> <code>&lt;header&gt;</code> <code>&lt;footer&gt;</code> <code>&lt;aside&gt;</code></p><p>Use an article for content that can stand on its own; use an aside only when its meaning depends on nearby content.</p></header>
-            <div class="reference-specimen"><article><header><h4>Draft release notes</h4><p><small>Planned version 0.1.0</small></p></header><p>Semanticwind now styles native progress and meter elements.</p><footer><small>Preview for the first release.</small></footer></article><details class="reference-source"><summary>View markup</summary><pre><code>&lt;article&gt;
+            <div class="reference-specimen"><article><header><h4>Release notes</h4><p><small>Version 0.1.0</small></p></header><p>Semanticwind now styles native progress and meter elements.</p><footer><small>Initial release.</small></footer></article><details class="reference-source"><summary>View markup</summary><pre><code>&lt;article&gt;
   &lt;header&gt;&lt;h2&gt;Release notes&lt;/h2&gt;&lt;/header&gt;
   &lt;p&gt;Standalone content.&lt;/p&gt;
   &lt;footer&gt;Publication details.&lt;/footer&gt;
@@ -325,7 +325,7 @@
 
           <div id="describe-values" class="reference-entry" data-outline-section data-topic="best-practice-patterns">
             <header class="reference-entry-copy"><h3>Describe terms and values</h3><p class="reference-tags"><code>&lt;dl&gt;</code> <code>&lt;time&gt;</code> <code>&lt;data&gt;</code></p><p>Prefer machine-readable values when a date, identifier, or definition has meaning beyond its display text.</p></header>
-            <div class="reference-specimen"><dl><div><dt>Released</dt><dd><time datetime="2026-08-22">August 22, 2026</time></dd></div><div><dt>Planned version</dt><dd><data value="0.1.0">Semanticwind 0.1.0</data></dd></div></dl><details class="reference-source"><summary>View markup</summary><pre><code>&lt;dl&gt;
+            <div class="reference-specimen"><dl><div><dt>Released</dt><dd><time datetime="2026-08-22">August 22, 2026</time></dd></div><div><dt>Version</dt><dd><data value="0.1.0">Semanticwind 0.1.0</data></dd></div></dl><details class="reference-source"><summary>View markup</summary><pre><code>&lt;dl&gt;
   &lt;div&gt;&lt;dt&gt;Released&lt;/dt&gt;&lt;dd&gt;&lt;time datetime="2026-08-22"&gt;August 22&lt;/time&gt;&lt;/dd&gt;&lt;/div&gt;
 &lt;/dl&gt;</code></pre></details></div>
           </div>

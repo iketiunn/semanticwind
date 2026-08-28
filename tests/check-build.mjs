@@ -126,10 +126,10 @@ assert.match(gallery, /<h3>Optional help<\/h3>[\s\S]*<button type="button" popov
 assert.match(gallery, /commandfor="native-command-dialog"[\s\S]*command="show-modal"/, 'the reference must teach native dialog commands');
 assert.match(gallery, /<dialog id="native-command-dialog">[\s\S]*<form method="dialog">[\s\S]*<button value="cancel">Cancel<\/button>[\s\S]*<button value="publish">Publish<\/button>/, 'the confirmation example must offer both choices');
 assert.equal(gallery.match(/<meter\b/g)?.length, 4, 'the reference must demonstrate meter states and the progress comparison');
-assert.match(landing, /cdn\.jsdelivr\.net\/npm\/semanticwind@0\.1\.0\/dist\/semanticwind\.min\.css/, 'the landing page must show the planned pinned CDN path');
-assert.match(landing, /Planned version 0\.1\.0/, 'the landing specimen must not present the first release as published');
-assert.match(gallery, /Draft release notes[\s\S]*Planned version 0\.1\.0[\s\S]*Preview for the first release\./, 'the reference release specimen must remain an explicit preview');
-assert.doesNotMatch(gallery, /Published by the maintainers/, 'the unpublished package must not present a specimen as a published release');
+assert.match(landing, /cdn\.jsdelivr\.net\/npm\/semanticwind@0\.1\.0\/dist\/semanticwind\.min\.css/, 'the landing page must show the pinned CDN path');
+assert.match(landing, /Semanticwind 0\.1\.0 is published\. Use either installation path below\./, 'the landing page must identify the published release');
+assert.match(gallery, /Release notes[\s\S]*Version 0\.1\.0[\s\S]*Initial release\./, 'the reference release specimen must describe the published release');
+assert.doesNotMatch(`${landing}\n${gallery}`, /not published|unpublished|Planned version 0\.1\.0|Preview for the first release\./, 'published documentation must not retain pre-release wording');
 assert.equal(landing.match(/class="copy-block"/g)?.length, 2, 'both install snippets must have copy controls');
 assert.equal(landing.match(/class="copy-label"/g)?.length, 2, 'both install snippets must use native copy buttons');
 assert.equal(landing.match(/aria-live="polite"/g)?.length, 2, 'both copy controls must announce feedback');

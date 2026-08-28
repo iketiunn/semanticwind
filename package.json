@@ -1,6 +1,6 @@
 {
   "name": "semanticwind",
-  "version": "0.0.0-dev.0",
+  "version": "0.1.0",
   "description": "Zero-build semantic CSS for projects that grow into Tailwind CSS v4.",
   "license": "MIT",
   "type": "module",

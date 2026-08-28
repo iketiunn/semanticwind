@@ -42,13 +42,13 @@ Contract checks verify that the standalone artifact is complete, the Tailwind so
 
 ## Start without Tailwind
 
-Semanticwind is not published yet. For now, copy [`dist/semanticwind.min.css`](./dist/semanticwind.min.css) into a project and link it directly:
+Semanticwind is published as `semanticwind@0.1.0`. For a no-build project, copy [`dist/semanticwind.min.css`](./dist/semanticwind.min.css) into a project and link it directly:
 
 ```html
 <link rel="stylesheet" href="./semanticwind.min.css">
 ```
 
-After the first npm release, the pinned CDN URL will be:
+The pinned CDN URL is:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semanticwind@0.1.0/dist/semanticwind.min.css">
@@ -88,7 +88,7 @@ When a local design choice earns a class, replace the standalone stylesheet with
 @import "semanticwind";
 ```
 
-During development of this repository, use `@import "./src/semanticwind.css"` instead of the unpublished package import.
+During development of this repository, use `@import "./src/semanticwind.css"`; published projects can use `@import "semanticwind"`.
 
 Semanticwind now compiles into Tailwind's `base` layer and uses the project's `zinc`, `blue`, `red`, `emerald`, and `yellow` theme colors. Keep those names available or redefine their values with `@theme`; removing those namespaces makes the corresponding `@apply` utilities unavailable.
 
