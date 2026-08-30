@@ -2,18 +2,43 @@
 
 **Start with HTML. Grow into Tailwind.**
 
-Semanticwind is zero-build semantic CSS for projects expected to grow into Tailwind CSS v4.
+Semanticwind gives semantic HTML a zero-build CSS baseline before Tailwind CSS v4.
 
 Add one production-ready stylesheet today. Adopt Tailwind later without rewriting your markup or replacing your semantic baseline.
 
-```text
-semantic HTML
-      │
-      ├─ enough ───────────────→ stop
-      ├─ local exception ───────→ Tailwind utilities
-      ├─ reusable UI ───────────→ component layer
-      └─ product concept ───────→ your own component
+[Live demo](https://iketiunn.github.io/semanticwind/) · [Reference](https://iketiunn.github.io/semanticwind/gallery.html) · [npm 0.1.0](https://www.npmjs.com/package/semanticwind/v/0.1.0) · [MIT license](./LICENSE)
+
+## Quick start
+
+### Plain HTML
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semanticwind@0.1.0/dist/semanticwind.min.css">
 ```
+
+### Tailwind CSS v4
+
+```bash
+npm install semanticwind
+```
+
+```css
+@import "tailwindcss";
+@import "semanticwind";
+```
+
+The standalone stylesheet needs no build step or runtime JavaScript and includes no utility classes. The package import joins Tailwind's `base` layer so utilities override it normally.
+
+[![Semanticwind styles readable native HTML without replacing browser elements.](./docs/assets/readme-preview.png)](https://iketiunn.github.io/semanticwind/#samples)
+
+## The boundary
+
+| Need | Next step |
+| --- | --- |
+| Nothing more | Stop |
+| Local exception | Tailwind utility |
+| Reusable UI | Component layer |
+| Product concept | Your component |
 
 The boundary is deliberate: native elements receive broadly useful defaults, but HTML tags never become a component API. `article` is not a card. `nav` does not choose a layout. Button variants remain component meaning.
 
@@ -40,18 +65,12 @@ Semanticwind maintains two synchronized forms of one baseline:
 
 Contract checks verify that the standalone artifact is complete, the Tailwind source keeps the same semantic ownership, project theme values reach native defaults, and utilities override normally. Without that maintained transition, Semanticwind would be only another stylesheet to copy.
 
-## Start without Tailwind
+## Standalone details
 
-Semanticwind is published as `semanticwind@0.1.0`. For a no-build project, copy [`dist/semanticwind.min.css`](./dist/semanticwind.min.css) into a project and link it directly:
+To vendor the release instead of using the pinned CDN URL above, copy [`dist/semanticwind.min.css`](./dist/semanticwind.min.css) into a project and link it directly:
 
 ```html
 <link rel="stylesheet" href="./semanticwind.min.css">
-```
-
-The pinned CDN URL is:
-
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semanticwind@0.1.0/dist/semanticwind.min.css">
 ```
 
 Then write ordinary HTML:
@@ -81,14 +100,12 @@ The project can then supply its own motion. Semanticwind motion also stays off w
 
 ## Add Tailwind when you need it
 
-When a local design choice earns a class, replace the standalone stylesheet with a Tailwind CSS entry file:
+When a local design choice earns a class, install the package as shown above and replace the standalone stylesheet with a Tailwind CSS entry file:
 
 ```css
 @import "tailwindcss";
 @import "semanticwind";
 ```
-
-During development of this repository, use `@import "./src/semanticwind.css"`; published projects can use `@import "semanticwind"`.
 
 Semanticwind now compiles into Tailwind's `base` layer and uses the project's `zinc`, `blue`, `red`, `emerald`, and `yellow` theme colors. Keep those names available or redefine their values with `@theme`; removing those namespaces makes the corresponding `@apply` utilities unavailable.
 
@@ -154,6 +171,8 @@ npm run dev
 ```
 
 Run `npm run check` to build the demo and compile the documented escape-hatch recipes and Tailwind contract fixture. Open `tests/contract.html`; it must report `PASS` after representative layout, typography, link, control, and theme overrides are computed by the browser.
+
+Repository fixtures import `./src/semanticwind.css`; published projects import `semanticwind`.
 
 The contract fixture is intentionally small: it tests the reason this package exists, not every declaration in the stylesheet.
 

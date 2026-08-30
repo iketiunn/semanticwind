@@ -4,6 +4,7 @@ import { gzipSync } from 'node:zlib';
 
 const [
   manifestSource,
+  readme,
   semanticwindSource,
   documentationSource,
   landing,
@@ -17,6 +18,7 @@ const [
   picoMigrationSource,
 ] = await Promise.all([
   readFile('package.json', 'utf8'),
+  readFile('README.md', 'utf8'),
   readFile('src/semanticwind.css', 'utf8'),
   readFile('docs/app.css', 'utf8'),
   readFile('docs/index.html', 'utf8'),
@@ -32,6 +34,10 @@ const [
 
 const manifest = JSON.parse(manifestSource);
 const publishedFiles = new Set(manifest.files);
+
+assert.ok(readme.indexOf('## Quick start') < readme.indexOf('## The boundary'), 'the README must lead with installation before product philosophy');
+assert.match(readme, /npm install semanticwind/, 'the README must show the published package install command');
+assert.match(readme, /\[Live demo\]\(https:\/\/iketiunn\.github\.io\/semanticwind\/\)[\s\S]*readme-preview\.png/, 'the README must link the live product and show rendered proof');
 
 for (const exportPath of Object.values(manifest.exports)) {
   assert.ok(publishedFiles.has(exportPath.replace(/^\.\//, '')), `${exportPath} must be included in the npm package`);
