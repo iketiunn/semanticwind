@@ -71,8 +71,9 @@ assert.doesNotMatch(semanticwindSource, /prefers-reduced-motion: reduce|animatio
 assert.match(landing, /<html lang="en">/, 'the landing page must demonstrate default motion');
 assert.ok(landing.indexOf('id="samples"') < landing.indexOf('id="start"'), 'the landing page must show product proof before installation');
 assert.equal(landing.match(/class="reference-entry"/g)?.length, 3, 'the landing page must keep three focused specimen rows');
-assert.match(landing, /href="#samples">\s*See it styled ↓\s*<\/a>/, 'the primary hero action must lead to product proof');
+assert.match(landing, /href="#samples">\s*See native HTML ↓\s*<\/a>/, 'the primary hero action must identify the product proof');
 assert.match(landing, /href="#start">Install Semanticwind ↓<\/a>/, 'the secondary hero action must lead to installation');
+assert.match(landing, /Standalone: no build step · no runtime JavaScript/, 'the hero must scope the no-build and no-JavaScript promise to the standalone path');
 assert.doesNotMatch(landing, /sample-grid|closing-statement/, 'the landing page must not restore the old grid or duplicate closing slogan');
 assert.doesNotMatch(documentationSource, /\.sample-grid|\.closing-statement/, 'obsolete landing layout CSS must stay removed');
 assert.match(gallery, /<html lang="en">[\s\S]*<progress id="gallery-progress-indeterminate">/, 'the gallery must demonstrate default motion and indeterminate progress');
@@ -127,9 +128,11 @@ assert.match(gallery, /commandfor="native-command-dialog"[\s\S]*command="show-mo
 assert.match(gallery, /<dialog id="native-command-dialog">[\s\S]*<form method="dialog">[\s\S]*<button value="cancel">Cancel<\/button>[\s\S]*<button value="publish">Publish<\/button>/, 'the confirmation example must offer both choices');
 assert.equal(gallery.match(/<meter\b/g)?.length, 4, 'the reference must demonstrate meter states and the progress comparison');
 assert.match(landing, /cdn\.jsdelivr\.net\/npm\/semanticwind@0\.1\.0\/dist\/semanticwind\.min\.css/, 'the landing page must show the pinned CDN path');
-assert.match(landing, /Semanticwind 0\.1\.0 is published\. Use either installation path below\./, 'the landing page must identify the published release');
+assert.match(landing, /href="https:\/\/www\.npmjs\.com\/package\/semanticwind\/v\/0\.1\.0">Semanticwind 0\.1\.0 on npm<\/a> · MIT/, 'the landing page must link the current release to its exact npm version');
 assert.match(gallery, /Release notes[\s\S]*Version 0\.1\.0[\s\S]*Initial release\./, 'the reference release specimen must describe the published release');
 assert.doesNotMatch(`${landing}\n${gallery}`, /not published|unpublished|Planned version 0\.1\.0|Preview for the first release\./, 'published documentation must not retain pre-release wording');
+assert.match(gallery, /datetime="2026-08-28">August 28, 2026<\/time>/, 'the reference must use the actual first-release date');
+assert.doesNotMatch(gallery, /2026-08-22|August 22/, 'the reference must not retain the pre-release specimen date');
 assert.equal(landing.match(/class="copy-block"/g)?.length, 2, 'both install snippets must have copy controls');
 assert.equal(landing.match(/class="copy-label"/g)?.length, 2, 'both install snippets must use native copy buttons');
 assert.equal(landing.match(/aria-live="polite"/g)?.length, 2, 'both copy controls must announce feedback');
